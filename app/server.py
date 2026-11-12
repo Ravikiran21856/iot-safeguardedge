@@ -18,8 +18,38 @@ import threading
 import http.server
 import socketserver
 import urllib.parse
-import numpy as np
-import torch
+try:
+    import numpy as np
+    import torch
+except ImportError:
+    np = None
+    torch = None
+
+# Top-level entrypoint variables for Vercel / Serverless Runtimes
+class handler(http.server.BaseHTTPRequestHandler):
+    """Fallback Serverless Handler for Vercel / Serverless runtimes."""
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.end_headers()
+        html_file = os.path.join(os.path.dirname(__file__), "..", "index.html")
+        if os.path.exists(html_file):
+            with open(html_file, "rb") as f:
+                self.wfile.write(f.read())
+        else:
+            self.wfile.write(b"<!DOCTYPE html><html><body><h1>IoT EdgeGuard Dashboard</h1><p>Online</p></body></html>")
+
+    def do_POST(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(b'{"status":"ok","message":"IoT EdgeGuard API active"}')
+
+    def log_message(self, format, *args):
+        pass
+
+app = handler
+application = handler
 
 
 class NumpyEncoder(json.JSONEncoder):
@@ -42,13 +72,16 @@ def json_dumps_safe(obj) -> bytes:
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from data.synthetic_generator import SensorDataGenerator, DEFAULT_PROFILES, SENSOR_NAMES
-from data.dataset_loader import prepare_federated_client_datasets
-from models.lightweight_autoencoder import build_model, count_parameters
-from models.quantization import benchmark_quantization
-from models.anomaly_detector import OnDeviceAnomalyDetector
-from federated.client import FederatedEdgeClient
-from federated.server import FederatedServer
+try:
+    from data.synthetic_generator import SensorDataGenerator, DEFAULT_PROFILES, SENSOR_NAMES
+    from data.dataset_loader import prepare_federated_client_datasets
+    from models.lightweight_autoencoder import build_model, count_parameters
+    from models.quantization import benchmark_quantization
+    from models.anomaly_detector import OnDeviceAnomalyDetector
+    from federated.client import FederatedEdgeClient
+    from federated.server import FederatedServer
+except ImportError:
+    SensorDataGenerator = None
 
 PORT = int(os.environ.get("PORT", 8080))
 HOST = "0.0.0.0"
@@ -119,7 +152,13 @@ class AppState:
         self.hardware_active_until = {c.client_id: 0.0 for c in self.clients}
 
 
-STATE = AppState()
+try:
+    if torch is not None and np is not None and SensorDataGenerator is not None:
+        STATE = AppState()
+    else:
+        STATE = None
+except Exception as e:
+    STATE = None
 
 
 def get_html_ui() -> str:
@@ -1045,6 +1084,12 @@ class IoTAppRequestHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         # Suppress noisy standard HTTP logs in production
         pass
+
+
+# Vercel and Serverless Entrypoint Compatibility
+handler = IoTAppRequestHandler
+app = IoTAppRequestHandler
+application = IoTAppRequestHandler
 
 
 def run_web_app(port: int = PORT):
