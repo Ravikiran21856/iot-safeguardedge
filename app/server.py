@@ -20,16 +20,16 @@ import socketserver
 import urllib.parse
 
 # Top-level entrypoint variables for Vercel / Serverless Runtimes
-class ServerlessHandler(http.server.SimpleHTTPRequestHandler):
+class handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
         self.wfile.write(b"IoT EdgeGuard Online")
 
-handler = ServerlessHandler
-app = ServerlessHandler
-application = ServerlessHandler
+app = handler
+application = handler
+ServerlessHandler = handler
 
 try:
     import numpy as np
