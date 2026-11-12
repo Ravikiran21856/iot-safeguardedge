@@ -18,25 +18,8 @@ import threading
 import http.server
 import socketserver
 import urllib.parse
-
-# Top-level entrypoint variables for Vercel / Serverless Runtimes
-class handler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-Type", "text/plain")
-        self.end_headers()
-        self.wfile.write(b"IoT EdgeGuard Online")
-
-app = handler
-application = handler
-ServerlessHandler = handler
-
-try:
-    import numpy as np
-    import torch
-except ImportError:
-    np = None
-    torch = None
+import numpy as np
+import torch
 
 
 class NumpyEncoder(json.JSONEncoder):
@@ -1062,11 +1045,6 @@ class IoTAppRequestHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         # Suppress noisy standard HTTP logs in production
         pass
-
-
-# Vercel and Serverless Entrypoint Compatibility
-handler = IoTAppRequestHandler
-app = IoTAppRequestHandler
 
 
 def run_web_app(port: int = PORT):
