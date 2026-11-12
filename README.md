@@ -4,6 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C.svg)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Edge-Ready](https://img.shields.io/badge/Edge%20Ready-INT8%20Quantized-brightgreen.svg)]()
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRavikiran21856%2Fiot-safeguardedge)
 
 > **Research & Implementation Focus:**  
 > Anomaly Detection in Smart Home and Industrial IoT Sensor Data via Lightweight Federated Learning for On-Device Anomaly Detection, Applied to Industrial IoT Manufacturing Environments.
