@@ -1,0 +1,22 @@
+# Binaries and large installers
+cloudflared.exe
+*.exe
+*.zip
+
+# Python Bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Logs and runtime artifacts
+*.log
+edge_alarms.log
+results/tunnel_daemon.log
+
+# System and editor directories
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

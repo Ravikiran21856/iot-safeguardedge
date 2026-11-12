@@ -1,0 +1,17 @@
+[Unit]
+Description=EdgeGuard IoT Federated Anomaly Detection Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/iot-security
+ExecStart=/usr/bin/python3 deploy/edge_runtime.py --client 0
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+

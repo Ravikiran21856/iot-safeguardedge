@@ -1,0 +1,8 @@
+Public HTTPS URL:
+https://projected-cumulative-wildlife-demands.trycloudflare.com
+
+Local LAN URL (for devices on the same Wi-Fi / Hotspot):
+http://192.168.0.105:8080
+
+Localhost URL:
+http://127.0.0.1:8080

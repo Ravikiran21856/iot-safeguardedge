@@ -1,0 +1,54 @@
+# ==============================================================================
+# Configuration: Lightweight Federated Learning for On-Device Anomaly Detection
+# Target Domains: Industrial IoT (IIoT) Manufacturing & Smart Home Systems
+# ==============================================================================
+
+system:
+  seed: 42
+  device: "cpu"                  # Edge microcontrollers & gateways typically execute on CPU
+  output_dir: "./results"
+  log_level: "INFO"
+
+federated:
+  num_rounds: 15                 # Communication rounds between Edge Clients & Aggregator
+  num_clients: 5                 # 3 IIoT Manufacturing Lines + 2 Smart Home Nodes
+  fraction_fit: 1.0              # Fraction of active clients per round (1.0 = full participation)
+  aggregation_algorithm: "FedAvg" # Options: 'FedAvg', 'FedProx'
+  fedprox_mu: 0.01               # Proximal regularization parameter to combat non-IID drift
+  differential_privacy:
+    enabled: true                # Enable Local Differential Privacy (LDP)
+    clip_norm: 1.0               # L2 gradient clipping threshold
+    noise_multiplier: 0.005      # Gaussian noise scale added to gradients before upload
+
+local_training:
+  batch_size: 32
+  local_epochs: 3                # Local epochs executed on edge node before sending updates
+  learning_rate: 0.002
+  weight_decay: 0.00001
+  loss_fn: "MSE"                 # Mean Squared Error reconstruction loss
+
+model:
+  architecture: "LightweightAutoencoder" # Options: 'LightweightAutoencoder', 'Conv1DAutoencoder'
+  input_dim: 8                   # Multivariate sensors: Vibration, Temp, RPM, Current, Pressure, Acoustic, Humidity, Voltage
+  window_size: 16                # Temporal sliding window length (16 timesteps)
+  hidden_dims: [32, 16]          # Compact encoder/decoder layers (< 25,000 parameters)
+  latent_dim: 8                  # Bottleneck representation size
+  dropout: 0.05
+  quantization:
+    enabled: true                # Post-Training Dynamic Quantization (INT8) for TinyML
+    backend: "fbgemm"
+
+dataset:
+  name: "IIoT_SmartHome_Multivariate"
+  total_samples_per_client: 3500
+  train_split: 0.70
+  val_split: 0.10
+  test_split: 0.20
+  anomaly_ratio_test: 0.09       # 9% anomalous test events (bearing wear, thermal runaway, electrical surge)
+  non_iid: true                  # Simulate heterogeneous machine environments (non-IID sensor distributions)
+
+anomaly_detection:
+  threshold_method: "percentile" # Options: 'percentile', 'std_dev', 'extreme_value'
+  threshold_percentile: 95.0     # Quantile threshold based on normal validation reconstruction error
+  std_multiplier: 3.0            # If threshold_method == 'std_dev': mean + 3 * std
+
