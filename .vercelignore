@@ -19,3 +19,4 @@ cloudflared.exe
 *.ps1
 edge_alarms.log
 cloud_deployment_bundle.zip
+

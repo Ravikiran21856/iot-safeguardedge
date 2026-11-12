@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "outputDirectory": "public",
-  "cleanUrls": true,
+  "framework": null,
+  "builds": [
+    {
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.html"
+    }
   ]
 }

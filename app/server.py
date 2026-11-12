@@ -18,8 +18,25 @@ import threading
 import http.server
 import socketserver
 import urllib.parse
-import numpy as np
-import torch
+
+# Top-level entrypoint variables for Vercel / Serverless Runtimes
+class ServerlessHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
+        self.end_headers()
+        self.wfile.write(b"IoT EdgeGuard Online")
+
+handler = ServerlessHandler
+app = ServerlessHandler
+application = ServerlessHandler
+
+try:
+    import numpy as np
+    import torch
+except ImportError:
+    np = None
+    torch = None
 
 
 class NumpyEncoder(json.JSONEncoder):
