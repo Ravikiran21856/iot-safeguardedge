@@ -1047,6 +1047,11 @@ class IoTAppRequestHandler(http.server.SimpleHTTPRequestHandler):
         pass
 
 
+# Vercel and Serverless Entrypoint Compatibility
+handler = IoTAppRequestHandler
+app = IoTAppRequestHandler
+
+
 def run_web_app(port: int = PORT):
     handler = IoTAppRequestHandler
     # Allow port reuse to avoid 'address already in use' during quick reloads
