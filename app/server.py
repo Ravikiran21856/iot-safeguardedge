@@ -50,7 +50,7 @@ from models.anomaly_detector import OnDeviceAnomalyDetector
 from federated.client import FederatedEdgeClient
 from federated.server import FederatedServer
 
-PORT = 8080
+PORT = int(os.environ.get("PORT", 8080))
 HOST = "0.0.0.0"
 
 
