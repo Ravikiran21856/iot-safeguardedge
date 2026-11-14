@@ -202,63 +202,182 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             padding: 24px 28px;
         }}
 
-        /* Executive Command Hero */
-        .hero-panel {{
-            background: var(--bg-card);
+        /* =========================================================================
+           3D ANIMATED EXECUTIVE TITLE STAGE
+           ========================================================================= */
+        .hero-3d-stage {{
+            position: relative;
+            perspective: 1200px;
+            background: radial-gradient(circle at 50% 30%, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 60%, rgba(9, 13, 22, 0.95) 100%);
             border: 1px solid var(--border-card);
-            border-radius: 18px;
-            padding: 28px 32px;
+            border-radius: 20px;
+            padding: 58px 32px;
             margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--card-shadow);
-            position: relative;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }}
-        .hero-panel::before {{
+
+        .hero-3d-stage::before {{
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--sky-blue), var(--warm-indigo), var(--forest-emerald));
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--warm-indigo), var(--forest-mint), var(--sky-blue));
+            background-size: 300% 100%;
+            animation: gradientShift 6s linear infinite;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
         }}
-        .hero-header h2 {{
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-title);
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+
+        @keyframes gradientShift {{
+            0% {{ background-position: 0% 50%; }}
+            100% {{ background-position: 300% 50%; }}
         }}
-        .hero-header p {{
-            font-size: 14px;
-            color: var(--text-body);
-            max-width: 920px;
-            line-height: 1.6;
+
+        .hero-3d-bg {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.55;
         }}
-        .hero-tags {{
+
+        .text-3d-glow {{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 130px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.28) 0%, rgba(99, 102, 241, 0.18) 40%, rgba(16, 185, 129, 0.08) 65%, transparent 80%);
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+            animation: glowPulse 4s ease-in-out infinite alternate;
+        }}
+
+        @keyframes glowPulse {{
+            0% {{ transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }}
+            100% {{ transform: translate(-50%, -50%) scale(1.1); opacity: 1; }}
+        }}
+
+        .hero-3d-wrapper {{
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+            animation: heroFloat3D 7s ease-in-out infinite;
             display: flex;
-            gap: 8px;
-            margin-top: 16px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            cursor: default;
+            user-select: none;
         }}
-        .tag {{
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-body);
-            border: 1px solid var(--border-subtle);
-            padding: 4px 10px;
-            border-radius: 6px;
+
+        @keyframes heroFloat3D {{
+            0%, 100% {{
+                transform: rotateX(6deg) rotateY(-7deg) translateZ(20px);
+            }}
+            50% {{
+                transform: rotateX(-5deg) rotateY(7deg) translateZ(40px);
+            }}
+        }}
+
+        .hero-3d-tag {{
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            color: var(--sky-blue);
+            padding: 6px 16px;
+            border-radius: 9999px;
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transform: translateZ(25px);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
         }}
-        .tag-accent {{
-            background: rgba(56, 189, 248, 0.08);
-            color: var(--sky-blue);
-            border-color: rgba(56, 189, 248, 0.25);
+
+        .hero-3d-tag .pulse-dot {{
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--sky-blue);
+            box-shadow: 0 0 8px var(--sky-blue);
+            animation: tagPulse 1.8s infinite;
+        }}
+
+        @keyframes tagPulse {{
+            0%, 100% {{ opacity: 1; transform: scale(1); }}
+            50% {{ opacity: 0.4; transform: scale(0.7); }}
+        }}
+
+        .text-3d-title {{
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            font-size: clamp(34px, 5.2vw, 64px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.035em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transform-style: preserve-3d;
+            transform: translateZ(50px);
+        }}
+
+        .text-3d-line {{
+            display: block;
+            position: relative;
+            white-space: nowrap;
+            text-align: center;
+            transform-style: preserve-3d;
+        }}
+
+        /* 3D Extrusion Depth + Gradient Face */
+        .text-3d-line1 {{
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 35%, #38bdf8 70%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0 1px 0 #0284c7,
+                0 2px 0 #0369a1,
+                0 3px 0 #075985,
+                0 4px 0 #0c4a6e,
+                0 5px 0 #082f49,
+                0 7px 15px rgba(0, 0, 0, 0.7),
+                0 12px 30px rgba(56, 189, 248, 0.35);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+        }}
+
+        .text-3d-line2 {{
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 40%, #c084fc 70%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0 1px 0 #4f46e5,
+                0 2px 0 #4338ca,
+                0 3px 0 #3730a3,
+                0 4px 0 #312e81,
+                0 5px 0 #1e1b4b,
+                0 7px 15px rgba(0, 0, 0, 0.7),
+                0 12px 30px rgba(129, 140, 248, 0.4);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
         }}
 
         /* Natural KPI Cards Grid */
@@ -668,21 +787,19 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
     <div class="container">
 
-        <!-- Executive Command Hero -->
-        <section class="hero-panel">
-            <div class="hero-header">
-                <h2>Federated On-Device Telemetry & Anomaly Defense System</h2>
-                <p>
-                    Autonomous edge telemetry protection spanning multi-axis CNC milling, high-tonnage stamping hydraulics, conveyor drivetrains, and microgrids. Quantized PyTorch INT8 autoencoders infer sliding sensor windows in real-time on-device, preserving industrial data privacy with Local Differential Privacy (DP-SGD &epsilon;=1.42).
-                </p>
-                <div class="hero-tags">
-                    <span class="tag tag-accent">Natural Human Palette</span>
-                    <span class="tag tag-accent">Live 1-Second Canvas Engine</span>
-                    <span class="tag">INT8 Quantized ({int8_size} KB)</span>
-                    <span class="tag">Sub-Millisecond Inference ({latency_ms} ms)</span>
-                    <span class="tag">Bandwidth Reduced: {bw_pct:.1f}%</span>
-                    <span class="tag">Differential Privacy Guaranteed</span>
+        <!-- 3D Animated Executive Command Hero -->
+        <section class="hero-3d-stage" id="hero3dStage">
+            <canvas class="hero-3d-bg" id="hero3dCanvas"></canvas>
+            <div class="text-3d-glow"></div>
+            <div class="hero-3d-wrapper" id="hero3dWrapper">
+                <div class="hero-3d-tag">
+                    <span class="pulse-dot"></span>
+                    <span>ON-DEVICE EDGE INTELLIGENCE</span>
                 </div>
+                <h1 class="text-3d-title">
+                    <span class="text-3d-line text-3d-line1">Federated On-Device Telemetry</span>
+                    <span class="text-3d-line text-3d-line2">&amp; Anomaly Defense System</span>
+                </h1>
             </div>
         </section>
 
@@ -1456,6 +1573,105 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 updateThreatMeter(88 + Math.floor(Math.random() * 8));
             }}
         }}, 1000);
+
+        // 3D Hero Title Mouse Parallax & Background Canvas
+        (function init3DHero() {{
+            const stage = document.getElementById('hero3dStage');
+            const wrapper = document.getElementById('hero3dWrapper');
+            const canvas = document.getElementById('hero3dCanvas');
+            if (!stage || !wrapper) return;
+
+            let mouseX = 0, mouseY = 0;
+            let currentX = 0, currentY = 0;
+            let isHovered = false;
+
+            stage.addEventListener('mousemove', (e) => {{
+                const rect = stage.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                mouseX = x * 26;
+                mouseY = -y * 22;
+                isHovered = true;
+            }});
+
+            stage.addEventListener('mouseleave', () => {{
+                isHovered = false;
+                mouseX = 0;
+                mouseY = 0;
+            }});
+
+            function update3D() {{
+                if (isHovered) {{
+                    currentX += (mouseX - currentX) * 0.1;
+                    currentY += (mouseY - currentY) * 0.1;
+                    wrapper.style.transform = `rotateX(${{currentY}}deg) rotateY(${{currentX}}deg) translateZ(40px)`;
+                    wrapper.style.animation = 'none';
+                }} else {{
+                    wrapper.style.animation = 'heroFloat3D 7s ease-in-out infinite';
+                }}
+                requestAnimationFrame(update3D);
+            }}
+            update3D();
+
+            if (canvas) {{
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = stage.offsetWidth;
+                let height = canvas.height = stage.offsetHeight;
+
+                window.addEventListener('resize', () => {{
+                    if (!stage) return;
+                    width = canvas.width = stage.offsetWidth;
+                    height = canvas.height = stage.offsetHeight;
+                }});
+
+                const particles = Array.from({{ length: 42 }}, () => ({{
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    z: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    r: Math.random() * 2 + 1,
+                    color: Math.random() > 0.5 ? 'rgba(56, 189, 248,' : 'rgba(99, 102, 241,'
+                }}));
+
+                function drawParticles() {{
+                    ctx.clearRect(0, 0, width, height);
+
+                    for (let i = 0; i < particles.length; i++) {{
+                        const p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+
+                        if (p.x < 0) p.x = width;
+                        if (p.x > width) p.x = 0;
+                        if (p.y < 0) p.y = height;
+                        if (p.y > height) p.y = 0;
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.r * p.z, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color + (0.3 * p.z) + ')';
+                        ctx.fill();
+
+                        for (let j = i + 1; j < particles.length; j++) {{
+                            const p2 = particles[j];
+                            const dx = p.x - p2.x;
+                            const dy = p.y - p2.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 90) {{
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(56, 189, 248, ${{0.15 * (1 - dist / 90)}})`;
+                                ctx.lineWidth = 0.75;
+                                ctx.stroke();
+                            }}
+                        }}
+                    }}
+                    requestAnimationFrame(drawParticles);
+                }}
+                drawParticles();
+            }}
+        }})();
     </script>
 
 </body>
