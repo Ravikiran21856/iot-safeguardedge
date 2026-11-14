@@ -36,10 +36,10 @@ $TunnelLog = Join-Path $LogDir "tunnel_daemon.log"
 $UrlFile = Join-Path $LogDir "public_url.txt"
 
 function Start-ServerProcess {
-    Write-Host "[Watchdog] Launching IoT Web Server (py -u app/server.py)..." -ForegroundColor Yellow
+    Write-Host "[Watchdog] Launching IoT Web Server (py -u backend/server.py)..." -ForegroundColor Yellow
     $pinfo = New-Object System.Diagnostics.ProcessStartInfo
     $pinfo.FileName = "py"
-    $pinfo.Arguments = "-u app/server.py"
+    $pinfo.Arguments = "-u backend/server.py"
     $pinfo.WorkingDirectory = $Root
     $pinfo.UseShellExecute = $false
     $pinfo.CreateNoWindow = $true

@@ -82,7 +82,8 @@ flowchart TD
 │   ├── metrics.py                   # Classification metrics (AUROC, AUPRC, F1, FAR) and matrix formatting
 │   ├── benchmark.py                 # Multi-paradigm benchmark (Isolated vs Federated vs Centralized)
 │   └── visualizer.py                # Publication-quality plot generation (Matplotlib)
-├── app/
+├── backend/
+│   ├── server.py                    # Multi-client streaming web server and real-time REST API
 │   └── dashboard.py                 # Standalone interactive executive HTML dashboard generator
 ├── tests/
 │   └── test_pipeline.py             # Automated unit and integration test suite
@@ -117,7 +118,7 @@ py experiments/run_experiments.py
 
 ### 4. Launch the Interactive Real-Time Web Application
 ```powershell
-py app/server.py
+py backend/server.py
 ```
 > Open your browser at **[http://127.0.0.1:8080](http://127.0.0.1:8080)**.  
 > You can view real-time streaming telemetry across machines, trigger live federated learning rounds, inject physical anomalies (bearing wear, thermal runaway, hydraulic leaks, rotor stalls), and observe dynamic thresholding and channel root-cause attribution.

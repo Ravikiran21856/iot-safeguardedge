@@ -1,5 +1,7 @@
 # Ignore backend, ML dependencies, and Python files for Vercel
 requirements.txt
+backend/
+backend/**
 app/
 app/**
 *.py

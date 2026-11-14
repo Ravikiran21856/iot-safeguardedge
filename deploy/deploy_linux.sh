@@ -12,5 +12,5 @@ echo "[2/3] Exporting Embedded Microcontroller and TinyML Edge Models..."
 python3 deploy/export_edge_models.py
 
 echo "[3/3] Launching Edge Production Service..."
-python3 app/server.py
+python3 backend/server.py
 

@@ -11,7 +11,7 @@ py deploy/export_edge_models.py
 
 echo [3/3] Starting Production Server and Web Application...
 start "" "http://127.0.0.1:8080"
-py app/server.py
+py backend/server.py
 
 pause
 

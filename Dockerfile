@@ -24,5 +24,5 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/api/status || exit 1
 
 # Launch Edge Server and Web Application
-CMD ["python", "app/server.py"]
+CMD ["python", "backend/server.py"]
 
