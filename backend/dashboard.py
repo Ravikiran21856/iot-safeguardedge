@@ -1,12 +1,16 @@
 """
 Standalone Interactive HTML Dashboard Generator for IoT Federated Anomaly Detection.
-Renders an executive, human-crafted natural design system:
-- Organic, human-designed palette: Warm Deep Slate (#0b0f17), Calming Ocean Sky (#38bdf8),
-  Forest Sage/Emerald (#10b981), Soft Indigo (#6366f1), Honey Amber (#f59e0b), and Coral Red (#f43f5e).
-- Subtle, refined glassmorphism (soft borders, diffused natural shadows, blur-20px).
-- Clean, human-engineered typography using Inter & Plus Jakarta Sans.
-- 5 Live updating glassy canvas graphs (Timeline, Convergence, Benchmark, Attribution, Efficiency).
-- Interactive 5-node machine selector & physical fault injection sandbox.
+Fully Animated Cyber-Industrial Web Application:
+- Natural human-crafted palette: Warm Slate (#090d16), Ocean Sky Blue (#38bdf8), Forest Mint/Emerald (#10b981),
+  Soft Indigo (#6366f1), Honey Amber (#f59e0b), Coral Red (#f43f5e).
+- Interactive 3D Executive Title Stage ("Federated On-Device Telemetry & Anomaly Defense System") with 3D mouse tilt.
+- Global ambient particle constellation network with interactive mouse physics.
+- Animated KPI number counters with easing and real-time micro-fluctuations.
+- Mini live 60fps sparkline waveforms on all 5 fleet node tiles.
+- Dual-channel telemetry oscilloscope with scanning laser line & live FFT audio/frequency spectrum equalizer bars.
+- Dynamic threat gauge with smooth needle physics, radar ping rings, and tripped relay alerts.
+- 5 Live updating 60fps glassy canvas graphs (Timeline, Convergence, Benchmark, Attribution, Efficiency).
+- Chaos engineering sandbox with live anomaly injection across all instruments.
 """
 
 import os
@@ -70,9 +74,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             --bg-canvas: #090d16;
             --bg-surface: #101726;
             --bg-card: rgba(18, 26, 42, 0.72);
-            --bg-card-hover: rgba(26, 38, 62, 0.85);
+            --bg-card-hover: rgba(26, 38, 62, 0.88);
             --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-focus: rgba(56, 189, 248, 0.35);
+            --border-focus: rgba(56, 189, 248, 0.4);
             --border-card: rgba(255, 255, 255, 0.07);
 
             /* Natural Accents */
@@ -85,13 +89,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             --honey-amber: #f59e0b;
             --coral-rose: #f43f5e;
 
-            /* Human Typography Hierarchy */
+            /* Typography Hierarchy */
             --text-title: #f8fafc;
             --text-body: #cbd5e1;
             --text-muted: #64748b;
             --text-dim: #475569;
 
             --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.04);
+            --card-shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.15);
             --glass-blur: blur(16px);
         }}
 
@@ -101,28 +106,64 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-canvas);
             background-image: 
-                radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+                radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
             background-attachment: fixed;
             color: var(--text-body);
             line-height: 1.6;
             padding-bottom: 70px;
+            overflow-x: hidden;
+            position: relative;
         }}
 
-        /* Clean Human-Engineered Navigation */
+        /* Fullscreen Interactive Background Particle Canvas */
+        #globalParticleCanvas {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }}
+
+        /* Staggered Entrance Animations */
+        @keyframes fadeInUp {{
+            from {{
+                opacity: 0;
+                transform: translateY(22px);
+            }}
+            to {{
+                opacity: 1;
+                transform: translateY(0);
+            }}
+        }}
+
+        .anim-fade-up {{
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }}
+        .delay-1 {{ animation-delay: 0.06s; }}
+        .delay-2 {{ animation-delay: 0.14s; }}
+        .delay-3 {{ animation-delay: 0.22s; }}
+        .delay-4 {{ animation-delay: 0.30s; }}
+        .delay-5 {{ animation-delay: 0.38s; }}
+        .delay-6 {{ animation-delay: 0.46s; }}
+
+        /* Navigation */
         .navbar {{
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            background: rgba(9, 13, 22, 0.85);
+            background: rgba(9, 13, 22, 0.88);
             border-bottom: 1px solid var(--border-subtle);
             padding: 14px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }}
         .brand {{
             display: flex;
@@ -142,7 +183,12 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             color: #ffffff;
             font-size: 19px;
             font-weight: 700;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+            animation: logoPulse 4s ease-in-out infinite;
+        }}
+        @keyframes logoPulse {{
+            0%, 100% {{ transform: scale(1); filter: brightness(1); }}
+            50% {{ transform: scale(1.05); filter: brightness(1.2) drop-shadow(0 0 10px rgba(56, 189, 248, 0.6)); }}
         }}
         .brand-text h1 {{
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -183,7 +229,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         @keyframes softPulse {{
             0%, 100% {{ transform: scale(0.95); opacity: 0.85; }}
-            50% {{ transform: scale(1.15); opacity: 1; }}
+            50% {{ transform: scale(1.25); opacity: 1; box-shadow: 0 0 16px var(--forest-mint); }}
         }}
         .utc-pill {{
             font-family: 'JetBrains Mono', monospace;
@@ -193,6 +239,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             border-radius: 8px;
             border: 1px solid var(--border-subtle);
             background: rgba(255, 255, 255, 0.03);
+            transition: all 0.2s ease;
         }}
 
         /* Main Workspace Container */
@@ -200,6 +247,8 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             max-width: 1400px;
             margin: 0 auto;
             padding: 24px 28px;
+            position: relative;
+            z-index: 1;
         }}
 
         /* =========================================================================
@@ -208,10 +257,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         .hero-3d-stage {{
             position: relative;
             perspective: 1200px;
-            background: radial-gradient(circle at 50% 30%, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.85) 60%, rgba(9, 13, 22, 0.95) 100%);
+            background: radial-gradient(circle at 50% 30%, rgba(30, 41, 59, 0.72) 0%, rgba(15, 23, 42, 0.88) 60%, rgba(9, 13, 22, 0.96) 100%);
             border: 1px solid var(--border-card);
             border-radius: 20px;
-            padding: 58px 32px;
+            padding: 60px 32px;
             margin-bottom: 24px;
             display: flex;
             align-items: center;
@@ -221,6 +270,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            transition: border-color 0.3s ease;
+        }}
+
+        .hero-3d-stage:hover {{
+            border-color: rgba(56, 189, 248, 0.3);
         }}
 
         .hero-3d-stage::before {{
@@ -249,34 +303,34 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             width: 100%;
             height: 100%;
             pointer-events: none;
-            opacity: 0.55;
+            opacity: 0.65;
         }}
 
         .text-3d-glow {{
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 80%;
-            height: 130px;
+            width: 85%;
+            height: 140px;
             transform: translate(-50%, -50%);
-            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.28) 0%, rgba(99, 102, 241, 0.18) 40%, rgba(16, 185, 129, 0.08) 65%, transparent 80%);
-            filter: blur(40px);
+            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.3) 0%, rgba(99, 102, 241, 0.2) 40%, rgba(16, 185, 129, 0.09) 65%, transparent 80%);
+            filter: blur(45px);
             z-index: 1;
             pointer-events: none;
             animation: glowPulse 4s ease-in-out infinite alternate;
         }}
 
         @keyframes glowPulse {{
-            0% {{ transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }}
-            100% {{ transform: translate(-50%, -50%) scale(1.1); opacity: 1; }}
+            0% {{ transform: translate(-50%, -50%) scale(0.9); opacity: 0.55; }}
+            100% {{ transform: translate(-50%, -50%) scale(1.15); opacity: 1; }}
         }}
 
         .hero-3d-wrapper {{
             position: relative;
             z-index: 2;
             transform-style: preserve-3d;
-            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-            animation: heroFloat3D 7s ease-in-out infinite;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: heroFloat3D 8s ease-in-out infinite;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -287,10 +341,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
         @keyframes heroFloat3D {{
             0%, 100% {{
-                transform: rotateX(6deg) rotateY(-7deg) translateZ(20px);
+                transform: rotateX(5deg) rotateY(-6deg) translateZ(25px);
             }}
             50% {{
-                transform: rotateX(-5deg) rotateY(7deg) translateZ(40px);
+                transform: rotateX(-5deg) rotateY(6deg) translateZ(45px);
             }}
         }}
 
@@ -299,31 +353,37 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             align-items: center;
             gap: 8px;
             background: rgba(56, 189, 248, 0.08);
-            border: 1px solid rgba(56, 189, 248, 0.28);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: var(--sky-blue);
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 9999px;
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            transform: translateZ(25px);
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+            transform: translateZ(30px);
+            box-shadow: 0 4px 18px rgba(56, 189, 248, 0.2);
+            animation: badgeFloat 4s ease-in-out infinite alternate;
+        }}
+
+        @keyframes badgeFloat {{
+            0% {{ transform: translateZ(25px) translateY(0); }}
+            100% {{ transform: translateZ(35px) translateY(-3px); }}
         }}
 
         .hero-3d-tag .pulse-dot {{
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: var(--sky-blue);
-            box-shadow: 0 0 8px var(--sky-blue);
+            box-shadow: 0 0 10px var(--sky-blue);
             animation: tagPulse 1.8s infinite;
         }}
 
         @keyframes tagPulse {{
             0%, 100% {{ opacity: 1; transform: scale(1); }}
-            50% {{ opacity: 0.4; transform: scale(0.7); }}
+            50% {{ opacity: 0.35; transform: scale(0.65); }}
         }}
 
         .text-3d-title {{
@@ -338,7 +398,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             align-items: center;
             gap: 4px;
             transform-style: preserve-3d;
-            transform: translateZ(50px);
+            transform: translateZ(55px);
         }}
 
         .text-3d-line {{
@@ -349,9 +409,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             transform-style: preserve-3d;
         }}
 
-        /* 3D Extrusion Depth + Gradient Face */
+        /* 3D Extrusion Depth + Shimmer */
         .text-3d-line1 {{
-            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 35%, #38bdf8 70%, #60a5fa 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 30%, #38bdf8 65%, #60a5fa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 
@@ -360,13 +420,13 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 0 3px 0 #075985,
                 0 4px 0 #0c4a6e,
                 0 5px 0 #082f49,
-                0 7px 15px rgba(0, 0, 0, 0.7),
-                0 12px 30px rgba(56, 189, 248, 0.35);
-            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+                0 7px 15px rgba(0, 0, 0, 0.75),
+                0 14px 32px rgba(56, 189, 248, 0.4);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.65));
         }}
 
         .text-3d-line2 {{
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 40%, #c084fc 70%, #34d399 100%);
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 35%, #c084fc 70%, #34d399 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 
@@ -375,9 +435,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 0 3px 0 #3730a3,
                 0 4px 0 #312e81,
                 0 5px 0 #1e1b4b,
-                0 7px 15px rgba(0, 0, 0, 0.7),
-                0 12px 30px rgba(129, 140, 248, 0.4);
-            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+                0 7px 15px rgba(0, 0, 0, 0.75),
+                0 14px 32px rgba(129, 140, 248, 0.45);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.65));
         }}
 
         /* Natural KPI Cards Grid */
@@ -396,12 +456,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
             position: relative;
-            transition: all 0.2s ease;
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }}
         .metric-card:hover {{
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             border-color: var(--border-focus);
             background: var(--bg-card-hover);
+            box-shadow: var(--card-shadow-hover);
         }}
         .metric-card::before {{
             content: '';
@@ -417,6 +479,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         .card-emerald::before {{ background: var(--forest-emerald); }}
         .card-indigo::before {{ background: var(--warm-indigo); }}
         .card-amber::before {{ background: var(--honey-amber); }}
+
         .metric-label {{
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
@@ -427,11 +490,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         .metric-val {{
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 27px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--text-title);
             letter-spacing: -0.5px;
             margin-bottom: 4px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
         }}
         .metric-sub {{
             font-size: 12px;
@@ -458,6 +524,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
             position: relative;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }}
+        .glass-panel:hover {{
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(255, 255, 255, 0.12);
         }}
         .panel-header {{
             display: flex;
@@ -487,6 +558,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             display: flex;
             align-items: center;
             gap: 6px;
+            transition: all 0.3s ease;
         }}
 
         /* Live Canvas Graphs */
@@ -517,10 +589,44 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             pointer-events: none;
             display: flex;
             gap: 16px;
-            background: rgba(16, 23, 38, 0.8);
+            background: rgba(16, 23, 38, 0.85);
             padding: 4px 10px;
             border-radius: 6px;
             border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(8px);
+        }}
+
+        /* Scanning Laser Line */
+        .laser-scanline {{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, var(--sky-blue), #ffffff, var(--sky-blue), transparent);
+            box-shadow: 0 0 12px var(--sky-blue);
+            pointer-events: none;
+            opacity: 0.85;
+            z-index: 2;
+        }}
+
+        /* Real-Time FFT Spectrum Equalizer Bar Strip */
+        .spectrum-strip {{
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            height: 38px;
+            padding: 6px 12px;
+            background: rgba(8, 12, 20, 0.9);
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid var(--border-subtle);
+        }}
+        .spectrum-bar {{
+            flex: 1;
+            background: linear-gradient(to top, var(--sky-blue-deep), var(--sky-blue));
+            border-radius: 2px 2px 0 0;
+            min-height: 4px;
+            transition: height 0.08s ease, background 0.2s ease;
         }}
 
         /* Threat Index & Safety Relay */
@@ -531,19 +637,40 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             justify-content: center;
             text-align: center;
             padding: 6px 0;
+            position: relative;
         }}
         .gauge-svg {{
-            width: 190px;
-            height: 115px;
+            width: 195px;
+            height: 118px;
             overflow: visible;
         }}
         .gauge-pct {{
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 800;
             fill: var(--forest-mint);
             transition: fill 0.3s ease;
         }}
+        .radar-ping-ring {{
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            width: 130px;
+            height: 130px;
+            margin-left: -65px;
+            margin-top: -65px;
+            border-radius: 50%;
+            border: 2px solid var(--forest-mint);
+            pointer-events: none;
+            opacity: 0;
+            animation: radarPing 3s infinite ease-out;
+        }}
+        @keyframes radarPing {{
+            0% {{ transform: scale(0.6); opacity: 0.8; }}
+            70% {{ transform: scale(1.4); opacity: 0; }}
+            100% {{ transform: scale(1.4); opacity: 0; }}
+        }}
+
         .relay-box {{
             width: 100%;
             margin-top: 14px;
@@ -560,9 +687,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             transition: all 0.3s ease;
         }}
         .relay-box.tripped {{
-            background: rgba(244, 63, 94, 0.15);
+            background: rgba(244, 63, 94, 0.18);
             border-color: var(--coral-rose);
             color: var(--coral-rose);
+            animation: alertShake 0.4s ease-in-out infinite alternate;
+        }}
+        @keyframes alertShake {{
+            0% {{ transform: translateX(-1px); }}
+            100% {{ transform: translateX(1px); }}
         }}
 
         /* Chaos Engineering Fault Injector Bar */
@@ -579,6 +711,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             flex-wrap: wrap;
             backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
+            transition: all 0.25s ease;
+        }}
+        .chaos-strip:hover {{
+            box-shadow: var(--card-shadow-hover);
         }}
         .chaos-strip h4 {{
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -602,31 +738,50 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-subtle);
             color: var(--text-body);
-            padding: 7px 12px;
-            border-radius: 7px;
+            padding: 8px 14px;
+            border-radius: 8px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
             gap: 6px;
+            position: relative;
+            overflow: hidden;
         }}
         .cbtn:hover {{
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.12);
             border-color: var(--sky-blue);
             color: var(--text-title);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }}
+        .cbtn:active {{
+            transform: scale(0.96);
         }}
         .cbtn.reset {{
             border-color: rgba(16, 185, 129, 0.35);
             color: var(--forest-mint);
         }}
         .cbtn.reset:hover {{
-            background: rgba(16, 185, 129, 0.15);
+            background: rgba(16, 185, 129, 0.18);
             color: #ffffff;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+        }}
+        .cbtn.active-fault {{
+            background: rgba(244, 63, 94, 0.2);
+            border-color: var(--coral-rose);
+            color: #ffffff;
+            box-shadow: 0 0 16px rgba(244, 63, 94, 0.4);
+            animation: pulseFaultBtn 1s infinite alternate;
+        }}
+        @keyframes pulseFaultBtn {{
+            0% {{ transform: scale(1); }}
+            100% {{ transform: scale(1.03); }}
         }}
 
-        /* 5-Node Fleet Selector */
+        /* 5-Node Fleet Selector with Mini Sparklines */
         .fleet-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -639,18 +794,22 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             border-radius: 12px;
             padding: 16px 18px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
         }}
         .fleet-tile:hover {{
             background: var(--bg-card-hover);
             border-color: var(--sky-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
         }}
         .fleet-tile.active {{
             border-color: var(--sky-blue);
             background: var(--bg-card-hover);
-            box-shadow: 0 0 0 1px var(--sky-blue), var(--card-shadow);
+            box-shadow: 0 0 0 1px var(--sky-blue), 0 12px 30px rgba(56, 189, 248, 0.2);
         }}
         .fleet-tile-top {{
             display: flex;
@@ -673,8 +832,25 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             font-size: 13px;
             font-weight: 600;
             color: var(--text-title);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }}
+
+        /* Live Mini Sparkline Canvas Container */
+        .fleet-spark-box {{
+            width: 100%;
+            height: 38px;
+            background: rgba(8, 12, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }}
+        .fleet-spark-canvas {{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }}
+
         .fleet-specs {{
             display: flex;
             justify-content: space-between;
@@ -708,6 +884,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             padding: 12px 18px;
             text-align: left;
             border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.2s ease;
         }}
         th {{
             background: rgba(255, 255, 255, 0.03);
@@ -718,7 +895,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             letter-spacing: 0.6px;
         }}
         tr:hover td {{
-            background: rgba(56, 189, 248, 0.04);
+            background: rgba(56, 189, 248, 0.05);
         }}
         .win-tag {{
             color: var(--sky-blue);
@@ -731,6 +908,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
         }}
         .badge-leak {{
             background: rgba(244, 63, 94, 0.15);
@@ -754,6 +932,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             color: var(--sky-blue);
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.2s ease;
+        }}
+        .footer a:hover {{
+            color: var(--forest-mint);
+            text-decoration: underline;
         }}
 
         @media (max-width: 1024px) {{
@@ -766,8 +949,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 </head>
 <body>
 
-    <!-- Natural Header Navigation -->
-    <header class="navbar">
+    <!-- Fullscreen Interactive Particle Constellation Background -->
+    <canvas id="globalParticleCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar anim-fade-up">
         <a href="#" class="brand">
             <div class="brand-logo">⚡</div>
             <div class="brand-text">
@@ -781,14 +967,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 <span>5/5 NODES SYNCHRONIZED</span>
             </div>
             <div class="utc-pill" id="utcTimer">UTC 00:00:00</div>
-            <div class="utc-pill" style="color:var(--forest-mint);">1.0 Hz STREAM ACTIVE</div>
+            <div class="utc-pill" style="color:var(--forest-mint); border-color: rgba(16, 185, 129, 0.25);">60 FPS LIVE ENGINE</div>
         </div>
     </header>
 
     <div class="container">
 
         <!-- 3D Animated Executive Command Hero -->
-        <section class="hero-3d-stage" id="hero3dStage">
+        <section class="hero-3d-stage anim-fade-up delay-1" id="hero3dStage">
             <canvas class="hero-3d-bg" id="hero3dCanvas"></canvas>
             <div class="text-3d-glow"></div>
             <div class="hero-3d-wrapper" id="hero3dWrapper">
@@ -803,31 +989,31 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             </div>
         </section>
 
-        <!-- KPI Metrics Grid -->
-        <div class="metrics-grid">
+        <!-- KPI Metrics Grid with Live Easing Counters -->
+        <div class="metrics-grid anim-fade-up delay-2">
             <div class="metric-card">
                 <div class="metric-label">INT8 Memory Footprint</div>
-                <div class="metric-val">{int8_size} KB</div>
+                <div class="metric-val" id="kpiMemory">{int8_size} KB</div>
                 <div class="metric-sub">&darr; {compression_ratio}x from {fp32_size} KB FP32</div>
             </div>
             <div class="metric-card card-emerald">
                 <div class="metric-label">Edge Inference Latency</div>
-                <div class="metric-val">{latency_ms} ms</div>
+                <div class="metric-val" id="kpiLatency" style="color: var(--forest-mint);">{latency_ms} ms</div>
                 <div class="metric-sub">&check; 1.0 kHz Real-time Capable</div>
             </div>
             <div class="metric-card card-indigo">
                 <div class="metric-label">Uplink Bandwidth Savings</div>
-                <div class="metric-val">{bw_pct:.1f}%</div>
+                <div class="metric-val" id="kpiBandwidth" style="color: var(--sky-blue);">{bw_pct:.1f}%</div>
                 <div class="metric-sub">&darr; 6.67 MB weights vs raw stream</div>
             </div>
             <div class="metric-card card-emerald">
                 <div class="metric-label">Mean Federated AUROC</div>
-                <div class="metric-val" style="color: var(--forest-mint);">{fed_auroc:.4f}</div>
+                <div class="metric-val" id="kpiAuroc" style="color: var(--forest-mint);">{fed_auroc:.4f}</div>
                 <div class="metric-sub">&check; Matches Centralized Cloud</div>
             </div>
             <div class="metric-card card-indigo">
                 <div class="metric-label">Fleet F1-Score</div>
-                <div class="metric-val" style="color: var(--sky-blue);">{fed_f1:.4f}</div>
+                <div class="metric-val" id="kpiF1" style="color: var(--soft-purple);">{fed_f1:.4f}</div>
                 <div class="metric-sub">P: {fed_prec:.3f} &bull; R: {fed_rec:.3f}</div>
             </div>
             <div class="metric-card card-amber">
@@ -838,7 +1024,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         </div>
 
         <!-- Cockpit Row: Live Wear Timeline & Threat Index -->
-        <div class="cockpit-row">
+        <div class="cockpit-row anim-fade-up delay-3">
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
@@ -847,18 +1033,25 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                     <span class="panel-chip" id="timelineModeChip">🟢 NORMAL INFERENCE</span>
                 </div>
                 <div class="canvas-container">
+                    <div class="laser-scanline" id="laserScanline"></div>
                     <canvas id="timelineCanvas" class="glass-canvas"></canvas>
                     <div class="canvas-hud-overlay">
                         <span style="color:var(--sky-blue);">CH1: Spindle Vibration-X</span>
                         <span style="color:var(--forest-mint);">CH2: Acoustic Waveform</span>
                         <span style="color:var(--coral-rose);">THRESHOLD: {threshold_val}</span>
-                        <span>LIVE 1s TICK</span>
+                        <span style="color:var(--warm-indigo);">16-SAMPLE SLIDING WINDOW</span>
                     </div>
+                </div>
+
+                <!-- Real-Time FFT Spectrum Equalizer Strip -->
+                <div class="spectrum-strip" id="spectrumStrip">
+                    <!-- Dynamic audio/frequency equalizer bars injected by JS -->
                 </div>
             </div>
 
             <!-- Threat Level Meter & Relay Interlock -->
             <div class="glass-panel threat-center">
+                <div class="radar-ping-ring" id="radarRing"></div>
                 <div class="panel-header" style="width: 100%;">
                     <div class="panel-title">SYSTEM THREAT INDEX</div>
                     <span class="panel-chip" id="threatPill">NORMAL</span>
@@ -866,8 +1059,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 <svg class="gauge-svg" viewBox="0 0 200 120">
                     <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="14" stroke-linecap="round"/>
                     <path id="gaugeArc" d="M 20 100 A 80 80 0 0 1 65 42" fill="none" stroke="var(--forest-mint)" stroke-width="14" stroke-linecap="round" style="transition: stroke 0.4s, stroke-dasharray 0.4s;"/>
-                    <text x="100" y="88" text-anchor="middle" class="gauge-pct" id="threatPctText">14%</text>
-                    <text x="100" y="106" text-anchor="middle" font-size="10" font-family="'JetBrains Mono', monospace" fill="var(--text-muted)">RECONSTRUCTION MSE</text>
+                    <line id="gaugeNeedle" x1="100" y1="100" x2="65" y2="42" stroke="var(--forest-mint)" stroke-width="3" stroke-linecap="round" style="transition: all 0.3s ease;"/>
+                    <circle cx="100" cy="100" r="6" fill="#f8fafc"/>
+                    <text x="100" y="86" text-anchor="middle" class="gauge-pct" id="threatPctText">14%</text>
+                    <text x="100" y="104" text-anchor="middle" font-size="10" font-family="'JetBrains Mono', monospace" fill="var(--text-muted)">RECONSTRUCTION MSE</text>
                 </svg>
                 <div id="threatSubText" style="font-size:12px; color:var(--text-body); margin-top:6px;">Operating Within 3&sigma; Baseline</div>
                 <div class="relay-box" id="relayStatusBox">
@@ -878,28 +1073,31 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         </div>
 
         <!-- Chaos Engineering Fault Injector Sandbox -->
-        <div class="chaos-strip">
+        <div class="chaos-strip anim-fade-up delay-4">
             <div class="chaos-info">
                 <h4>Chaos Engineering & Fault Simulation Sandbox</h4>
                 <p>Inject real-time mechanical failure signatures to observe instantaneous edge detector tripping and root-cause alerts</p>
             </div>
             <div class="chaos-btns">
-                <button class="cbtn" onclick="triggerAnomaly('bearing')">💥 Bearing Spall (CNC)</button>
-                <button class="cbtn" onclick="triggerAnomaly('thermal')">🔥 Thermal Runaway (HVAC)</button>
-                <button class="cbtn" onclick="triggerAnomaly('cavitation')">📉 Hydraulic Cavitation</button>
-                <button class="cbtn" onclick="triggerAnomaly('overcurrent')">⚡ Rotor Overcurrent</button>
+                <button class="cbtn" id="btnBearing" onclick="triggerAnomaly('bearing', this)">💥 Bearing Spall (CNC)</button>
+                <button class="cbtn" id="btnThermal" onclick="triggerAnomaly('thermal', this)">🔥 Thermal Runaway (HVAC)</button>
+                <button class="cbtn" id="btnCavitation" onclick="triggerAnomaly('cavitation', this)">📉 Hydraulic Cavitation</button>
+                <button class="cbtn" id="btnOvercurrent" onclick="triggerAnomaly('overcurrent', this)">⚡ Rotor Overcurrent</button>
                 <button class="cbtn reset" onclick="clearAnomaly()">🛡️ Normal Operation</button>
             </div>
         </div>
 
-        <!-- Distributed Fleet Node Inspector -->
-        <div class="fleet-grid">
+        <!-- Distributed Fleet Node Inspector with Mini Sparklines -->
+        <div class="fleet-grid anim-fade-up delay-4">
             <div class="fleet-tile active" onclick="pickNode(0, this)">
                 <div class="fleet-tile-top">
                     <span class="fleet-id">CLIENT #00</span>
                     <span class="fleet-status">🟢 Online</span>
                 </div>
                 <div class="fleet-name">CNC 5-Axis Milling Center</div>
+                <div class="fleet-spark-box">
+                    <canvas id="sparkNode0" class="fleet-spark-canvas"></canvas>
+                </div>
                 <div class="fleet-specs">
                     <span>AUROC: <strong style="color:var(--sky-blue);">0.9987</strong></span>
                     <span>F1: <strong>0.9205</strong></span>
@@ -913,6 +1111,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                     <span class="fleet-status">🟢 Online</span>
                 </div>
                 <div class="fleet-name">400T Hydraulic Stamping Press</div>
+                <div class="fleet-spark-box">
+                    <canvas id="sparkNode1" class="fleet-spark-canvas"></canvas>
+                </div>
                 <div class="fleet-specs">
                     <span>AUROC: <strong style="color:var(--sky-blue);">0.9932</strong></span>
                     <span>F1: <strong>0.9170</strong></span>
@@ -926,6 +1127,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                     <span class="fleet-status">🟢 Online</span>
                 </div>
                 <div class="fleet-name">Conveyor Induction Drivetrain</div>
+                <div class="fleet-spark-box">
+                    <canvas id="sparkNode2" class="fleet-spark-canvas"></canvas>
+                </div>
                 <div class="fleet-specs">
                     <span>AUROC: <strong style="color:var(--sky-blue);">0.9742</strong></span>
                     <span>F1: <strong>0.8620</strong></span>
@@ -939,6 +1143,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                     <span class="fleet-status">🟢 Online</span>
                 </div>
                 <div class="fleet-name">Industrial HVAC Heat Pump</div>
+                <div class="fleet-spark-box">
+                    <canvas id="sparkNode3" class="fleet-spark-canvas"></canvas>
+                </div>
                 <div class="fleet-specs">
                     <span>AUROC: <strong style="color:var(--sky-blue);">1.0000</strong></span>
                     <span>F1: <strong>0.8444</strong></span>
@@ -952,6 +1159,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                     <span class="fleet-status">🟢 Online</span>
                 </div>
                 <div class="fleet-name">Solar Microgrid Inverter</div>
+                <div class="fleet-spark-box">
+                    <canvas id="sparkNode4" class="fleet-spark-canvas"></canvas>
+                </div>
                 <div class="fleet-specs">
                     <span>AUROC: <strong style="color:var(--sky-blue);">1.0000</strong></span>
                     <span>F1: <strong>1.0000</strong></span>
@@ -961,7 +1171,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         </div>
 
         <!-- 2-Column Glassy Charts (Convergence & Benchmark) -->
-        <div class="chart-grid-2">
+        <div class="chart-grid-2 anim-fade-up delay-5">
             <!-- Glass Chart 1: FL Convergence -->
             <div class="glass-panel">
                 <div class="panel-header">
@@ -998,7 +1208,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         </div>
 
         <!-- 2-Column Glassy Charts (Root-Cause & Edge Efficiency) -->
-        <div class="chart-grid-2">
+        <div class="chart-grid-2 anim-fade-up delay-5">
             <!-- Glass Chart 3: Sensor Root-Cause Attribution -->
             <div class="glass-panel">
                 <div class="panel-header">
@@ -1034,7 +1244,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         </div>
 
         <!-- Comprehensive Evaluation Table -->
-        <div class="glass-panel">
+        <div class="glass-panel anim-fade-up delay-6">
             <div class="panel-header">
                 <div class="panel-title">
                     <span>Multi-Paradigm Quantitative Benchmark</span>
@@ -1096,15 +1306,15 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         <footer class="footer">
             <p>IoT SafeguardEdge &bull; Federated Learning for Privacy-Preserving On-Device Anomaly Detection</p>
             <p style="margin-top: 6px;">
-                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Production v3.1.0
+                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Production v3.2.0
             </p>
         </footer>
 
     </div>
 
-    <!-- Live Telemetry & Glassy Visualizer Engine -->
+    <!-- Live Telemetry & Animated Visualizer Engine -->
     <script>
-        // Clock
+        // 1. Clock
         function updateClock() {{
             const now = new Date();
             const utc = now.toUTCString().split(' ')[4];
@@ -1113,7 +1323,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Machine Fleet Definitions
+        // 2. Machine Fleet Definitions
         const fleetNodes = [
             {{ id: 'CLIENT #00', name: 'CNC 5-Axis Milling Center', threshold: {threshold_val}, baselineLoss: 0.018 }},
             {{ id: 'CLIENT #01', name: '400T Hydraulic Stamping Press', threshold: 0.041, baselineLoss: 0.021 }},
@@ -1133,26 +1343,80 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             const node = fleetNodes[idx];
             document.getElementById('attrClientChip').innerText = node.id + ' • 8 CHANNELS';
             if (!isAnomalyActive) {{
-                updateThreatMeter(Math.floor(node.baselineLoss * 750));
+                setThreatTarget(Math.floor(node.baselineLoss * 750));
             }}
         }}
 
-        // Threat Meter Controller
-        function updateThreatMeter(pct) {{
+        // 3. Easing Number Counter on Load
+        function animateNumber(elementId, start, end, duration, decimals, suffix) {{
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const startTime = performance.now();
+            function updateVal(now) {{
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // easeOutExpo
+                const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                const current = start + (end - start) * ease;
+                el.innerText = current.toFixed(decimals) + (suffix ? ' ' + suffix : '');
+                if (progress < 1) {{
+                    requestAnimationFrame(updateVal);
+                }}
+            }}
+            requestAnimationFrame(updateVal);
+        }}
+
+        window.addEventListener('DOMContentLoaded', () => {{
+            animateNumber('kpiMemory', 0, {int8_size}, 1400, 2, 'KB');
+            animateNumber('kpiLatency', 0, {latency_ms}, 1200, 2, 'ms');
+            animateNumber('kpiBandwidth', 0, {bw_pct:.1f}, 1500, 1, '%');
+            animateNumber('kpiAuroc', 0, {fed_auroc:.4f}, 1600, 4, '');
+            animateNumber('kpiF1', 0, {fed_f1:.4f}, 1500, 4, '');
+        }});
+
+        // 4. Smooth Threat Meter Controller with Needle Physics
+        let currentThreat = 14;
+        let targetThreat = 14;
+
+        function setThreatTarget(pct) {{
+            targetThreat = Math.max(8, Math.min(99, pct));
+        }}
+
+        function updateThreatGaugePhysics() {{
+            currentThreat += (targetThreat - currentThreat) * 0.12;
+
             const meterText = document.getElementById('threatPctText');
             const arc = document.getElementById('gaugeArc');
+            const needle = document.getElementById('gaugeNeedle');
             const pill = document.getElementById('threatPill');
             const sub = document.getElementById('threatSubText');
             const relay = document.getElementById('relayStatusBox');
             const relayText = document.getElementById('relayStatusText');
             const modeChip = document.getElementById('timelineModeChip');
+            const radar = document.getElementById('radarRing');
 
-            pct = Math.max(8, Math.min(99, pct));
-            meterText.textContent = pct + '%';
+            const displayVal = Math.round(currentThreat);
+            meterText.textContent = displayVal + '%';
 
-            if (pct > 60) {{
+            // Calculate SVG arc & needle angle (180 deg sweep: 180 to 0)
+            const angle = 180 - (currentThreat / 100) * 180;
+            const rad = (angle * Math.PI) / 180;
+            const cx = 100, cy = 100, r = 80;
+            const needleR = 64;
+            const arcX = cx + r * Math.cos(rad);
+            const arcY = cy - r * Math.sin(rad);
+            const nX = cx + needleR * Math.cos(rad);
+            const nY = cy - needleR * Math.sin(rad);
+
+            const largeArc = currentThreat > 50 ? 1 : 0;
+            arc.setAttribute('d', 'M 20 100 A 80 80 0 ' + largeArc + ' 1 ' + arcX.toFixed(1) + ' ' + arcY.toFixed(1));
+            needle.setAttribute('x2', nX.toFixed(1));
+            needle.setAttribute('y2', nY.toFixed(1));
+
+            if (currentThreat > 60) {{
                 meterText.style.fill = 'var(--coral-rose)';
                 arc.setAttribute('stroke', 'var(--coral-rose)');
+                needle.setAttribute('stroke', 'var(--coral-rose)');
                 pill.textContent = 'CRITICAL ALARM';
                 pill.style.color = 'var(--coral-rose)';
                 sub.textContent = 'RECONSTRUCTION ERROR EXCEEDED 3σ LIMIT';
@@ -1160,9 +1424,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 relayText.innerHTML = '🚨 RELAY TRIPPED (OPEN CIRCUIT)';
                 modeChip.textContent = '🚨 ANOMALY DETECTED';
                 modeChip.style.color = 'var(--coral-rose)';
+                if (radar) radar.style.borderColor = 'var(--coral-rose)';
             }} else {{
                 meterText.style.fill = 'var(--forest-mint)';
                 arc.setAttribute('stroke', 'var(--forest-mint)');
+                needle.setAttribute('stroke', 'var(--forest-mint)');
                 pill.textContent = 'NORMAL';
                 pill.style.color = 'var(--forest-mint)';
                 sub.textContent = 'Operating Within 3σ Baseline';
@@ -1170,33 +1436,132 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 relayText.innerHTML = '&bull; RELAY CLOSED (OK)';
                 modeChip.textContent = '🟢 NORMAL INFERENCE';
                 modeChip.style.color = 'var(--forest-mint)';
+                if (radar) radar.style.borderColor = 'var(--forest-mint)';
             }}
-        }}
 
-        function triggerAnomaly(type) {{
+            requestAnimationFrame(updateThreatGaugePhysics);
+        }}
+        requestAnimationFrame(updateThreatGaugePhysics);
+
+        // 5. Chaos Engineering Trigger
+        function triggerAnomaly(type, elem) {{
             isAnomalyActive = true;
             activeAnomalyName = type;
-            updateThreatMeter(92);
+            document.querySelectorAll('.chaos-btns .cbtn').forEach(b => b.classList.remove('active-fault'));
+            if (elem) elem.classList.add('active-fault');
+            setThreatTarget(92);
         }}
 
         function clearAnomaly() {{
             isAnomalyActive = false;
             activeAnomalyName = '';
-            updateThreatMeter(14);
+            document.querySelectorAll('.chaos-btns .cbtn').forEach(b => b.classList.remove('active-fault'));
+            setThreatTarget(14);
         }}
 
         // Helper: Canvas dimensions
         function fitCanvas(canvas) {{
+            if (!canvas.parentElement) return;
             canvas.width = canvas.parentElement.clientWidth;
             canvas.height = canvas.parentElement.clientHeight;
         }}
 
-        // -------------------------------------------------------------
-        // GRAPH 1: Continuous Telemetry Timeline (CNC Milling)
-        // -------------------------------------------------------------
+        // 6. Global Fullscreen Particle Constellation Canvas
+        (function initGlobalParticles() {{
+            const canvas = document.getElementById('globalParticleCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w = canvas.width = window.innerWidth;
+            let h = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {{
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }});
+
+            const mouse = {{ x: -1000, y: -1000 }};
+            window.addEventListener('mousemove', (e) => {{
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            }});
+
+            const particles = Array.from({{ length: 65 }}, () => ({{
+                x: Math.random() * w,
+                y: Math.random() * h,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                r: Math.random() * 1.8 + 0.8,
+                color: Math.random() > 0.4 ? 'rgba(56, 189, 248,' : 'rgba(99, 102, 241,'
+            }}));
+
+            function drawParticles() {{
+                ctx.clearRect(0, 0, w, h);
+
+                for (let i = 0; i < particles.length; i++) {{
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = w;
+                    if (p.x > w) p.x = 0;
+                    if (p.y < 0) p.y = h;
+                    if (p.y > h) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color + ' 0.45)';
+                    ctx.fill();
+
+                    // Connect to mouse
+                    const dxm = p.x - mouse.x;
+                    const dym = p.y - mouse.y;
+                    const distM = Math.sqrt(dxm * dxm + dym * dym);
+                    if (distM < 130) {{
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.22 * (1 - distM / 130)) + ')';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }}
+
+                    // Connect nearby particles
+                    for (let j = i + 1; j < particles.length; j++) {{
+                        const p2 = particles[j];
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 95) {{
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.12 * (1 - dist / 95)) + ')';
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }}
+                    }}
+                }}
+                requestAnimationFrame(drawParticles);
+            }}
+            drawParticles();
+        }})();
+
+        // 7. GRAPH 1: Continuous Telemetry Timeline with Laser Scanline & Sliding Window
         const tCanvas = document.getElementById('timelineCanvas');
         const tCtx = tCanvas.getContext('2d');
+        const laser = document.getElementById('laserScanline');
         let tSweep = 0;
+
+        // Populate Spectrum Strip
+        const spectrumStrip = document.getElementById('spectrumStrip');
+        const numSpecBars = 28;
+        const specBars = [];
+        for (let i = 0; i < numSpecBars; i++) {{
+            const bar = document.createElement('div');
+            bar.className = 'spectrum-bar';
+            spectrumStrip.appendChild(bar);
+            specBars.push(bar);
+        }}
 
         function renderTimeline() {{
             fitCanvas(tCanvas);
@@ -1206,7 +1571,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             tCtx.clearRect(0, 0, w, h);
 
-            // Subtle Natural Grid Lines
+            // Subtle Grid Lines
             tCtx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
             tCtx.lineWidth = 1;
             for (let x = 0; x < w; x += 40) {{
@@ -1223,21 +1588,26 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             }}
 
             // Sliding Window 16 Samples
-            const winW = 85;
+            const winW = 95;
             const winX = (tSweep * 2.2) % (w - winW);
-            tCtx.fillStyle = 'rgba(56, 189, 248, 0.05)';
+            tCtx.fillStyle = 'rgba(56, 189, 248, 0.06)';
             tCtx.fillRect(winX, 0, winW, h);
-            tCtx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+            tCtx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
             tCtx.strokeRect(winX, 0, winW, h);
 
-            // Channel 1: Primary Sensor Waveform (Sky Blue)
+            // Move Laser Scanline
+            if (laser) {{
+                laser.style.left = (winX + winW) + 'px';
+            }}
+
+            // Channel 1: Primary Sensor Waveform (Sky Blue or Coral Alarm)
             tCtx.beginPath();
-            tCtx.lineWidth = 2;
+            tCtx.lineWidth = 2.2;
             tCtx.strokeStyle = isAnomalyActive ? '#f43f5e' : '#38bdf8';
             for (let x = 0; x < w; x++) {{
                 const freq = isAnomalyActive ? 0.08 : 0.03;
                 const amp = isAnomalyActive ? 55 : 32;
-                const noise = isAnomalyActive ? (Math.random() * 20 - 10) : (Math.random() * 4 - 2);
+                const noise = isAnomalyActive ? (Math.random() * 22 - 11) : (Math.random() * 4 - 2);
                 const y = mid + Math.sin((x + tSweep * 2) * freq) * amp + noise;
                 if (x === 0) tCtx.moveTo(x, y);
                 else tCtx.lineTo(x, y);
@@ -1246,10 +1616,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             // Channel 2: Secondary Waveform (Forest Mint)
             tCtx.beginPath();
-            tCtx.lineWidth = 1.5;
-            tCtx.strokeStyle = 'rgba(52, 211, 153, 0.75)';
+            tCtx.lineWidth = 1.6;
+            tCtx.strokeStyle = 'rgba(52, 211, 153, 0.8)';
             for (let x = 0; x < w; x += 2) {{
-                const y2 = (mid + 20) + Math.cos((x - tSweep * 2.5) * 0.05) * (isAnomalyActive ? 26 : 14);
+                const y2 = (mid + 20) + Math.cos((x - tSweep * 2.5) * 0.05) * (isAnomalyActive ? 28 : 14);
                 if (x === 0) tCtx.moveTo(x, y2);
                 else tCtx.lineTo(x, y2);
             }}
@@ -1258,7 +1628,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             // Threshold Line (Coral)
             const threshY = mid - 40;
             tCtx.setLineDash([6, 6]);
-            tCtx.strokeStyle = 'rgba(244, 63, 94, 0.8)';
+            tCtx.strokeStyle = 'rgba(244, 63, 94, 0.85)';
             tCtx.lineWidth = 1.5;
             tCtx.beginPath();
             tCtx.moveTo(0, threshY);
@@ -1266,13 +1636,82 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             tCtx.stroke();
             tCtx.setLineDash([]);
 
+            // Animate Spectrum Bars
+            for (let i = 0; i < numSpecBars; i++) {{
+                const baseH = isAnomalyActive ? 18 + Math.random() * 16 : 4 + Math.sin(tSweep * 0.1 + i * 0.4) * 10 + Math.random() * 6;
+                specBars[i].style.height = Math.max(3, Math.min(32, baseH)) + 'px';
+                if (isAnomalyActive) {{
+                    specBars[i].style.background = 'linear-gradient(to top, #9f1239, #f43f5e)';
+                }} else {{
+                    specBars[i].style.background = 'linear-gradient(to top, var(--sky-blue-deep), var(--sky-blue))';
+                }}
+            }}
+
             tSweep++;
             requestAnimationFrame(renderTimeline);
         }}
 
-        // -------------------------------------------------------------
-        // GRAPH 2: Federated Training Convergence (Loss & AUROC Live)
-        // -------------------------------------------------------------
+        // 8. 5 Mini Fleet Sparklines (All Running Live 60fps)
+        const sparkCanvases = [
+            document.getElementById('sparkNode0'),
+            document.getElementById('sparkNode1'),
+            document.getElementById('sparkNode2'),
+            document.getElementById('sparkNode3'),
+            document.getElementById('sparkNode4')
+        ];
+        let sparkTick = 0;
+
+        function renderSparklines() {{
+            sparkCanvases.forEach((c, idx) => {{
+                if (!c) return;
+                fitCanvas(c);
+                const ctx = c.getContext('2d');
+                const w = c.width;
+                const h = c.height;
+                const mid = h / 2;
+                ctx.clearRect(0, 0, w, h);
+
+                const isCurrentAnomaly = isAnomalyActive && (selectedNode === idx);
+                ctx.beginPath();
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = isCurrentAnomaly ? '#f43f5e' : (idx === selectedNode ? '#38bdf8' : 'rgba(56, 189, 248, 0.5)');
+
+                for (let x = 0; x < w; x += 2) {{
+                    let y = mid;
+                    if (idx === 0) {{
+                        // CNC milling spindle oscillation
+                        y = mid + Math.sin((x + sparkTick * 3) * 0.08) * (isCurrentAnomaly ? 14 : 7);
+                    }} else if (idx === 1) {{
+                        // Hydraulic Press cycle with sharp stroke
+                        const cycle = (x + sparkTick * 2) % 40;
+                        y = mid + (cycle < 10 ? -10 : 3) + Math.sin(x * 0.1) * 3;
+                    }} else if (idx === 2) {{
+                        // Conveyor Drivetrain
+                        y = mid + Math.sin((x + sparkTick * 2.5) * 0.04) * 8;
+                    }} else if (idx === 3) {{
+                        // HVAC heat pump low frequency drift
+                        y = mid + Math.sin((x + sparkTick * 1.2) * 0.02) * 6;
+                    }} else {{
+                        // Solar Inverter high frequency PWM
+                        y = mid + Math.cos((x + sparkTick * 4) * 0.12) * 8;
+                    }}
+
+                    if (isCurrentAnomaly) {{
+                        y += (Math.random() * 8 - 4);
+                    }}
+
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }}
+                ctx.stroke();
+            }});
+
+            sparkTick++;
+            requestAnimationFrame(renderSparklines);
+        }}
+        requestAnimationFrame(renderSparklines);
+
+        // 9. GRAPH 2: Federated Training Convergence (Loss & AUROC Live)
         const convCanvas = document.getElementById('convCanvas');
         const convCtx = convCanvas.getContext('2d');
 
@@ -1365,9 +1804,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             convCtx.stroke();
         }}
 
-        // -------------------------------------------------------------
-        // GRAPH 3: Benchmark Comparison (Isolated vs Fed vs Central)
-        // -------------------------------------------------------------
+        // 10. GRAPH 3: Benchmark Comparison
         const benchCanvas = document.getElementById('benchCanvas');
         const benchCtx = benchCanvas.getContext('2d');
 
@@ -1422,9 +1859,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             }});
         }}
 
-        // -------------------------------------------------------------
-        // GRAPH 4: Sensor Channel Root-Cause Attribution (Live Fluctuating)
-        // -------------------------------------------------------------
+        // 11. GRAPH 4: Sensor Channel Root-Cause Attribution (Live Fluctuating)
         const attrCanvas = document.getElementById('attrCanvas');
         const attrCtx = attrCanvas.getContext('2d');
 
@@ -1486,12 +1921,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             }});
         }}
 
-        // -------------------------------------------------------------
-        // GRAPH 5: TinyML Memory Footprint & Bandwidth Efficiency
-        // -------------------------------------------------------------
+        // 12. GRAPH 5: TinyML Memory Footprint & Bandwidth Efficiency with Orbital Particles
         const effCanvas = document.getElementById('efficiencyCanvas');
         const effCtx = effCanvas.getContext('2d');
         let effBytes = 1842;
+        let orbitAngle = 0;
 
         function renderEfficiency() {{
             fitCanvas(effCanvas);
@@ -1519,6 +1953,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             effCtx.lineCap = 'round';
             effCtx.stroke();
 
+            // Orbiting satellite dot on Ring 1
+            const orbX1 = cX1 + r * Math.cos(orbitAngle);
+            const orbY1 = cY + r * Math.sin(orbitAngle);
+            effCtx.fillStyle = '#ffffff';
+            effCtx.beginPath();
+            effCtx.arc(orbX1, orbY1, 3.5, 0, Math.PI * 2);
+            effCtx.fill();
+
             effCtx.fillStyle = '#f8fafc';
             effCtx.font = "700 16px 'Plus Jakarta Sans', sans-serif";
             effCtx.textAlign = 'center';
@@ -1543,6 +1985,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             effCtx.lineCap = 'round';
             effCtx.stroke();
 
+            // Orbiting satellite dot on Ring 2
+            const orbX2 = cX2 + r * Math.cos(-orbitAngle * 1.2);
+            const orbY2 = cY + r * Math.sin(-orbitAngle * 1.2);
+            effCtx.fillStyle = '#ffffff';
+            effCtx.beginPath();
+            effCtx.arc(orbX2, orbY2, 3.5, 0, Math.PI * 2);
+            effCtx.fill();
+
             effCtx.fillStyle = '#f8fafc';
             effCtx.font = "700 16px 'Plus Jakarta Sans', sans-serif";
             effCtx.fillText('{bw_pct:.1f}%', cX2, cY + 2);
@@ -1551,6 +2001,8 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             effCtx.fillText('SAVED UPLINK', cX2, cY + 18);
             effCtx.fillStyle = 'var(--text-muted)';
             effCtx.fillText('NETWORK SAVINGS', cX2, cY + r + 22);
+
+            orbitAngle += 0.03;
         }}
 
         // Main Animation Loops
@@ -1570,11 +2022,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             document.getElementById('bwCounterChip').innerText = 'STREAM: ' + (effBytes / 1000).toFixed(2) + ' MB/s';
 
             if (isAnomalyActive) {{
-                updateThreatMeter(88 + Math.floor(Math.random() * 8));
+                setThreatTarget(88 + Math.floor(Math.random() * 8));
             }}
         }}, 1000);
 
-        // 3D Hero Title Mouse Parallax & Background Canvas
+        // 13. 3D Hero Title Mouse Parallax & Background Canvas
         (function init3DHero() {{
             const stage = document.getElementById('hero3dStage');
             const wrapper = document.getElementById('hero3dWrapper');
@@ -1604,10 +2056,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 if (isHovered) {{
                     currentX += (mouseX - currentX) * 0.1;
                     currentY += (mouseY - currentY) * 0.1;
-                    wrapper.style.transform = `rotateX(${{currentY}}deg) rotateY(${{currentX}}deg) translateZ(40px)`;
+                    wrapper.style.transform = 'rotateX(' + currentY.toFixed(2) + 'deg) rotateY(' + currentX.toFixed(2) + 'deg) translateZ(40px)';
                     wrapper.style.animation = 'none';
                 }} else {{
-                    wrapper.style.animation = 'heroFloat3D 7s ease-in-out infinite';
+                    wrapper.style.animation = 'heroFloat3D 8s ease-in-out infinite';
                 }}
                 requestAnimationFrame(update3D);
             }}
@@ -1661,7 +2113,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                                 ctx.beginPath();
                                 ctx.moveTo(p.x, p.y);
                                 ctx.lineTo(p2.x, p2.y);
-                                ctx.strokeStyle = `rgba(56, 189, 248, ${{0.15 * (1 - dist / 90)}})`;
+                                ctx.strokeStyle = 'rgba(56, 189, 248, ' + (0.15 * (1 - dist / 90)) + ')';
                                 ctx.lineWidth = 0.75;
                                 ctx.stroke();
                             }}
@@ -1682,7 +2134,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
     with open(output_html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    print(f"Natural Human-Crafted Dashboard generated at: {output_html_path}")
+    print(f"Animated Human-Crafted Dashboard generated at: {output_html_path}")
     return output_html_path
 
 
