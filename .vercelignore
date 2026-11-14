@@ -1,10 +1,6 @@
-# Ignore backend, ML dependencies, and Python files for Vercel
-requirements.txt
+# Ignore backend training scripts and heavy ML weights on Vercel
 backend/
 backend/**
-app/
-app/**
-*.py
 config/
 data/
 deploy/
