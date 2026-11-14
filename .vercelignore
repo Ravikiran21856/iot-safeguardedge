@@ -1,5 +1,8 @@
-# Ignore backend and machine learning folders on Vercel Edge CDN
+# Ignore backend, ML dependencies, and Python files for Vercel
+requirements.txt
 app/
+app/**
+*.py
 config/
 data/
 deploy/
@@ -13,10 +16,8 @@ results/
 tests/
 Dockerfile
 docker-compose.yml
-requirements.txt
 cloudflared.exe
 *.bat
 *.ps1
 edge_alarms.log
 cloud_deployment_bundle.zip
-

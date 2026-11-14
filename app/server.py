@@ -25,31 +25,50 @@ except ImportError:
     np = None
     torch = None
 
-# Top-level entrypoint variables for Vercel / Serverless Runtimes
+# Top-level entrypoint variables for Vercel / Serverless Runtimes (WSGI & BaseHTTPRequestHandler)
+def app(environ, start_response):
+    """Standard WSGI entrypoint for Vercel Python runtime."""
+    status = '200 OK'
+    response_headers = [('Content-Type', 'text/html; charset=utf-8')]
+    start_response(status, response_headers)
+    for p in [
+        os.path.join(os.path.dirname(__file__), "..", "public", "index.html"),
+        os.path.join(os.path.dirname(__file__), "..", "index.html"),
+        os.path.join(os.path.dirname(__file__), "..", "results", "dashboard.html")
+    ]:
+        if os.path.exists(p):
+            with open(p, "rb") as f:
+                return [f.read()]
+    return [b"<!DOCTYPE html><html><body><h1>IoT SafeguardEdge Dashboard</h1></body></html>"]
+
+application = app
+
+
 class handler(http.server.BaseHTTPRequestHandler):
-    """Fallback Serverless Handler for Vercel / Serverless runtimes."""
+    """Fallback BaseHTTPRequestHandler for serverless runtimes."""
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
-        html_file = os.path.join(os.path.dirname(__file__), "..", "index.html")
-        if os.path.exists(html_file):
-            with open(html_file, "rb") as f:
-                self.wfile.write(f.read())
-        else:
-            self.wfile.write(b"<!DOCTYPE html><html><body><h1>IoT EdgeGuard Dashboard</h1><p>Online</p></body></html>")
+        for p in [
+            os.path.join(os.path.dirname(__file__), "..", "public", "index.html"),
+            os.path.join(os.path.dirname(__file__), "..", "index.html"),
+            os.path.join(os.path.dirname(__file__), "..", "results", "dashboard.html")
+        ]:
+            if os.path.exists(p):
+                with open(p, "rb") as f:
+                    self.wfile.write(f.read())
+                    return
+        self.wfile.write(b"<!DOCTYPE html><html><body><h1>IoT SafeguardEdge Dashboard</h1></body></html>")
 
     def do_POST(self):
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
-        self.wfile.write(b'{"status":"ok","message":"IoT EdgeGuard API active"}')
+        self.wfile.write(b'{"status":"ok","message":"IoT SafeguardEdge API active"}')
 
     def log_message(self, format, *args):
         pass
-
-app = handler
-application = handler
 
 
 class NumpyEncoder(json.JSONEncoder):
