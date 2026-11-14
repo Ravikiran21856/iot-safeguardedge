@@ -1,17 +1,12 @@
 """
 Standalone Interactive HTML Dashboard Generator for IoT Federated Anomaly Detection.
-Renders an executive, ultra-aesthetic Dark Purple & Fuchsia Glassmorphic Cockpit:
-- Pure Glassy, Real-Time Animated Canvas Visualizations (Zero white static image graphs)
-- Live updating every second:
-  1. Federated Training Convergence (Loss & AUROC Live Progression)
-  2. Paradigm Benchmark (Isolated vs Federated vs Centralized Glassy Bars)
-  3. Continuous Telemetry & Wear Detection Timeline (Live Sensor Waveforms & 3σ Threshold)
-  4. Sensor Channel Root-Cause Attribution (Dynamic Fluctuating Channel Meters)
-  5. TinyML Memory Footprint & Real-Time Bandwidth Efficiency Rings
-- Interactive Fleet Selector (5 Distributed Edge Nodes)
-- Real-Time Chaos Engineering Anomaly Injector Sandbox
-- Dynamic Threat Level Semicircular Gauge & PLC Safety Interlock
-- Firmware Studio completely removed per design specification
+Renders an executive, human-crafted natural design system:
+- Organic, human-designed palette: Warm Deep Slate (#0b0f17), Calming Ocean Sky (#38bdf8),
+  Forest Sage/Emerald (#10b981), Soft Indigo (#6366f1), Honey Amber (#f59e0b), and Coral Red (#f43f5e).
+- Subtle, refined glassmorphism (soft borders, diffused natural shadows, blur-20px).
+- Clean, human-engineered typography using Inter & Plus Jakarta Sans.
+- 5 Live updating glassy canvas graphs (Timeline, Convergence, Benchmark, Attribution, Efficiency).
+- Interactive 5-node machine selector & physical fault injection sandbox.
 """
 
 import os
@@ -65,204 +60,208 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT SafeguardEdge — Glassy Cyber Command Center</title>
+    <title>IoT SafeguardEdge — Federated Anomaly Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {{
-            --bg-night: #090411;
-            --bg-space: #10061e;
-            --bg-card: rgba(26, 10, 48, 0.65);
-            --bg-card-hover: rgba(38, 14, 68, 0.85);
-            --border-fuchsia: rgba(247, 37, 133, 0.35);
-            --border-fuchsia-glow: rgba(247, 37, 133, 0.6);
+            /* Natural Human-Crafted Color Palette */
+            --bg-canvas: #090d16;
+            --bg-surface: #101726;
+            --bg-card: rgba(18, 26, 42, 0.72);
+            --bg-card-hover: rgba(26, 38, 62, 0.85);
             --border-subtle: rgba(255, 255, 255, 0.08);
-            --fuchsia: #f72585;
-            --fuchsia-hot: #ff007f;
-            --fuchsia-light: #ff70a6;
-            --purple-deep: #240046;
-            --purple-neon: #7209b7;
-            --purple-glow: #9d4edd;
-            --purple-light: #c77dff;
-            --cyan-accent: #4cc9f0;
-            --emerald-accent: #00f5a0;
-            --text-heading: #ffffff;
-            --text-body: #e2d4f0;
-            --text-muted: #a78bbf;
-            --glow-fuchsia: 0 0 25px rgba(247, 37, 133, 0.35);
-            --glow-purple: 0 0 25px rgba(157, 78, 221, 0.3);
-            --card-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.75), 0 0 1px 1px rgba(247, 37, 133, 0.2);
-            --glass-blur: blur(20px);
+            --border-focus: rgba(56, 189, 248, 0.35);
+            --border-card: rgba(255, 255, 255, 0.07);
+
+            /* Natural Accents */
+            --sky-blue: #38bdf8;
+            --sky-blue-deep: #0284c7;
+            --forest-emerald: #10b981;
+            --forest-mint: #34d399;
+            --warm-indigo: #6366f1;
+            --soft-purple: #818cf8;
+            --honey-amber: #f59e0b;
+            --coral-rose: #f43f5e;
+
+            /* Human Typography Hierarchy */
+            --text-title: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #64748b;
+            --text-dim: #475569;
+
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.04);
+            --glass-blur: blur(16px);
         }}
 
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         html {{ scroll-behavior: smooth; }}
         body {{
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-            background-color: var(--bg-night);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-canvas);
             background-image: 
-                radial-gradient(circle at 12% 15%, rgba(247, 37, 133, 0.14) 0%, transparent 45%),
-                radial-gradient(circle at 88% 25%, rgba(114, 9, 183, 0.18) 0%, transparent 50%),
-                radial-gradient(circle at 50% 90%, rgba(255, 0, 127, 0.12) 0%, transparent 55%),
-                linear-gradient(rgba(247, 37, 133, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(247, 37, 133, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+                radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
             background-attachment: fixed;
             color: var(--text-body);
             line-height: 1.6;
             padding-bottom: 70px;
         }}
 
-        /* Sticky Glassy Header */
-        .glass-navbar {{
+        /* Clean Human-Engineered Navigation */
+        .navbar {{
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            background: rgba(14, 5, 27, 0.82);
-            border-bottom: 1px solid var(--border-fuchsia);
+            background: rgba(9, 13, 22, 0.85);
+            border-bottom: 1px solid var(--border-subtle);
             padding: 14px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
         }}
         .brand {{
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             text-decoration: none;
             color: inherit;
         }}
-        .brand-icon {{
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--fuchsia-hot), var(--purple-neon));
+        .brand-logo {{
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--sky-blue-deep), var(--warm-indigo));
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
-            font-size: 22px;
-            box-shadow: var(--glow-fuchsia);
-            font-weight: 800;
-        }}
-        .brand-title h1 {{
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
-            color: var(--text-heading);
-            letter-spacing: -0.4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
         }}
-        .brand-title p {{
+        .brand-text h1 {{
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-title);
+            letter-spacing: -0.3px;
+        }}
+        .brand-text p {{
             font-size: 11px;
-            color: var(--fuchsia-light);
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 500;
         }}
-        .navbar-stats {{
+        .navbar-pills {{
             display: flex;
             align-items: center;
             gap: 12px;
         }}
-        .pill-badge {{
-            font-family: 'JetBrains Mono', monospace;
+        .status-badge {{
             font-size: 12px;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid var(--border-fuchsia);
-            background: rgba(247, 37, 133, 0.12);
-            color: var(--fuchsia-light);
-            box-shadow: 0 0 15px rgba(247, 37, 133, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--forest-mint);
+            font-weight: 600;
         }}
-        .pulse-core {{
+        .status-dot {{
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--fuchsia-hot);
-            box-shadow: 0 0 12px var(--fuchsia-hot);
-            animation: fuchsiaPulse 1.8s infinite;
+            background: var(--forest-emerald);
+            box-shadow: 0 0 10px var(--forest-emerald);
+            animation: softPulse 2s infinite ease-in-out;
         }}
-        @keyframes fuchsiaPulse {{
-            0% {{ transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.8); }}
-            70% {{ transform: scale(1.2); box-shadow: 0 0 0 10px rgba(255, 0, 127, 0); }}
-            100% {{ transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }}
+        @keyframes softPulse {{
+            0%, 100% {{ transform: scale(0.95); opacity: 0.85; }}
+            50% {{ transform: scale(1.15); opacity: 1; }}
+        }}
+        .utc-pill {{
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--sky-blue);
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.03);
         }}
 
-        /* Main Container */
-        .dashboard-container {{
-            max-width: 1440px;
+        /* Main Workspace Container */
+        .container {{
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 24px 30px;
+            padding: 24px 28px;
         }}
 
-        /* Hero Command Card */
-        .glass-hero {{
+        /* Executive Command Hero */
+        .hero-panel {{
             background: var(--bg-card);
-            border: 1px solid var(--border-fuchsia);
-            border-radius: 20px;
+            border: 1px solid var(--border-card);
+            border-radius: 18px;
             padding: 28px 32px;
             margin-bottom: 24px;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
             position: relative;
-            overflow: hidden;
         }}
-        .glass-hero::before {{
+        .hero-panel::before {{
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--fuchsia-hot), var(--purple-glow), var(--cyan-accent));
+            background: linear-gradient(90deg, var(--sky-blue), var(--warm-indigo), var(--forest-emerald));
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
         }}
-        .hero-head h2 {{
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
+        .hero-header h2 {{
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text-heading);
-            letter-spacing: -0.6px;
-            margin-bottom: 6px;
-            background: linear-gradient(135deg, #ffffff 30%, var(--fuchsia-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-title);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }}
-        .hero-head p {{
+        .hero-header p {{
             font-size: 14px;
             color: var(--text-body);
-            max-width: 900px;
+            max-width: 920px;
             line-height: 1.6;
         }}
         .hero-tags {{
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-top: 16px;
             flex-wrap: wrap;
         }}
-        .htag {{
-            background: rgba(247, 37, 133, 0.1);
-            color: var(--fuchsia-light);
-            border: 1px solid rgba(247, 37, 133, 0.3);
-            padding: 5px 12px;
-            border-radius: 8px;
+        .tag {{
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-body);
+            border: 1px solid var(--border-subtle);
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-weight: 500;
+        }}
+        .tag-accent {{
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--sky-blue);
+            border-color: rgba(56, 189, 248, 0.25);
         }}
 
-        /* KPI Cards Grid */
+        /* Natural KPI Cards Grid */
         .metrics-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -271,56 +270,60 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         .metric-card {{
             background: var(--bg-card);
-            border: 1px solid var(--border-fuchsia);
-            border-radius: 16px;
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
             padding: 20px;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
             position: relative;
-            overflow: hidden;
-            transition: all 0.28s ease;
+            transition: all 0.2s ease;
         }}
         .metric-card:hover {{
-            transform: translateY(-4px);
-            border-color: var(--border-fuchsia-glow);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), var(--glow-fuchsia);
+            transform: translateY(-3px);
+            border-color: var(--border-focus);
+            background: var(--bg-card-hover);
         }}
-        .metric-card::after {{
+        .metric-card::before {{
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, var(--fuchsia-hot), var(--purple-neon));
+            background: var(--sky-blue);
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
         }}
-        .metric-title {{
+        .card-emerald::before {{ background: var(--forest-emerald); }}
+        .card-indigo::before {{ background: var(--warm-indigo); }}
+        .card-amber::before {{ background: var(--honey-amber); }}
+        .metric-label {{
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.6px;
             color: var(--text-muted);
             margin-bottom: 6px;
         }}
-        .metric-value {{
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
+        .metric-val {{
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 27px;
             font-weight: 700;
-            color: var(--text-heading);
-            letter-spacing: -0.6px;
+            color: var(--text-title);
+            letter-spacing: -0.5px;
             margin-bottom: 4px;
         }}
-        .metric-delta {{
+        .metric-sub {{
             font-size: 12px;
-            color: var(--fuchsia-light);
-            font-weight: 600;
+            color: var(--forest-mint);
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 4px;
         }}
 
-        /* Glass Cockpit Dual-View */
+        /* Cockpit Row: Live Wear Timeline & Threat Index */
         .cockpit-row {{
             display: grid;
             grid-template-columns: 2.2fr 1fr;
@@ -329,9 +332,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         .glass-panel {{
             background: var(--bg-card);
-            border: 1px solid var(--border-fuchsia);
-            border-radius: 18px;
-            padding: 24px;
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 22px;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
@@ -341,27 +344,27 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(247, 37, 133, 0.2);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
         }}
         .panel-title {{
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--text-heading);
+            color: var(--text-title);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }}
         .panel-chip {{
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             padding: 3px 10px;
             border-radius: 6px;
-            background: rgba(247, 37, 133, 0.15);
-            color: var(--fuchsia-light);
-            border: 1px solid var(--border-fuchsia);
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--sky-blue);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -371,15 +374,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         .canvas-container {{
             position: relative;
             width: 100%;
-            height: 240px;
-            background: rgba(10, 3, 20, 0.7);
-            border-radius: 12px;
+            height: 230px;
+            background: #080c14;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid rgba(247, 37, 133, 0.25);
-            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-subtle);
         }}
         .canvas-container-tall {{
-            height: 270px;
+            height: 260px;
         }}
         canvas.glass-canvas {{
             width: 100%;
@@ -389,20 +391,20 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         .canvas-hud-overlay {{
             position: absolute;
             top: 10px;
-            left: 14px;
+            left: 12px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: var(--fuchsia-light);
+            color: var(--text-body);
             pointer-events: none;
             display: flex;
-            gap: 18px;
-            background: rgba(16, 5, 32, 0.75);
+            gap: 16px;
+            background: rgba(16, 23, 38, 0.8);
             padding: 4px 10px;
             border-radius: 6px;
-            border: 1px solid rgba(247, 37, 133, 0.2);
+            border: 1px solid var(--border-subtle);
         }}
 
-        /* Threat Meter & Relay */
+        /* Threat Index & Safety Relay */
         .threat-center {{
             display: flex;
             flex-direction: column;
@@ -412,44 +414,43 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             padding: 6px 0;
         }}
         .gauge-svg {{
-            width: 200px;
-            height: 120px;
+            width: 190px;
+            height: 115px;
             overflow: visible;
         }}
         .gauge-pct {{
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 34px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 32px;
             font-weight: 800;
-            fill: var(--fuchsia-hot);
+            fill: var(--forest-mint);
             transition: fill 0.3s ease;
         }}
         .relay-box {{
             width: 100%;
-            margin-top: 16px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            background: rgba(247, 37, 133, 0.1);
-            border: 1px solid var(--border-fuchsia);
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
-            color: var(--fuchsia-light);
+            color: var(--forest-mint);
             transition: all 0.3s ease;
         }}
         .relay-box.tripped {{
-            background: rgba(255, 0, 85, 0.25);
-            border-color: #ff0055;
-            color: #ff0055;
-            box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+            background: rgba(244, 63, 94, 0.15);
+            border-color: var(--coral-rose);
+            color: var(--coral-rose);
         }}
 
-        /* Chaos Fault Injector Bar */
+        /* Chaos Engineering Fault Injector Bar */
         .chaos-strip {{
             background: var(--bg-card);
-            border: 1px solid var(--border-fuchsia);
-            border-radius: 16px;
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
             padding: 18px 24px;
             margin-bottom: 24px;
             display: flex;
@@ -461,10 +462,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             box-shadow: var(--card-shadow);
         }}
         .chaos-strip h4 {{
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 15px;
             font-weight: 700;
-            color: var(--text-heading);
+            color: var(--text-title);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -475,17 +476,17 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         .chaos-btns {{
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }}
         .cbtn {{
-            background: rgba(26, 10, 48, 0.7);
-            border: 1px solid var(--border-fuchsia);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
             color: var(--text-body);
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 7px 12px;
+            border-radius: 7px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
@@ -493,20 +494,17 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             gap: 6px;
         }}
         .cbtn:hover {{
-            background: rgba(247, 37, 133, 0.25);
-            border-color: var(--fuchsia-hot);
-            color: #ffffff;
-            box-shadow: 0 0 16px rgba(247, 37, 133, 0.4);
-            transform: translateY(-2px);
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--sky-blue);
+            color: var(--text-title);
         }}
         .cbtn.reset {{
-            border-color: var(--emerald-accent);
-            color: var(--emerald-accent);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: var(--forest-mint);
         }}
         .cbtn.reset:hover {{
-            background: rgba(0, 245, 160, 0.2);
+            background: rgba(16, 185, 129, 0.15);
             color: #ffffff;
-            box-shadow: 0 0 16px rgba(0, 245, 160, 0.4);
         }}
 
         /* 5-Node Fleet Selector */
@@ -518,24 +516,22 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
         .fleet-tile {{
             background: var(--bg-card);
-            border: 1px solid var(--border-fuchsia);
-            border-radius: 14px;
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
             padding: 16px 18px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             backdrop-filter: var(--glass-blur);
             box-shadow: var(--card-shadow);
-            position: relative;
         }}
         .fleet-tile:hover {{
             background: var(--bg-card-hover);
-            border-color: var(--fuchsia-hot);
-            box-shadow: 0 0 20px rgba(247, 37, 133, 0.35);
+            border-color: var(--sky-blue);
         }}
         .fleet-tile.active {{
-            border-color: var(--fuchsia-hot);
-            background: rgba(38, 14, 68, 0.9);
-            box-shadow: 0 0 25px rgba(247, 37, 133, 0.4), inset 0 0 0 1px var(--fuchsia-hot);
+            border-color: var(--sky-blue);
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 0 1px var(--sky-blue), var(--card-shadow);
         }}
         .fleet-tile-top {{
             display: flex;
@@ -546,18 +542,18 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         .fleet-id {{
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: var(--fuchsia-light);
-            font-weight: 700;
+            color: var(--sky-blue);
+            font-weight: 600;
         }}
         .fleet-status {{
             font-size: 11px;
-            color: var(--emerald-accent);
-            font-weight: 600;
+            color: var(--forest-mint);
+            font-weight: 500;
         }}
         .fleet-name {{
             font-size: 13px;
-            font-weight: 700;
-            color: var(--text-heading);
+            font-weight: 600;
+            color: var(--text-title);
             margin-bottom: 8px;
         }}
         .fleet-specs {{
@@ -566,7 +562,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
             color: var(--text-muted);
-            border-top: 1px solid rgba(247, 37, 133, 0.2);
+            border-top: 1px solid var(--border-subtle);
             padding-top: 8px;
         }}
 
@@ -581,8 +577,8 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         /* Table Panel */
         .table-wrap {{
             overflow-x: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border-fuchsia);
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
         }}
         table {{
             width: 100%;
@@ -590,37 +586,36 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             font-size: 13px;
         }}
         th, td {{
-            padding: 13px 18px;
+            padding: 12px 18px;
             text-align: left;
-            border-bottom: 1px solid rgba(247, 37, 133, 0.15);
+            border-bottom: 1px solid var(--border-subtle);
         }}
         th {{
-            background: rgba(36, 12, 68, 0.6);
-            color: var(--fuchsia-light);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.6px;
         }}
         tr:hover td {{
-            background: rgba(247, 37, 133, 0.08);
+            background: rgba(56, 189, 248, 0.04);
         }}
         .win-tag {{
-            color: var(--fuchsia-hot);
+            color: var(--sky-blue);
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(247, 37, 133, 0.5);
         }}
         .badge-safe {{
-            background: rgba(0, 245, 160, 0.15);
-            color: var(--emerald-accent);
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--forest-mint);
             padding: 3px 8px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
         }}
         .badge-leak {{
-            background: rgba(255, 0, 85, 0.2);
-            color: #ff0055;
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--coral-rose);
             padding: 3px 8px;
             border-radius: 6px;
             font-size: 11px;
@@ -628,65 +623,65 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         }}
 
         /* Footer */
-        .glass-footer {{
+        .footer {{
             margin-top: 50px;
             text-align: center;
             font-size: 12px;
             color: var(--text-muted);
             padding-top: 24px;
-            border-top: 1px solid rgba(247, 37, 133, 0.2);
+            border-top: 1px solid var(--border-subtle);
         }}
-        .glass-footer a {{
-            color: var(--fuchsia-light);
+        .footer a {{
+            color: var(--sky-blue);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
         }}
 
         @media (max-width: 1024px) {{
             .cockpit-row {{ grid-template-columns: 1fr; }}
             .chart-grid-2 {{ grid-template-columns: 1fr; }}
-            .glass-navbar {{ padding: 12px 18px; flex-direction: column; gap: 12px; }}
-            .dashboard-container {{ padding: 16px; }}
+            .navbar {{ padding: 12px 18px; flex-direction: column; gap: 10px; }}
+            .container {{ padding: 16px; }}
         }}
     </style>
 </head>
 <body>
 
-    <!-- Sticky Glass Navigation Header -->
-    <header class="glass-navbar">
+    <!-- Natural Header Navigation -->
+    <header class="navbar">
         <a href="#" class="brand">
-            <div class="brand-icon">⚡</div>
-            <div class="brand-title">
-                <h1>EdgeGuard FL <span>Security Cockpit</span></h1>
-                <p>Dark Purple &bull; Neon Fuchsia &bull; Live Telemetry Engine</p>
+            <div class="brand-logo">⚡</div>
+            <div class="brand-text">
+                <h1>IoT SafeguardEdge</h1>
+                <p>On-Device Federated Anomaly Defense</p>
             </div>
         </a>
-        <div class="navbar-stats">
-            <div class="pill-badge">
-                <span class="pulse-core"></span>
-                <span>5/5 EDGE NODES ACTIVE</span>
+        <div class="navbar-pills">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>5/5 NODES SYNCHRONIZED</span>
             </div>
-            <div class="pill-badge" id="utcTimer">UTC 00:00:00</div>
-            <div class="pill-badge" id="liveFpsChip" style="color:var(--cyan-accent); border-color:rgba(76,201,240,0.4);">LIVE: 1.0 Hz SYNC</div>
+            <div class="utc-pill" id="utcTimer">UTC 00:00:00</div>
+            <div class="utc-pill" style="color:var(--forest-mint);">1.0 Hz STREAM ACTIVE</div>
         </div>
     </header>
 
-    <div class="dashboard-container">
+    <div class="container">
 
-        <!-- Executive Command Banner -->
-        <section class="glass-hero">
-            <div class="hero-head">
-                <h2>Autonomous Federated Edge Anomaly Intelligence</h2>
+        <!-- Executive Command Hero -->
+        <section class="hero-panel">
+            <div class="hero-header">
+                <h2>Federated On-Device Telemetry & Anomaly Defense System</h2>
                 <p>
-                    Ultra-low footprint on-device autoencoder telemetry defending industrial robotics, high-tonnage hydraulics, and smart-home microgrids. Real-time sliding window reconstruction guarantees mechanical safety with Local Differential Privacy (DP-SGD &epsilon;=1.42).
+                    Autonomous edge telemetry protection spanning multi-axis CNC milling, high-tonnage stamping hydraulics, conveyor drivetrains, and microgrids. Quantized PyTorch INT8 autoencoders infer sliding sensor windows in real-time on-device, preserving industrial data privacy with Local Differential Privacy (DP-SGD &epsilon;=1.42).
                 </p>
                 <div class="hero-tags">
-                    <span class="htag">Glassmorphism Cyber Theme</span>
-                    <span class="htag">Live Updating Every Second</span>
-                    <span class="htag">INT8 Quantized ({int8_size} KB)</span>
-                    <span class="htag">Sub-Millisecond Inference ({latency_ms} ms)</span>
-                    <span class="htag">Bandwidth Cut: {bw_pct:.1f}%</span>
-                    <span class="htag">Differential Privacy Guard</span>
+                    <span class="tag tag-accent">Natural Human Palette</span>
+                    <span class="tag tag-accent">Live 1-Second Canvas Engine</span>
+                    <span class="tag">INT8 Quantized ({int8_size} KB)</span>
+                    <span class="tag">Sub-Millisecond Inference ({latency_ms} ms)</span>
+                    <span class="tag">Bandwidth Reduced: {bw_pct:.1f}%</span>
+                    <span class="tag">Differential Privacy Guaranteed</span>
                 </div>
             </div>
         </section>
@@ -694,34 +689,34 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         <!-- KPI Metrics Grid -->
         <div class="metrics-grid">
             <div class="metric-card">
-                <div class="metric-title">INT8 Memory Footprint</div>
-                <div class="metric-value">{int8_size} KB</div>
-                <div class="metric-delta">&darr; {compression_ratio}x from {fp32_size} KB FP32</div>
+                <div class="metric-label">INT8 Memory Footprint</div>
+                <div class="metric-val">{int8_size} KB</div>
+                <div class="metric-sub">&darr; {compression_ratio}x from {fp32_size} KB FP32</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-title">Edge Latency (Window 16)</div>
-                <div class="metric-value">{latency_ms} ms</div>
-                <div class="metric-delta">&check; 1.0 kHz Real-time Ready</div>
+            <div class="metric-card card-emerald">
+                <div class="metric-label">Edge Inference Latency</div>
+                <div class="metric-val">{latency_ms} ms</div>
+                <div class="metric-sub">&check; 1.0 kHz Real-time Capable</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-title">Uplink Bandwidth Savings</div>
-                <div class="metric-value">{bw_pct:.1f}%</div>
-                <div class="metric-delta">&darr; 6.67 MB weights vs stream</div>
+            <div class="metric-card card-indigo">
+                <div class="metric-label">Uplink Bandwidth Savings</div>
+                <div class="metric-val">{bw_pct:.1f}%</div>
+                <div class="metric-sub">&darr; 6.67 MB weights vs raw stream</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-title">Mean Federated AUROC</div>
-                <div class="metric-value" style="color: var(--fuchsia-hot); text-shadow: var(--glow-fuchsia);">{fed_auroc:.4f}</div>
-                <div class="metric-delta">&check; Matches Cloud Parity</div>
+            <div class="metric-card card-emerald">
+                <div class="metric-label">Mean Federated AUROC</div>
+                <div class="metric-val" style="color: var(--forest-mint);">{fed_auroc:.4f}</div>
+                <div class="metric-sub">&check; Matches Centralized Cloud</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-title">Fleet F1-Score</div>
-                <div class="metric-value" style="color: var(--purple-light);">{fed_f1:.4f}</div>
-                <div class="metric-delta">P: {fed_prec:.3f} &bull; R: {fed_rec:.3f}</div>
+            <div class="metric-card card-indigo">
+                <div class="metric-label">Fleet F1-Score</div>
+                <div class="metric-val" style="color: var(--sky-blue);">{fed_f1:.4f}</div>
+                <div class="metric-sub">P: {fed_prec:.3f} &bull; R: {fed_rec:.3f}</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-title">Privacy Budget (LDP)</div>
-                <div class="metric-value" style="color: var(--cyan-accent);">&epsilon;=1.42</div>
-                <div class="metric-delta">&check; DP-SGD Noise Guard Active</div>
+            <div class="metric-card card-amber">
+                <div class="metric-label">Privacy Budget (LDP)</div>
+                <div class="metric-val" style="color: var(--honey-amber);">&epsilon;=1.42</div>
+                <div class="metric-sub">&check; DP-SGD Gradient Guard</div>
             </div>
         </div>
 
@@ -730,17 +725,17 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
-                        <span>⚡ Continuous Telemetry & Wear Detection Timeline (CNC Milling)</span>
+                        <span>Continuous Telemetry & Wear Detection Timeline (CNC Milling)</span>
                     </div>
                     <span class="panel-chip" id="timelineModeChip">🟢 NORMAL INFERENCE</span>
                 </div>
                 <div class="canvas-container">
                     <canvas id="timelineCanvas" class="glass-canvas"></canvas>
                     <div class="canvas-hud-overlay">
-                        <span>CH1: Spindle Vibration-X</span>
-                        <span>CH2: Acoustic Waveform</span>
-                        <span style="color:var(--fuchsia-hot);">THRESHOLD: {threshold_val}</span>
-                        <span id="timelineClock">LIVE 1s TICK</span>
+                        <span style="color:var(--sky-blue);">CH1: Spindle Vibration-X</span>
+                        <span style="color:var(--forest-mint);">CH2: Acoustic Waveform</span>
+                        <span style="color:var(--coral-rose);">THRESHOLD: {threshold_val}</span>
+                        <span>LIVE 1s TICK</span>
                     </div>
                 </div>
             </div>
@@ -748,12 +743,12 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <!-- Threat Level Meter & Relay Interlock -->
             <div class="glass-panel threat-center">
                 <div class="panel-header" style="width: 100%;">
-                    <div class="panel-title">⚠️ SYSTEM THREAT INDEX</div>
+                    <div class="panel-title">SYSTEM THREAT INDEX</div>
                     <span class="panel-chip" id="threatPill">NORMAL</span>
                 </div>
                 <svg class="gauge-svg" viewBox="0 0 200 120">
-                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(247, 37, 133, 0.12)" stroke-width="16" stroke-linecap="round"/>
-                    <path id="gaugeArc" d="M 20 100 A 80 80 0 0 1 65 42" fill="none" stroke="var(--fuchsia-hot)" stroke-width="16" stroke-linecap="round" style="transition: stroke 0.4s, stroke-dasharray 0.4s;"/>
+                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="14" stroke-linecap="round"/>
+                    <path id="gaugeArc" d="M 20 100 A 80 80 0 0 1 65 42" fill="none" stroke="var(--forest-mint)" stroke-width="14" stroke-linecap="round" style="transition: stroke 0.4s, stroke-dasharray 0.4s;"/>
                     <text x="100" y="88" text-anchor="middle" class="gauge-pct" id="threatPctText">14%</text>
                     <text x="100" y="106" text-anchor="middle" font-size="10" font-family="'JetBrains Mono', monospace" fill="var(--text-muted)">RECONSTRUCTION MSE</text>
                 </svg>
@@ -768,7 +763,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         <!-- Chaos Engineering Fault Injector Sandbox -->
         <div class="chaos-strip">
             <div class="chaos-info">
-                <h4>💥 Real-Time Chaos Engineering & Fault Simulation Sandbox</h4>
+                <h4>Chaos Engineering & Fault Simulation Sandbox</h4>
                 <p>Inject real-time mechanical failure signatures to observe instantaneous edge detector tripping and root-cause alerts</p>
             </div>
             <div class="chaos-btns">
@@ -789,7 +784,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 </div>
                 <div class="fleet-name">CNC 5-Axis Milling Center</div>
                 <div class="fleet-specs">
-                    <span>AUROC: <strong style="color:var(--fuchsia-hot);">0.9987</strong></span>
+                    <span>AUROC: <strong style="color:var(--sky-blue);">0.9987</strong></span>
                     <span>F1: <strong>0.9205</strong></span>
                     <span>Lat: <strong>0.9ms</strong></span>
                 </div>
@@ -802,7 +797,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 </div>
                 <div class="fleet-name">400T Hydraulic Stamping Press</div>
                 <div class="fleet-specs">
-                    <span>AUROC: <strong style="color:var(--fuchsia-hot);">0.9932</strong></span>
+                    <span>AUROC: <strong style="color:var(--sky-blue);">0.9932</strong></span>
                     <span>F1: <strong>0.9170</strong></span>
                     <span>Lat: <strong>1.1ms</strong></span>
                 </div>
@@ -815,7 +810,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 </div>
                 <div class="fleet-name">Conveyor Induction Drivetrain</div>
                 <div class="fleet-specs">
-                    <span>AUROC: <strong style="color:var(--fuchsia-hot);">0.9742</strong></span>
+                    <span>AUROC: <strong style="color:var(--sky-blue);">0.9742</strong></span>
                     <span>F1: <strong>0.8620</strong></span>
                     <span>Lat: <strong>0.8ms</strong></span>
                 </div>
@@ -828,7 +823,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 </div>
                 <div class="fleet-name">Industrial HVAC Heat Pump</div>
                 <div class="fleet-specs">
-                    <span>AUROC: <strong style="color:var(--fuchsia-hot);">1.0000</strong></span>
+                    <span>AUROC: <strong style="color:var(--sky-blue);">1.0000</strong></span>
                     <span>F1: <strong>0.8444</strong></span>
                     <span>Lat: <strong>1.2ms</strong></span>
                 </div>
@@ -841,7 +836,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 </div>
                 <div class="fleet-name">Solar Microgrid Inverter</div>
                 <div class="fleet-specs">
-                    <span>AUROC: <strong style="color:var(--fuchsia-hot);">1.0000</strong></span>
+                    <span>AUROC: <strong style="color:var(--sky-blue);">1.0000</strong></span>
                     <span>F1: <strong>1.0000</strong></span>
                     <span>Lat: <strong>0.7ms</strong></span>
                 </div>
@@ -854,15 +849,15 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
-                        <span>📈 Federated Training Convergence (Loss & AUROC)</span>
+                        <span>Federated Training Convergence (Loss & AUROC)</span>
                     </div>
                     <span class="panel-chip" id="convRoundChip">ROUND 15/15 &bull; LIVE</span>
                 </div>
                 <div class="canvas-container canvas-container-tall">
                     <canvas id="convCanvas" class="glass-canvas"></canvas>
                     <div class="canvas-hud-overlay">
-                        <span style="color:var(--fuchsia-hot);">&bull; AUROC: 0.9932</span>
-                        <span style="color:var(--cyan-accent);">&bull; Loss: 0.0182</span>
+                        <span style="color:var(--sky-blue);">&bull; AUROC: 0.9932</span>
+                        <span style="color:var(--forest-mint);">&bull; Loss: 0.0182</span>
                         <span>UPDATES: 1s TICK</span>
                     </div>
                 </div>
@@ -872,14 +867,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
-                        <span>🏆 Benchmark: Isolated vs Federated vs Centralized</span>
+                        <span>Benchmark: Isolated vs Federated vs Centralized</span>
                     </div>
                     <span class="panel-chip">3 PARADIGMS</span>
                 </div>
                 <div class="canvas-container canvas-container-tall">
                     <canvas id="benchCanvas" class="glass-canvas"></canvas>
                     <div class="canvas-hud-overlay">
-                        <span>AUROC &bull; F1 &bull; RECALL &bull; PRIVACY</span>
+                        <span>AUROC &bull; F1 &bull; PRIVACY SCORE</span>
                     </div>
                 </div>
             </div>
@@ -891,7 +886,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
-                        <span>🔍 Sensor Channel Root-Cause Attribution</span>
+                        <span>Sensor Channel Root-Cause Attribution</span>
                     </div>
                     <span class="panel-chip" id="attrClientChip">CLIENT #00 &bull; 8 CHANNELS</span>
                 </div>
@@ -907,15 +902,15 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             <div class="glass-panel">
                 <div class="panel-header">
                     <div class="panel-title">
-                        <span>⚡ TinyML Memory Footprint & Bandwidth Efficiency</span>
+                        <span>TinyML Memory Footprint & Bandwidth Efficiency</span>
                     </div>
-                    <span class="panel-chip" id="bwCounterChip">STREAM: 1.8 MB/s</span>
+                    <span class="panel-chip" id="bwCounterChip">STREAM: 1.84 MB/s</span>
                 </div>
                 <div class="canvas-container canvas-container-tall">
                     <canvas id="efficiencyCanvas" class="glass-canvas"></canvas>
                     <div class="canvas-hud-overlay">
-                        <span style="color:var(--fuchsia-hot);">INT8: 21.99 KB</span>
-                        <span style="color:var(--cyan-accent);">BANDWIDTH: 98.2% CUT</span>
+                        <span style="color:var(--sky-blue);">INT8: 21.99 KB</span>
+                        <span style="color:var(--forest-mint);">BANDWIDTH: 98.2% CUT</span>
                     </div>
                 </div>
             </div>
@@ -925,7 +920,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         <div class="glass-panel">
             <div class="panel-header">
                 <div class="panel-title">
-                    <span>📊 Multi-Paradigm Quantitative Benchmark</span>
+                    <span>Multi-Paradigm Quantitative Benchmark</span>
                 </div>
                 <span class="panel-chip">ACCURACY &bull; LATENCY &bull; PRIVACY</span>
             </div>
@@ -981,10 +976,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             </div>
         </div>
 
-        <footer class="glass-footer">
+        <footer class="footer">
             <p>IoT SafeguardEdge &bull; Federated Learning for Privacy-Preserving On-Device Anomaly Detection</p>
             <p style="margin-top: 6px;">
-                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Glassy Cockpit Edition v3.0.0
+                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Production v3.1.0
             </p>
         </footer>
 
@@ -1003,11 +998,11 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
         // Machine Fleet Definitions
         const fleetNodes = [
-            {{ id: 'CLIENT #00', name: 'CNC 5-Axis Milling Center', ch1: 'Spindle-X', ch2: 'Acoustic', threshold: {threshold_val}, baselineLoss: 0.018 }},
-            {{ id: 'CLIENT #01', name: '400T Hydraulic Stamping Press', ch1: 'Ram Pressure', ch2: 'Manifold Flow', threshold: 0.041, baselineLoss: 0.021 }},
-            {{ id: 'CLIENT #02', name: 'Conveyor Induction Drivetrain', ch1: 'Current-A', ch2: 'Bearing-Z', threshold: 0.042, baselineLoss: 0.019 }},
-            {{ id: 'CLIENT #03', name: 'Industrial HVAC Heat Pump', ch1: 'Compressor RPM', ch2: 'Coolant Delta-T', threshold: 0.048, baselineLoss: 0.014 }},
-            {{ id: 'CLIENT #04', name: 'Solar Microgrid Inverter', ch1: 'Phase-A Voltage', ch2: 'IGBT Thermal', threshold: 0.039, baselineLoss: 0.011 }}
+            {{ id: 'CLIENT #00', name: 'CNC 5-Axis Milling Center', threshold: {threshold_val}, baselineLoss: 0.018 }},
+            {{ id: 'CLIENT #01', name: '400T Hydraulic Stamping Press', threshold: 0.041, baselineLoss: 0.021 }},
+            {{ id: 'CLIENT #02', name: 'Conveyor Induction Drivetrain', threshold: 0.042, baselineLoss: 0.019 }},
+            {{ id: 'CLIENT #03', name: 'Industrial HVAC Heat Pump', threshold: 0.048, baselineLoss: 0.014 }},
+            {{ id: 'CLIENT #04', name: 'Solar Microgrid Inverter', threshold: 0.039, baselineLoss: 0.011 }}
         ];
 
         let selectedNode = 0;
@@ -1019,7 +1014,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             document.querySelectorAll('.fleet-tile').forEach(t => t.classList.remove('active'));
             if (elem) elem.classList.add('active');
             const node = fleetNodes[idx];
-            document.getElementById('attrClientChip').innerText = `${{node.id}} &bull; 8 CHANNELS`;
+            document.getElementById('attrClientChip').innerText = node.id + ' • 8 CHANNELS';
             if (!isAnomalyActive) {{
                 updateThreatMeter(Math.floor(node.baselineLoss * 750));
             }}
@@ -1039,32 +1034,32 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             meterText.textContent = pct + '%';
 
             if (pct > 60) {{
-                meterText.style.fill = '#ff0055';
-                arc.setAttribute('stroke', '#ff0055');
+                meterText.style.fill = 'var(--coral-rose)';
+                arc.setAttribute('stroke', 'var(--coral-rose)');
                 pill.textContent = 'CRITICAL ALARM';
-                pill.style.color = '#ff0055';
+                pill.style.color = 'var(--coral-rose)';
                 sub.textContent = 'RECONSTRUCTION ERROR EXCEEDED 3σ LIMIT';
                 relay.classList.add('tripped');
                 relayText.innerHTML = '🚨 RELAY TRIPPED (OPEN CIRCUIT)';
                 modeChip.textContent = '🚨 ANOMALY DETECTED';
-                modeChip.style.color = '#ff0055';
+                modeChip.style.color = 'var(--coral-rose)';
             }} else {{
-                meterText.style.fill = 'var(--fuchsia-hot)';
-                arc.setAttribute('stroke', 'var(--fuchsia-hot)');
+                meterText.style.fill = 'var(--forest-mint)';
+                arc.setAttribute('stroke', 'var(--forest-mint)');
                 pill.textContent = 'NORMAL';
-                pill.style.color = 'var(--fuchsia-light)';
+                pill.style.color = 'var(--forest-mint)';
                 sub.textContent = 'Operating Within 3σ Baseline';
                 relay.classList.remove('tripped');
                 relayText.innerHTML = '&bull; RELAY CLOSED (OK)';
                 modeChip.textContent = '🟢 NORMAL INFERENCE';
-                modeChip.style.color = 'var(--emerald-accent)';
+                modeChip.style.color = 'var(--forest-mint)';
             }}
         }}
 
         function triggerAnomaly(type) {{
             isAnomalyActive = true;
             activeAnomalyName = type;
-            updateThreatMeter(94);
+            updateThreatMeter(92);
         }}
 
         function clearAnomaly() {{
@@ -1073,7 +1068,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             updateThreatMeter(14);
         }}
 
-        // Helper: Setup canvas dimensions
+        // Helper: Canvas dimensions
         function fitCanvas(canvas) {{
             canvas.width = canvas.parentElement.clientWidth;
             canvas.height = canvas.parentElement.clientHeight;
@@ -1094,10 +1089,10 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             tCtx.clearRect(0, 0, w, h);
 
-            // Subtle Glass Grid Lines
-            tCtx.strokeStyle = 'rgba(247, 37, 133, 0.08)';
+            // Subtle Natural Grid Lines
+            tCtx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
             tCtx.lineWidth = 1;
-            for (let x = 0; x < w; x += 36) {{
+            for (let x = 0; x < w; x += 40) {{
                 tCtx.beginPath();
                 tCtx.moveTo(x, 0);
                 tCtx.lineTo(x, h);
@@ -1112,45 +1107,41 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             // Sliding Window 16 Samples
             const winW = 85;
-            const winX = (tSweep * 2.5) % (w - winW);
-            tCtx.fillStyle = 'rgba(247, 37, 133, 0.08)';
+            const winX = (tSweep * 2.2) % (w - winW);
+            tCtx.fillStyle = 'rgba(56, 189, 248, 0.05)';
             tCtx.fillRect(winX, 0, winW, h);
-            tCtx.strokeStyle = 'rgba(247, 37, 133, 0.4)';
+            tCtx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
             tCtx.strokeRect(winX, 0, winW, h);
 
-            // Channel 1: Primary Sensor (Vibration)
+            // Channel 1: Primary Sensor Waveform (Sky Blue)
             tCtx.beginPath();
-            tCtx.lineWidth = 2.2;
-            tCtx.strokeStyle = isAnomalyActive ? '#ff0055' : 'var(--fuchsia-hot)';
-            tCtx.shadowColor = isAnomalyActive ? '#ff0055' : 'var(--fuchsia-hot)';
-            tCtx.shadowBlur = 12;
-
+            tCtx.lineWidth = 2;
+            tCtx.strokeStyle = isAnomalyActive ? '#f43f5e' : '#38bdf8';
             for (let x = 0; x < w; x++) {{
                 const freq = isAnomalyActive ? 0.08 : 0.03;
                 const amp = isAnomalyActive ? 55 : 32;
-                const noise = isAnomalyActive ? (Math.random() * 24 - 12) : (Math.random() * 5 - 2.5);
+                const noise = isAnomalyActive ? (Math.random() * 20 - 10) : (Math.random() * 4 - 2);
                 const y = mid + Math.sin((x + tSweep * 2) * freq) * amp + noise;
                 if (x === 0) tCtx.moveTo(x, y);
                 else tCtx.lineTo(x, y);
             }}
             tCtx.stroke();
-            tCtx.shadowBlur = 0;
 
-            // Channel 2: Secondary Wave (Cyan accent)
+            // Channel 2: Secondary Waveform (Forest Mint)
             tCtx.beginPath();
-            tCtx.lineWidth = 1.4;
-            tCtx.strokeStyle = 'rgba(76, 201, 240, 0.7)';
+            tCtx.lineWidth = 1.5;
+            tCtx.strokeStyle = 'rgba(52, 211, 153, 0.75)';
             for (let x = 0; x < w; x += 2) {{
-                const y2 = (mid + 20) + Math.cos((x - tSweep * 3) * 0.05) * (isAnomalyActive ? 28 : 16);
+                const y2 = (mid + 20) + Math.cos((x - tSweep * 2.5) * 0.05) * (isAnomalyActive ? 26 : 14);
                 if (x === 0) tCtx.moveTo(x, y2);
                 else tCtx.lineTo(x, y2);
             }}
             tCtx.stroke();
 
-            // Threshold Reference Line
+            // Threshold Line (Coral)
             const threshY = mid - 40;
             tCtx.setLineDash([6, 6]);
-            tCtx.strokeStyle = 'rgba(255, 0, 127, 0.8)';
+            tCtx.strokeStyle = 'rgba(244, 63, 94, 0.8)';
             tCtx.lineWidth = 1.5;
             tCtx.beginPath();
             tCtx.moveTo(0, threshY);
@@ -1167,9 +1158,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         // -------------------------------------------------------------
         const convCanvas = document.getElementById('convCanvas');
         const convCtx = convCanvas.getContext('2d');
-        let convTick = 15;
 
-        // Static convergence trajectory
         const convDataAUROC = [0.9868, 0.9882, 0.9899, 0.9912, 0.9918, 0.9922, 0.9925, 0.9928, 0.9930, 0.9931, 0.9932, 0.9933, 0.9934, 0.9935, 0.9936];
         const convDataLoss  = [0.0712, 0.0584, 0.0482, 0.0410, 0.0355, 0.0310, 0.0278, 0.0252, 0.0231, 0.0215, 0.0202, 0.0194, 0.0188, 0.0184, 0.0182];
 
@@ -1187,7 +1176,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             convCtx.clearRect(0, 0, w, h);
 
             // Grid Lines
-            convCtx.strokeStyle = 'rgba(247, 37, 133, 0.08)';
+            convCtx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
             convCtx.lineWidth = 1;
             for (let i = 0; i <= 4; i++) {{
                 const y = padT + (plotH / 4) * i;
@@ -1200,15 +1189,14 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             const nPoints = convDataAUROC.length;
             const stepX = plotW / (nPoints - 1);
 
-            // Draw Area Fill for AUROC
+            // Area Fill for AUROC (Sky Blue to Transparent)
             const aurocGrad = convCtx.createLinearGradient(0, padT, 0, h - padB);
-            aurocGrad.addColorStop(0, 'rgba(247, 37, 133, 0.35)');
-            aurocGrad.addColorStop(1, 'rgba(114, 9, 183, 0.02)');
+            aurocGrad.addColorStop(0, 'rgba(56, 189, 248, 0.22)');
+            aurocGrad.addColorStop(1, 'rgba(56, 189, 248, 0.01)');
 
             convCtx.beginPath();
             for (let i = 0; i < nPoints; i++) {{
                 const x = padL + i * stepX;
-                // Scale AUROC (0.985 -> 0.995)
                 const y = padT + (1 - (convDataAUROC[i] - 0.985) / 0.012) * plotH;
                 if (i === 0) convCtx.moveTo(x, y);
                 else convCtx.lineTo(x, y);
@@ -1219,50 +1207,43 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             convCtx.fillStyle = aurocGrad;
             convCtx.fill();
 
-            // Draw AUROC Line (Hot Fuchsia)
+            // AUROC Line (Sky Blue)
             convCtx.beginPath();
-            convCtx.strokeStyle = 'var(--fuchsia-hot)';
-            convCtx.lineWidth = 2.5;
-            convCtx.shadowColor = 'var(--fuchsia-hot)';
-            convCtx.shadowBlur = 10;
+            convCtx.strokeStyle = '#38bdf8';
+            convCtx.lineWidth = 2.2;
             for (let i = 0; i < nPoints; i++) {{
                 const x = padL + i * stepX;
-                const jitter = (i === nPoints - 1) ? (Math.sin(Date.now() / 300) * 0.0003) : 0;
+                const jitter = (i === nPoints - 1) ? (Math.sin(Date.now() / 400) * 0.0003) : 0;
                 const y = padT + (1 - (convDataAUROC[i] + jitter - 0.985) / 0.012) * plotH;
                 if (i === 0) convCtx.moveTo(x, y);
                 else convCtx.lineTo(x, y);
             }}
             convCtx.stroke();
-            convCtx.shadowBlur = 0;
 
-            // Draw Loss Line (Cyan accent)
+            // Loss Line (Forest Mint)
             convCtx.beginPath();
-            convCtx.strokeStyle = 'var(--cyan-accent)';
-            convCtx.lineWidth = 2;
-            convCtx.shadowColor = 'var(--cyan-accent)';
-            convCtx.shadowBlur = 8;
+            convCtx.strokeStyle = '#34d399';
+            convCtx.lineWidth = 1.8;
             for (let i = 0; i < nPoints; i++) {{
                 const x = padL + i * stepX;
-                // Scale Loss (0.015 -> 0.075)
                 const y = padT + ((convDataLoss[i] - 0.015) / 0.060) * plotH;
                 if (i === 0) convCtx.moveTo(x, y);
                 else convCtx.lineTo(x, y);
             }}
             convCtx.stroke();
-            convCtx.shadowBlur = 0;
 
-            // Live Pulsing Point at final Round
+            // Leading Edge Pulse Indicator
             const lastX = padL + (nPoints - 1) * stepX;
             const lastY = padT + (1 - (convDataAUROC[nPoints - 1] - 0.985) / 0.012) * plotH;
             convCtx.fillStyle = '#ffffff';
             convCtx.beginPath();
-            convCtx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+            convCtx.arc(lastX, lastY, 3.5, 0, Math.PI * 2);
             convCtx.fill();
 
-            convCtx.strokeStyle = 'var(--fuchsia-hot)';
-            convCtx.lineWidth = 2;
+            convCtx.strokeStyle = '#38bdf8';
+            convCtx.lineWidth = 1.5;
             convCtx.beginPath();
-            const pulseR = 4 + (Math.sin(Date.now() / 250) + 1) * 4;
+            const pulseR = 4 + (Math.sin(Date.now() / 300) + 1) * 3;
             convCtx.arc(lastX, lastY, pulseR, 0, Math.PI * 2);
             convCtx.stroke();
         }}
@@ -1280,9 +1261,9 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             benchCtx.clearRect(0, 0, w, h);
 
             const paradigms = [
-                {{ name: 'Isolated Edge', auroc: {iso_auroc}, f1: {iso_f1}, privacy: 92, col: '#7209b7' }},
-                {{ name: 'Proposed FedAvg', auroc: {fed_auroc}, f1: {fed_f1}, privacy: 100, col: 'var(--fuchsia-hot)' }},
-                {{ name: 'Centralized Cloud', auroc: {cent_auroc}, f1: {cent_f1}, privacy: 15, col: '#4cc9f0' }}
+                {{ name: 'Isolated Edge', auroc: {iso_auroc}, f1: {iso_f1}, privacy: 92, col: '#818cf8' }},
+                {{ name: 'Proposed FedAvg', auroc: {fed_auroc}, f1: {fed_f1}, privacy: 100, col: '#38bdf8' }},
+                {{ name: 'Centralized Cloud', auroc: {cent_auroc}, f1: {cent_f1}, privacy: 12, col: '#34d399' }}
             ];
 
             const barW = Math.min(85, (w - 80) / 3);
@@ -1291,40 +1272,36 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             paradigms.forEach((p, idx) => {{
                 const x = gap + idx * (barW + gap);
-                // Dynamic live breathing jitter
-                const jitter = (Math.sin(Date.now() / 400 + idx) * 0.002);
+                const jitter = (Math.sin(Date.now() / 450 + idx) * 0.0018);
                 const score = p.auroc + jitter;
                 const barH = (score - 0.95) / 0.05 * maxH;
                 const y = h - 45 - barH;
 
-                // Glassy Bar Gradient
+                // Subtle Gradient Bar
                 const bGrad = benchCtx.createLinearGradient(0, y, 0, h - 45);
                 bGrad.addColorStop(0, p.col);
-                bGrad.addColorStop(1, 'rgba(26, 10, 48, 0.4)');
+                bGrad.addColorStop(1, 'rgba(18, 26, 42, 0.4)');
 
                 benchCtx.fillStyle = bGrad;
-                benchCtx.shadowColor = p.col;
-                benchCtx.shadowBlur = idx === 1 ? 16 : 6;
                 benchCtx.beginPath();
-                benchCtx.roundRect(x, y, barW, barH, [8, 8, 0, 0]);
+                benchCtx.roundRect(x, y, barW, barH, [6, 6, 0, 0]);
                 benchCtx.fill();
-                benchCtx.shadowBlur = 0;
 
                 // Value Text on Top
-                benchCtx.fillStyle = '#ffffff';
-                benchCtx.font = "600 12px 'Space Grotesk', sans-serif";
+                benchCtx.fillStyle = '#f8fafc';
+                benchCtx.font = "600 12px 'Plus Jakarta Sans', sans-serif";
                 benchCtx.textAlign = 'center';
                 benchCtx.fillText(score.toFixed(4), x + barW / 2, y - 8);
 
                 // Label below
                 benchCtx.fillStyle = 'var(--text-body)';
-                benchCtx.font = "11px 'JetBrains Mono', monospace";
+                benchCtx.font = "11px 'Inter', sans-serif";
                 benchCtx.fillText(p.name, x + barW / 2, h - 25);
 
-                // Privacy Pill
-                benchCtx.fillStyle = p.privacy > 80 ? 'var(--emerald-accent)' : '#ff0055';
+                // Privacy Indicator
+                benchCtx.fillStyle = p.privacy > 80 ? 'var(--forest-mint)' : 'var(--coral-rose)';
                 benchCtx.font = "10px 'JetBrains Mono', monospace";
-                benchCtx.fillText(`DP: ${{p.privacy}}%`, x + barW / 2, h - 10);
+                benchCtx.fillText('DP: ' + p.privacy + '%', x + barW / 2, h - 10);
             }});
         }}
 
@@ -1356,9 +1333,8 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 
             channels.forEach((ch, i) => {{
                 const y = 14 + i * rowH;
-                // Live fluctuating percentage every second
-                const wave = Math.sin(Date.now() / 500 + i * 1.5) * 1.8;
-                let pct = Math.max(1.0, ch.base + (isAnomalyActive && i < 2 ? wave + 18 : wave));
+                const wave = Math.sin(Date.now() / 500 + i * 1.5) * 1.6;
+                let pct = Math.max(1.0, ch.base + (isAnomalyActive && i < 2 ? wave + 16 : wave));
                 const bw = (pct / 70) * barMaxW;
 
                 // Label
@@ -1367,27 +1343,27 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                 attrCtx.textAlign = 'left';
                 attrCtx.fillText(ch.name, 14, y + 10);
 
-                // Glassy Channel Bar
+                // Subtle Bar Fill
                 const cGrad = attrCtx.createLinearGradient(160, 0, 160 + bw, 0);
                 if (i === 0) {{
-                    cGrad.addColorStop(0, '#7209b7');
-                    cGrad.addColorStop(1, 'var(--fuchsia-hot)');
+                    cGrad.addColorStop(0, '#0284c7');
+                    cGrad.addColorStop(1, '#38bdf8');
                 }} else if (i === 1) {{
-                    cGrad.addColorStop(0, '#9d4edd');
-                    cGrad.addColorStop(1, '#ff70a6');
+                    cGrad.addColorStop(0, '#6366f1');
+                    cGrad.addColorStop(1, '#818cf8');
                 }} else {{
-                    cGrad.addColorStop(0, 'rgba(114, 9, 183, 0.4)');
-                    cGrad.addColorStop(1, 'rgba(247, 37, 133, 0.5)');
+                    cGrad.addColorStop(0, 'rgba(56, 189, 248, 0.2)');
+                    cGrad.addColorStop(1, 'rgba(56, 189, 248, 0.45)');
                 }}
 
                 attrCtx.fillStyle = cGrad;
                 attrCtx.beginPath();
-                attrCtx.roundRect(160, y, bw, 12, 4);
+                attrCtx.roundRect(160, y, bw, 11, 4);
                 attrCtx.fill();
 
                 // Percentage text
-                attrCtx.fillStyle = '#ffffff';
-                attrCtx.font = "600 11px 'JetBrains Mono', monospace";
+                attrCtx.fillStyle = '#f8fafc';
+                attrCtx.font = "500 11px 'JetBrains Mono', monospace";
                 attrCtx.textAlign = 'left';
                 attrCtx.fillText(pct.toFixed(1) + '%', 168 + bw, y + 10);
             }});
@@ -1409,84 +1385,75 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             const cX1 = w * 0.28;
             const cX2 = w * 0.72;
             const cY = h / 2;
-            const r = Math.min(62, h * 0.35);
+            const r = Math.min(60, h * 0.35);
 
-            // Ring 1: Quantization Compression (INT8 vs FP32)
+            // Ring 1: Quantization (INT8 vs FP32)
             effCtx.beginPath();
             effCtx.arc(cX1, cY, r, 0, Math.PI * 2);
-            effCtx.strokeStyle = 'rgba(247, 37, 133, 0.15)';
-            effCtx.lineWidth = 12;
+            effCtx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+            effCtx.lineWidth = 10;
             effCtx.stroke();
 
             // Progress Arc (51.8% compression)
-            const angle1 = (Date.now() / 1500) % (Math.PI * 2);
             effCtx.beginPath();
             effCtx.arc(cX1, cY, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * 0.518);
-            effCtx.strokeStyle = 'var(--fuchsia-hot)';
-            effCtx.lineWidth = 12;
+            effCtx.strokeStyle = '#38bdf8';
+            effCtx.lineWidth = 10;
             effCtx.lineCap = 'round';
-            effCtx.shadowColor = 'var(--fuchsia-hot)';
-            effCtx.shadowBlur = 12;
             effCtx.stroke();
-            effCtx.shadowBlur = 0;
 
-            effCtx.fillStyle = '#ffffff';
-            effCtx.font = "700 16px 'Space Grotesk', sans-serif";
+            effCtx.fillStyle = '#f8fafc';
+            effCtx.font = "700 16px 'Plus Jakarta Sans', sans-serif";
             effCtx.textAlign = 'center';
             effCtx.fillText('{compression_ratio}x', cX1, cY + 2);
-            effCtx.fillStyle = 'var(--fuchsia-light)';
+            effCtx.fillStyle = 'var(--sky-blue)';
             effCtx.font = "11px 'JetBrains Mono', monospace";
             effCtx.fillText('{int8_size} KB INT8', cX1, cY + 18);
             effCtx.fillStyle = 'var(--text-muted)';
-            effCtx.fillText('MEMORY FOOTPRINT', cX1, cY + r + 24);
+            effCtx.fillText('MEMORY FOOTPRINT', cX1, cY + r + 22);
 
             // Ring 2: Bandwidth Savings (98.2%)
             effCtx.beginPath();
             effCtx.arc(cX2, cY, r, 0, Math.PI * 2);
-            effCtx.strokeStyle = 'rgba(76, 201, 240, 0.15)';
-            effCtx.lineWidth = 12;
+            effCtx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+            effCtx.lineWidth = 10;
             effCtx.stroke();
 
             effCtx.beginPath();
             effCtx.arc(cX2, cY, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * 0.982);
-            effCtx.strokeStyle = 'var(--cyan-accent)';
-            effCtx.lineWidth = 12;
+            effCtx.strokeStyle = '#34d399';
+            effCtx.lineWidth = 10;
             effCtx.lineCap = 'round';
-            effCtx.shadowColor = 'var(--cyan-accent)';
-            effCtx.shadowBlur = 12;
             effCtx.stroke();
-            effCtx.shadowBlur = 0;
 
-            effCtx.fillStyle = '#ffffff';
-            effCtx.font = "700 16px 'Space Grotesk', sans-serif";
+            effCtx.fillStyle = '#f8fafc';
+            effCtx.font = "700 16px 'Plus Jakarta Sans', sans-serif";
             effCtx.fillText('{bw_pct:.1f}%', cX2, cY + 2);
-            effCtx.fillStyle = 'var(--cyan-accent)';
+            effCtx.fillStyle = 'var(--forest-mint)';
             effCtx.font = "11px 'JetBrains Mono', monospace";
             effCtx.fillText('SAVED UPLINK', cX2, cY + 18);
             effCtx.fillStyle = 'var(--text-muted)';
-            effCtx.fillText('NETWORK SAVINGS', cX2, cY + r + 24);
+            effCtx.fillText('NETWORK SAVINGS', cX2, cY + r + 22);
         }}
 
-        // Main Animation Loop
-        function animateAll() {{
+        // Main Animation Loops
+        function animateCharts() {{
             renderConvergence();
             renderBenchmark();
             renderAttribution();
             renderEfficiency();
-            requestAnimationFrame(animateAll);
+            requestAnimationFrame(animateCharts);
         }}
         requestAnimationFrame(renderTimeline);
-        requestAnimationFrame(animateAll);
+        requestAnimationFrame(animateCharts);
 
-        // 1-Second Periodic Updates
+        // 1-Second Live Updates
         setInterval(() => {{
-            // Fluctuate stream counter chip
-            effBytes = (1750 + Math.floor(Math.random() * 220));
+            effBytes = (1750 + Math.floor(Math.random() * 200));
             document.getElementById('bwCounterChip').innerText = 'STREAM: ' + (effBytes / 1000).toFixed(2) + ' MB/s';
 
-            // If anomaly active, trigger jitter
             if (isAnomalyActive) {{
-                updateThreatMeter(90 + Math.floor(Math.random() * 8));
+                updateThreatMeter(88 + Math.floor(Math.random() * 8));
             }}
         }}, 1000);
     </script>
@@ -1499,7 +1466,7 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
     with open(output_html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    print(f"Glassy Dark Purple & Fuchsia Dashboard generated at: {output_html_path}")
+    print(f"Natural Human-Crafted Dashboard generated at: {output_html_path}")
     return output_html_path
 
 
