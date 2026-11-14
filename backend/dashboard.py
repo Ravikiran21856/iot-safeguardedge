@@ -1,12 +1,14 @@
 """
 Standalone Interactive HTML Dashboard Generator for IoT Federated Anomaly Detection.
-Renders an executive, high-tech glassmorphism web interface presenting:
-- Live Architecture Diagram & Edge Fleet Status (5 Distributed Nodes)
-- Key Quantitative Metrics (Latency, Compression, Bandwidth, F1, AUROC, DP Privacy)
-- Interactive Live Telemetry Simulator Console
-- High-Resolution Analytics (Convergence, Sensor Timeline, Root Cause, Paradigms)
-- Light / Dark Mode Instant Theme Switcher
-- TinyML Microcontroller & Gateway Deployment Guide with Interactive Code Copy
+Renders an executive, next-generation Cyber-Industrial Cockpit web interface presenting:
+- Live Fleet Command Bar with Real-Time Node Status & Uptime Counter
+- Real-Time HTML5 Canvas Multi-Channel Sensor Oscilloscope with Sliding Window Overlay
+- Dynamic Threat Level Gauge & Emergency PLC Safety Relay Interlock
+- Interactive Node Fleet Inspector (CNC Milling, Hydraulic Press, Conveyor, HVAC, Solar)
+- Live Chaos Engineering Anomaly Injector Sandbox
+- High-Resolution Federated Learning Analytics with Lightbox Modal
+- Multi-Language TinyML Edge Deployment Studio (Python, C++ / STM32, MicroPython)
+- Dark Cockpit / Enterprise Daylight Theme Switcher & Synthesized Audio Alerts
 """
 
 import os
@@ -53,7 +55,6 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
     compression_ratio = arch.get("compression_ratio", 2.07)
     latency_ms = arch.get("int8_latency_ms", 1.10)
     
-    # Calculate bandwidth reduction percentage or default to 98.2%
     bw_pct = bw.get("bandwidth_reduction_pct", 0.0)
     if bw_pct == 0.0:
         bw_pct = 98.2
@@ -83,169 +84,173 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT SafeguardEdge — Federated On-Device Anomaly Detection Dashboard</title>
+    <title>EdgeGuard Mission Control — Federated IoT Anomaly Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {{
-            --bg-base: #070b14;
-            --bg-surface: #0d1527;
-            --bg-card: rgba(15, 23, 42, 0.72);
-            --bg-card-hover: rgba(26, 38, 66, 0.85);
-            --border: rgba(255, 255, 255, 0.09);
-            --border-highlight: rgba(56, 189, 248, 0.35);
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --text-dim: #64748b;
-            --cyan: #38bdf8;
-            --emerald: #10b981;
-            --emerald-glow: rgba(16, 185, 129, 0.35);
-            --amber: #fbbf24;
-            --rose: #f43f5e;
-            --purple: #c084fc;
-            --indigo: #6366f1;
-            --shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
-            --code-bg: #040812;
-            --glow-cyan: 0 0 20px rgba(56, 189, 248, 0.25);
-            --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-            --header-glass: rgba(7, 11, 20, 0.85);
+            --bg-deep: #050811;
+            --bg-cockpit: #090e1a;
+            --bg-card: rgba(14, 22, 40, 0.75);
+            --bg-card-hover: rgba(22, 34, 60, 0.9);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 242, 254, 0.35);
+            --text-heading: #ffffff;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            --neon-cyan: #00f2fe;
+            --neon-emerald: #00f5a0;
+            --neon-violet: #9d4edd;
+            --neon-amber: #ffb703;
+            --neon-crimson: #ff0055;
+            --card-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+            --glass-blur: blur(16px);
+            --code-bg: #03060d;
+            --terminal-text: #38bdf8;
+            --header-glass: rgba(5, 8, 17, 0.88);
+            --grid-line: rgba(0, 242, 254, 0.03);
         }}
 
         [data-theme="light"] {{
-            --bg-base: #f8fafc;
-            --bg-surface: #f1f5f9;
-            --bg-card: rgba(255, 255, 255, 0.88);
+            --bg-deep: #f1f5f9;
+            --bg-cockpit: #e2e8f0;
+            --bg-card: rgba(255, 255, 255, 0.9);
             --bg-card-hover: rgba(255, 255, 255, 0.98);
-            --border: rgba(0, 0, 0, 0.08);
-            --border-highlight: rgba(14, 165, 233, 0.45);
-            --text-main: #0f172a;
-            --text-sub: #475569;
-            --text-dim: #94a3b8;
-            --cyan: #0284c7;
-            --emerald: #059669;
-            --emerald-glow: rgba(5, 150, 105, 0.25);
-            --amber: #d97706;
-            --rose: #e11d48;
-            --purple: #7c3aed;
-            --indigo: #4f46e5;
-            --shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-glow: rgba(2, 132, 199, 0.45);
+            --text-heading: #0f172a;
+            --text-body: #475569;
+            --text-muted: #94a3b8;
+            --neon-cyan: #0284c7;
+            --neon-emerald: #059669;
+            --neon-violet: #7c3aed;
+            --neon-amber: #d97706;
+            --neon-crimson: #e11d48;
+            --card-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            --glass-blur: blur(14px);
             --code-bg: #1e293b;
-            --glow-cyan: 0 0 18px rgba(2, 132, 199, 0.15);
-            --gradient-accent: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #7c3aed 100%);
-            --header-glass: rgba(248, 250, 252, 0.88);
+            --terminal-text: #0284c7;
+            --header-glass: rgba(241, 245, 249, 0.92);
+            --grid-line: rgba(2, 132, 199, 0.03);
         }}
 
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         html {{ scroll-behavior: smooth; }}
         body {{
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-base);
+            background-color: var(--bg-deep);
             background-image: 
-                radial-gradient(ellipse at 15% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 85% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+                radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(157, 78, 221, 0.06) 0%, transparent 45%);
+            background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
             background-attachment: fixed;
-            color: var(--text-main);
+            color: var(--text-body);
             line-height: 1.6;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }}
 
-        /* Top Sticky Nav */
-        .navbar {{
+        /* Mission Control Top Bar */
+        .topbar {{
             position: sticky;
             top: 0;
-            z-index: 100;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             background: var(--header-glass);
-            border-bottom: 1px solid var(--border);
-            padding: 14px 28px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s;
         }}
         .brand {{
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
             color: inherit;
         }}
-        .brand-icon {{
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--gradient-accent);
+        .brand-badge {{
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet));
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
-            box-shadow: var(--glow-cyan);
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
             font-weight: 800;
-            font-size: 18px;
         }}
-        .brand-text h1 {{
-            font-size: 17px;
+        .brand-info h1 {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 19px;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            color: var(--text-heading);
+            letter-spacing: -0.4px;
             display: flex;
             align-items: center;
             gap: 8px;
         }}
-        .brand-text p {{
+        .brand-info p {{
             font-size: 11px;
-            color: var(--text-sub);
-            font-weight: 500;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }}
-        .nav-controls {{
+        .topbar-controls {{
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }}
-        .clock-badge {{
+        .telemetry-chip {{
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
-            background: var(--bg-surface);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
             padding: 6px 12px;
             border-radius: 8px;
-            border: 1px solid var(--border);
-            color: var(--cyan);
+            color: var(--neon-cyan);
             display: flex;
             align-items: center;
             gap: 6px;
         }}
-        .status-pill {{
+        .radar-pill {{
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--emerald);
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: rgba(0, 245, 160, 0.1);
+            color: var(--neon-emerald);
+            border: 1px solid rgba(0, 245, 160, 0.3);
             border-radius: 20px;
-            padding: 5px 12px;
+            padding: 6px 14px;
             font-size: 12px;
             font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
         }}
-        .pulse-dot {{
+        .radar-dot {{
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--emerald);
-            box-shadow: 0 0 10px var(--emerald);
-            animation: pulse 2s infinite;
+            background: var(--neon-emerald);
+            box-shadow: 0 0 12px var(--neon-emerald);
+            animation: radarPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }}
-        @keyframes pulse {{
-            0% {{ transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }}
-            70% {{ transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }}
-            100% {{ transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }}
+        @keyframes radarPulse {{
+            0% {{ transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.8); }}
+            70% {{ transform: scale(1.2); box-shadow: 0 0 0 10px rgba(0, 245, 160, 0); }}
+            100% {{ transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 245, 160, 0); }}
         }}
-        .theme-btn {{
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            color: var(--text-main);
+        .ctrl-btn {{
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-heading);
             width: 38px;
             height: 38px;
             border-radius: 10px;
@@ -256,349 +261,493 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             font-size: 16px;
             transition: all 0.2s;
         }}
-        .theme-btn:hover {{
-            border-color: var(--cyan);
+        .ctrl-btn:hover {{
+            border-color: var(--neon-cyan);
             transform: scale(1.05);
+            box-shadow: 0 0 14px rgba(0, 242, 254, 0.25);
         }}
 
         /* Main Container */
-        .container {{
-            max-width: 1400px;
+        .cockpit-container {{
+            max-width: 1440px;
             margin: 0 auto;
             padding: 24px 28px;
         }}
 
-        /* Navigation Pills */
-        .nav-tabs {{
-            display: flex;
-            gap: 10px;
-            margin-bottom: 24px;
-            overflow-x: auto;
-            padding-bottom: 6px;
-        }}
-        .nav-tab {{
+        /* Executive Command Hero */
+        .command-banner {{
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-sub);
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }}
-        .nav-tab:hover, .nav-tab.active {{
-            color: var(--text-main);
-            background: var(--bg-card-hover);
-            border-color: var(--cyan);
-            box-shadow: var(--glow-cyan);
-        }}
-
-        /* Hero Banner */
-        .hero {{
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             border-radius: 18px;
-            padding: 30px;
-            margin-bottom: 28px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--card-shadow);
         }}
-        .hero::before {{
+        .command-banner::before {{
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--gradient-accent);
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-violet), var(--neon-emerald));
         }}
-        .hero-title {{
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.6px;
-            margin-bottom: 8px;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }}
-        .hero-sub {{
-            font-size: 14px;
-            color: var(--text-sub);
-            max-width: 950px;
-            line-height: 1.6;
-        }}
-        .hero-tags {{
+        .command-header {{
             display: flex;
-            gap: 10px;
-            margin-top: 16px;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
             flex-wrap: wrap;
         }}
-        .tag {{
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--cyan);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+        .command-title h2 {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.6px;
+            margin-bottom: 6px;
+        }}
+        .command-title p {{
+            font-size: 14px;
+            color: var(--text-body);
+            max-width: 860px;
+            line-height: 1.6;
+        }}
+        .system-tags {{
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }}
+        .sys-tag {{
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.25);
             padding: 4px 10px;
             border-radius: 6px;
             font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
             letter-spacing: 0.3px;
-            font-family: 'JetBrains Mono', monospace;
         }}
 
-        /* KPI Cards Grid */
+        /* Metric Grid */
         .metrics-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            margin-bottom: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }}
-        .metric-card {{
+        .metric-tile {{
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             border-radius: 14px;
-            padding: 22px;
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--card-shadow);
             position: relative;
             overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }}
-        .metric-card:hover {{
+        .metric-tile:hover {{
             transform: translateY(-4px);
-            border-color: var(--border-highlight);
-            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.4), var(--glow-cyan);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 242, 254, 0.2);
         }}
-        .metric-card::after {{
+        .metric-tile::before {{
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gradient-accent);
-            opacity: 0.7;
+            width: 4px;
+            height: 100%;
+            background: var(--neon-cyan);
         }}
-        .metric-label {{
-            font-size: 12px;
+        .tile-emerald::before {{ background: var(--neon-emerald); }}
+        .tile-violet::before {{ background: var(--neon-violet); }}
+        .tile-amber::before {{ background: var(--neon-amber); }}
+        .tile-label {{
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
             text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }}
+        .tile-val {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: 0.6px;
-            color: var(--text-dim);
-            margin-bottom: 6px;
+            color: var(--text-heading);
+            letter-spacing: -0.6px;
+            margin-bottom: 4px;
         }}
-        .metric-val {{
-            font-size: 30px;
-            font-weight: 800;
-            letter-spacing: -0.8px;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }}
-        .metric-badge {{
-            font-size: 12px;
-            color: var(--emerald);
+        .tile-sub {{
+            font-size: 11px;
+            color: var(--neon-emerald);
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-weight: 600;
+            gap: 4px;
         }}
 
-        /* Fleet Nodes Section */
-        .section-header {{
+        /* Cockpit Dual-View: Oscilloscope & Threat Radar */
+        .cockpit-view {{
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }}
+        .panel {{
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 22px;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--card-shadow);
+        }}
+        .panel-head {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
         }}
-        .section-title {{
-            font-size: 18px;
+        .panel-title {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            color: var(--text-heading);
             display: flex;
             align-items: center;
             gap: 8px;
         }}
-        .section-desc {{
-            font-size: 13px;
-            color: var(--text-sub);
+        .panel-tag {{
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.25);
         }}
 
-        .fleet-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        /* Oscilloscope Canvas */
+        .oscilloscope-wrap {{
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #02050c;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }}
+        #telemetryCanvas {{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }}
+        .canvas-overlay-grid {{
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: rgba(56, 189, 248, 0.7);
+            pointer-events: none;
+            display: flex;
             gap: 16px;
-            margin-bottom: 28px;
         }}
-        .fleet-card {{
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            backdrop-filter: blur(10px);
-            transition: all 0.2s;
+
+        /* Threat Gauge & Safety Relay */
+        .threat-gauge-card {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px 0;
         }}
-        .fleet-card:hover {{
-            background: var(--bg-card-hover);
-            border-color: var(--cyan);
+        .gauge-svg {{
+            width: 190px;
+            height: 110px;
+            overflow: visible;
         }}
-        .fleet-top {{
+        .gauge-meter-text {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            fill: var(--neon-emerald);
+            transition: fill 0.3s ease;
+        }}
+        .gauge-status-title {{
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-top: 6px;
+        }}
+        .relay-interlock {{
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(0, 245, 160, 0.08);
+            border: 1px solid rgba(0, 245, 160, 0.25);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-        }}
-        .fleet-name {{
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-        }}
-        .fleet-category {{
-            font-size: 11px;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-        }}
-        .fleet-stats {{
-            display: flex;
-            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
-            padding-top: 10px;
-            border-top: 1px solid var(--border);
-            color: var(--text-sub);
+            color: var(--neon-emerald);
+            transition: all 0.3s;
+        }}
+        .relay-interlock.tripped {{
+            background: rgba(255, 0, 85, 0.15);
+            border-color: var(--neon-crimson);
+            color: var(--neon-crimson);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }}
 
-        /* Live Telemetry Simulator Console */
-        .telemetry-console {{
+        /* Chaos Engineering Fault Injector */
+        .injector-bar {{
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 18px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }}
+        .injector-info h4 {{
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .injector-info p {{
+            font-size: 12px;
+            color: var(--text-muted);
+        }}
+        .injector-actions {{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }}
+        .inject-btn {{
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-body);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+        .inject-btn:hover {{
+            background: rgba(0, 242, 254, 0.12);
+            border-color: var(--neon-cyan);
+            color: var(--text-heading);
+            transform: translateY(-2px);
+        }}
+        .inject-btn.btn-danger:hover {{
+            background: rgba(255, 0, 85, 0.15);
+            border-color: var(--neon-crimson);
+            color: #ffffff;
+            box-shadow: 0 0 16px rgba(255, 0, 85, 0.4);
+        }}
+        .inject-btn.btn-reset {{
+            border-color: rgba(0, 245, 160, 0.3);
+            color: var(--neon-emerald);
+        }}
+        .inject-btn.btn-reset:hover {{
+            background: rgba(0, 245, 160, 0.15);
+            color: #ffffff;
+        }}
+
+        /* Fleet Machine Inspector */
+        .fleet-container {{
+            margin-bottom: 24px;
+        }}
+        .fleet-selector {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }}
+        .node-card {{
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px 18px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }}
+        .node-card:hover {{
+            background: var(--bg-card-hover);
+            border-color: var(--neon-cyan);
+        }}
+        .node-card.active {{
+            border-color: var(--neon-cyan);
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2), inset 0 0 0 1px var(--neon-cyan);
+        }}
+        .node-top {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }}
+        .node-id {{
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }}
+        .node-status {{
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--neon-emerald);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }}
+        .node-name {{
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }}
+        .node-metrics {{
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 8px;
+        }}
+
+        /* Live Terminal Ticker */
+        .terminal-panel {{
             background: var(--code-bg);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             border-radius: 14px;
             padding: 20px;
-            margin-bottom: 28px;
-            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            box-shadow: var(--card-shadow);
             font-family: 'JetBrains Mono', monospace;
         }}
-        .console-header {{
+        .term-header {{
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-subtle);
         }}
-        .console-title {{
-            font-size: 13px;
+        .term-title {{
+            font-size: 12px;
             font-weight: 600;
-            color: var(--cyan);
+            color: var(--neon-cyan);
             display: flex;
             align-items: center;
             gap: 8px;
         }}
-        .console-actions {{
-            display: flex;
-            gap: 8px;
-        }}
-        .console-btn {{
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: var(--text-sub);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-        }}
-        .console-btn:hover {{
-            color: var(--text-main);
-            border-color: var(--cyan);
-        }}
-        .console-body {{
-            max-height: 180px;
+        .term-logs {{
+            height: 160px;
             overflow-y: auto;
             font-size: 12px;
             line-height: 1.8;
             color: #cbd5e1;
         }}
-        .log-entry {{
+        .log-row {{
             display: flex;
             gap: 12px;
             padding: 2px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
         }}
-        .log-time {{ color: var(--text-dim); }}
-        .log-node {{ color: var(--cyan); }}
-        .log-status-ok {{ color: var(--emerald); font-weight: 600; }}
-        .log-status-alarm {{ color: var(--rose); font-weight: 700; background: rgba(244, 63, 94, 0.15); padding: 0 4px; border-radius: 4px; }}
+        .log-t {{ color: var(--text-muted); }}
+        .log-n {{ color: var(--neon-cyan); }}
+        .log-ok {{ color: var(--neon-emerald); font-weight: 600; }}
+        .log-alert {{ color: var(--neon-crimson); font-weight: 700; background: rgba(255, 0, 85, 0.15); padding: 0 6px; border-radius: 4px; }}
 
-        /* Analytics Plots Layout */
+        /* Research Plot Analytics Grid */
         .grid-2 {{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 22px;
-            margin-bottom: 28px;
+            gap: 20px;
+            margin-bottom: 24px;
         }}
-        .chart-card {{
+        .chart-box {{
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             border-radius: 16px;
             padding: 22px;
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--card-shadow);
         }}
-        .chart-card:hover {{
-            border-color: var(--border-highlight);
-        }}
-        .chart-card h2 {{
-            font-size: 16px;
+        .chart-box h3 {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
             font-weight: 700;
             letter-spacing: -0.2px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
+            color: var(--text-heading);
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--text-main);
         }}
-        .chart-img-wrap {{
+        .chart-viewport {{
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
             background: #ffffff;
             cursor: zoom-in;
         }}
-        .chart-img {{
+        .chart-viewport img {{
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }}
-        .chart-img-wrap:hover .chart-img {{
-            transform: scale(1.015);
+        .chart-viewport:hover img {{
+            transform: scale(1.018);
         }}
-        .zoom-hint {{
+        .zoom-pill {{
             position: absolute;
             bottom: 10px;
-            right: 10px;
-            background: rgba(15, 23, 42, 0.85);
+            right: 12px;
+            background: rgba(9, 14, 26, 0.88);
             color: #ffffff;
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 6px;
             font-size: 11px;
-            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
             pointer-events: none;
             backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }}
 
-        /* Table Styling */
-        .table-wrap {{
+        /* Table Design */
+        .table-panel {{
             overflow-x: auto;
             border-radius: 10px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-subtle);
         }}
         table {{
             width: 100%;
@@ -608,142 +757,139 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
         th, td {{
             padding: 12px 16px;
             text-align: left;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-subtle);
         }}
         th {{
-            background: rgba(30, 41, 59, 0.45);
-            color: var(--text-sub);
-            font-weight: 700;
-            font-size: 12px;
+            background: rgba(14, 22, 40, 0.6);
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
         }}
-        tr:last-child td {{ border-bottom: none; }}
         tr:hover td {{
-            background: rgba(56, 189, 248, 0.05);
+            background: rgba(0, 242, 254, 0.04);
         }}
-        .winner {{
-            color: var(--emerald);
+        .win-score {{
+            color: var(--neon-emerald);
             font-weight: 700;
         }}
-        .pill-badge {{
+        .tag-pill {{
             display: inline-block;
             padding: 3px 8px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
         }}
-        .pill-green {{ background: rgba(16, 185, 129, 0.15); color: var(--emerald); }}
-        .pill-red {{ background: rgba(244, 63, 94, 0.15); color: var(--rose); }}
+        .tag-safe {{ background: rgba(0, 245, 160, 0.12); color: var(--neon-emerald); }}
+        .tag-leak {{ background: rgba(255, 0, 85, 0.12); color: var(--neon-crimson); }}
 
-        /* Code Block & TinyML Section */
-        .code-container {{
+        /* TinyML Deployment Studio */
+        .code-deck {{
             background: var(--code-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
             overflow: hidden;
             font-family: 'JetBrains Mono', monospace;
-            box-shadow: var(--shadow);
         }}
-        .code-topbar {{
+        .code-deck-header {{
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-subtle);
         }}
-        .code-tabs {{
+        .code-deck-tabs {{
             display: flex;
             gap: 8px;
         }}
-        .code-tab {{
+        .deck-tab {{
             background: transparent;
             border: none;
-            color: var(--text-sub);
+            color: var(--text-muted);
             font-family: inherit;
             font-size: 12px;
             font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 5px 10px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: all 0.2s;
         }}
-        .code-tab.active {{
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--cyan);
+        .deck-tab.active {{
+            background: rgba(0, 242, 254, 0.12);
+            color: var(--neon-cyan);
         }}
-        .copy-btn {{
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: var(--text-sub);
-            padding: 4px 10px;
+        .copy-pill {{
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-body);
+            padding: 5px 12px;
             border-radius: 6px;
             font-size: 11px;
             cursor: pointer;
             font-family: inherit;
             transition: all 0.2s;
         }}
-        .copy-btn:hover {{
-            color: var(--text-main);
-            border-color: var(--cyan);
+        .copy-pill:hover {{
+            border-color: var(--neon-cyan);
+            color: var(--text-heading);
         }}
-        .code-content {{
-            padding: 16px;
+        .code-box {{
+            padding: 18px;
             font-size: 12px;
             line-height: 1.6;
-            color: #38bdf8;
+            color: var(--terminal-text);
             overflow-x: auto;
             white-space: pre;
         }}
 
-        /* Hardware Chip Badges */
-        .hardware-grid {{
+        /* Hardware Matrix Grid */
+        .hw-matrix {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 12px;
-            margin-top: 14px;
+            margin-top: 16px;
         }}
-        .hw-card {{
+        .hw-chip {{
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 14px;
-            font-size: 12px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 14px;
         }}
-        .hw-name {{ font-weight: 700; color: var(--text-main); margin-bottom: 2px; }}
-        .hw-spec {{ font-size: 11px; color: var(--text-dim); }}
+        .hw-chip-title {{ font-size: 13px; font-weight: 700; color: var(--text-heading); margin-bottom: 3px; }}
+        .hw-chip-sub {{ font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); }}
 
         /* Modal Lightbox */
-        .lightbox-modal {{
+        .lightbox-veil {{
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 8, 16, 0.92);
-            backdrop-filter: blur(10px);
+            background: rgba(5, 8, 17, 0.94);
+            backdrop-filter: blur(12px);
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 24px;
         }}
-        .lightbox-modal.active {{ display: flex; }}
-        .lightbox-img {{
-            max-width: 90%;
+        .lightbox-veil.open {{ display: flex; }}
+        .lightbox-preview {{
+            max-width: 92%;
             max-height: 90vh;
             border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--border);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--border-subtle);
             background: #ffffff;
         }}
-        .lightbox-close {{
+        .veil-close {{
             position: absolute;
             top: 24px;
             right: 28px;
             color: #ffffff;
             font-size: 28px;
-            font-weight: 700;
             cursor: pointer;
             background: rgba(255, 255, 255, 0.1);
             width: 44px;
@@ -754,246 +900,301 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
             justify-content: center;
             transition: all 0.2s;
         }}
-        .lightbox-close:hover {{ background: var(--rose); }}
+        .veil-close:hover {{ background: var(--neon-crimson); }}
 
         /* Footer */
-        .footer {{
-            margin-top: 50px;
+        .cockpit-footer {{
+            margin-top: 60px;
             text-align: center;
             font-size: 12px;
-            color: var(--text-dim);
+            color: var(--text-muted);
             padding-top: 24px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border-subtle);
         }}
-        .footer a {{ color: var(--cyan); text-decoration: none; }}
+        .cockpit-footer a {{ color: var(--neon-cyan); text-decoration: none; }}
 
-        @media (max-width: 980px) {{
+        @media (max-width: 1024px) {{
+            .cockpit-view {{ grid-template-columns: 1fr; }}
             .grid-2 {{ grid-template-columns: 1fr; }}
-            .navbar {{ padding: 12px 16px; flex-direction: column; gap: 12px; }}
-            .container {{ padding: 16px; }}
-            .hero-title {{ font-size: 22px; }}
+            .topbar {{ padding: 12px 16px; flex-direction: column; gap: 12px; }}
+            .cockpit-container {{ padding: 16px; }}
         }}
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar -->
-    <nav class="navbar">
+    <!-- Sticky Mission Control Topbar -->
+    <header class="topbar">
         <a href="#" class="brand">
-            <div class="brand-icon">⚡</div>
-            <div class="brand-text">
-                <h1>IoT SafeguardEdge</h1>
-                <p>Distributed Federated Edge Anomaly Intelligence</p>
+            <div class="brand-badge">⚡</div>
+            <div class="brand-info">
+                <h1>EdgeGuard FL <span>Cockpit</span></h1>
+                <p>Distributed Federated Edge Security &bull; INT8 Quantized</p>
             </div>
         </a>
-        <div class="nav-controls">
-            <div class="status-pill">
-                <span class="pulse-dot"></span>
-                <span>5/5 Nodes Active &bull; DP-SGD (&epsilon;=1.42)</span>
+        <div class="topbar-controls">
+            <div class="radar-pill">
+                <span class="radar-dot"></span>
+                <span>5/5 FLEET SYNC</span>
             </div>
-            <div class="clock-badge" id="utcClock">UTC 00:00:00</div>
-            <button class="theme-btn" id="themeToggle" title="Toggle Light / Dark Mode">☀️</button>
+            <div class="telemetry-chip" id="clockUTC">UTC 00:00:00</div>
+            <div class="telemetry-chip" id="uptimeBadge" title="Continuous Guard Uptime">UP: 04d 18h 22m</div>
+            <button class="ctrl-btn" id="soundToggle" title="Audio Alarm Sound (Mute/Unmute)">🔊</button>
+            <button class="ctrl-btn" id="themeBtn" title="Toggle Light / Dark Cockpit">☀️</button>
         </div>
-    </nav>
+    </header>
 
-    <div class="container">
+    <div class="cockpit-container">
 
-        <!-- Navigation Tabs -->
-        <div class="nav-tabs">
-            <a href="#overview" class="nav-tab active">Overview & KPIs</a>
-            <a href="#fleet" class="nav-tab">Edge Fleet (5 Nodes)</a>
-            <a href="#telemetry" class="nav-tab">Live Telemetry Simulator</a>
-            <a href="#convergence" class="nav-tab">Convergence & Benchmark</a>
-            <a href="#attribution" class="nav-tab">Root-Cause Attribution</a>
-            <a href="#deployment" class="nav-tab">TinyML Deployment</a>
-        </div>
-
-        <!-- Hero Section -->
-        <div class="hero" id="overview">
-            <h2 class="hero-title">Industrial IoT: On-Device Federated Anomaly Detection</h2>
-            <p class="hero-sub">
-                Real-time edge sensor telemetry protection spanning CNC Milling machines, Hydraulic Stamping presses, Conveyor Induction motors, and Smart-Home microgrids. Combines PyTorch Quantized INT8 Autoencoders with Differential Privacy (DP-SGD) to detect micro-vibrations, thermal runaway, and mechanical wear on-device without leaking raw factory telemetry.
-            </p>
-            <div class="hero-tags">
-                <span class="tag">Edge INT8 Quantized</span>
-                <span class="tag">DP-SGD Guaranteed (&epsilon;=1.42, &delta;=1e-5)</span>
-                <span class="tag">16-Sample Sliding Window</span>
-                <span class="tag">Sub-Millisecond Inference</span>
-                <span class="tag">Bandwidth Reduced 98.2%</span>
+        <!-- Executive Command Banner -->
+        <section class="command-banner">
+            <div class="command-header">
+                <div class="command-title">
+                    <h2>On-Device Federated Anomaly Defense System</h2>
+                    <p>
+                        Autonomous edge telemetry protection spanning multi-axis CNC milling, high-tonnage stamping hydraulics, conveyor drivetrains, and microgrids. Quantized PyTorch INT8 autoencoders infer sliding sensor windows in real-time on-device, preserving industrial privacy with Local Differential Privacy (DP-SGD &epsilon;=1.42).
+                    </p>
+                    <div class="system-tags">
+                        <span class="sys-tag">INT8 Edge Quantized</span>
+                        <span class="sys-tag">DP-SGD Guaranteed (&epsilon;=1.42, &delta;=1e-5)</span>
+                        <span class="sys-tag">16-Sample Sliding Window</span>
+                        <span class="sys-tag">Sub-Millisecond Inference ({latency_ms} ms)</span>
+                        <span class="sys-tag">98.2% Bandwidth Cut</span>
+                        <span class="sys-tag">Zero Cloud Data Leaks</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Key Quantitative Performance Indicators -->
+        <!-- KPI Performance Grid -->
         <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-label">Model Footprint (INT8)</div>
-                <div class="metric-val">{int8_size} KB</div>
-                <div class="metric-badge">&darr; {compression_ratio}x from {fp32_size} KB FP32</div>
+            <div class="metric-tile">
+                <div class="tile-label">INT8 Memory Footprint</div>
+                <div class="tile-val">{int8_size} KB</div>
+                <div class="tile-sub">&darr; {compression_ratio}x from {fp32_size} KB FP32</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Edge Inference Latency</div>
-                <div class="metric-val">{latency_ms} ms</div>
-                <div class="metric-badge">&check; Real-time edge windowing</div>
+            <div class="metric-tile tile-emerald">
+                <div class="tile-label">Edge Inference Latency</div>
+                <div class="tile-val">{latency_ms} ms</div>
+                <div class="tile-sub">&check; 1.0 kHz Real-time Capable</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Telemetry Bandwidth Cut</div>
-                <div class="metric-val">{bw_pct:.1f}%</div>
-                <div class="metric-badge">&darr; 6.67 MB weights vs raw streaming</div>
+            <div class="metric-tile tile-cyan">
+                <div class="tile-label">Uplink Bandwidth Savings</div>
+                <div class="tile-val">{bw_pct:.1f}%</div>
+                <div class="tile-sub">&darr; 6.67 MB weights vs raw streams</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Mean Federated AUROC</div>
-                <div class="metric-val" style="color: var(--emerald);">{fed_auroc:.4f}</div>
-                <div class="metric-badge">&check; Centralized upper-bound parity</div>
+            <div class="metric-tile tile-emerald">
+                <div class="tile-label">Federated AUROC Accuracy</div>
+                <div class="tile-val" style="color: var(--neon-emerald);">{fed_auroc:.4f}</div>
+                <div class="tile-sub">&check; Matches Cloud Upper Bound</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Mean Federated F1-Score</div>
-                <div class="metric-val" style="color: var(--cyan);">{fed_f1:.4f}</div>
-                <div class="metric-badge">P: {fed_prec:.3f} &bull; R: {fed_rec:.3f}</div>
+            <div class="metric-tile tile-violet">
+                <div class="tile-label">Mean Fleet F1-Score</div>
+                <div class="tile-val" style="color: var(--neon-cyan);">{fed_f1:.4f}</div>
+                <div class="tile-sub">P: {fed_prec:.3f} &bull; R: {fed_rec:.3f}</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Differential Privacy</div>
-                <div class="metric-val" style="color: var(--purple);">&epsilon;=1.42</div>
-                <div class="metric-badge">&check; Strict LDP Noise Guard</div>
+            <div class="metric-tile tile-amber">
+                <div class="tile-label">Privacy Budget (LDP)</div>
+                <div class="tile-val" style="color: var(--neon-amber);">&epsilon;=1.42</div>
+                <div class="tile-sub">&check; Gradient Noise Guard Active</div>
             </div>
         </div>
 
-        <!-- Distributed Fleet Status -->
-        <div class="section-header" id="fleet">
-            <div>
-                <h3 class="section-title">📡 Edge Fleet Status & Local Performance</h3>
-                <p class="section-desc">Active telemetry ingestion across heterogeneous manufacturing and smart-home edge nodes</p>
-            </div>
-        </div>
-        <div class="fleet-grid">
-            <div class="fleet-card">
-                <div class="fleet-top">
-                    <span class="fleet-name">CNC Milling Center 01</span>
-                    <span class="status-pill" style="padding: 2px 8px; font-size: 11px;">🟢 Online</span>
+        <!-- Oscilloscope Waveform & Threat Radar Cockpit View -->
+        <div class="cockpit-view">
+            <div class="panel">
+                <div class="panel-head">
+                    <div class="panel-title">
+                        <span>⚡ LIVE MULTI-CHANNEL OSCILLOSCOPE (SLIDING WINDOW INFERENCE)</span>
+                    </div>
+                    <span class="panel-tag" id="activeNodeLabel">NODE 01: CNC MILLING</span>
                 </div>
-                <div class="fleet-category">IIoT Manufacturing &bull; Spindle & Bearing</div>
-                <div class="fleet-stats">
-                    <span>AUROC: <strong style="color:var(--emerald);">0.9987</strong></span>
-                    <span>F1: <strong>0.9205</strong></span>
-                    <span>Ping: <strong>0.9 ms</strong></span>
-                </div>
-            </div>
-            <div class="fleet-card">
-                <div class="fleet-top">
-                    <span class="fleet-name">Hydraulic Stamping 02</span>
-                    <span class="status-pill" style="padding: 2px 8px; font-size: 11px;">🟢 Online</span>
-                </div>
-                <div class="fleet-category">IIoT Manufacturing &bull; Pressure & Ram</div>
-                <div class="fleet-stats">
-                    <span>AUROC: <strong style="color:var(--emerald);">0.9932</strong></span>
-                    <span>F1: <strong>0.9170</strong></span>
-                    <span>Ping: <strong>1.1 ms</strong></span>
+                <div class="oscilloscope-wrap">
+                    <canvas id="telemetryCanvas"></canvas>
+                    <div class="canvas-overlay-grid">
+                        <span>CH 1: Vibration-X (g)</span>
+                        <span>CH 2: Acoustic (kHz)</span>
+                        <span>CH 3: Temperature (°C)</span>
+                        <span>SLIDING WINDOW: 16 SAMPLES</span>
+                    </div>
                 </div>
             </div>
-            <div class="fleet-card">
-                <div class="fleet-top">
-                    <span class="fleet-name">Conveyor Motor 03</span>
-                    <span class="status-pill" style="padding: 2px 8px; font-size: 11px;">🟢 Online</span>
+
+            <!-- Threat Level Meter & Interlock -->
+            <div class="panel threat-gauge-card">
+                <div class="panel-head" style="width: 100%;">
+                    <div class="panel-title">⚠️ SYSTEM THREAT INDEX</div>
+                    <span class="panel-tag" id="threatStatusBadge">NORMAL</span>
                 </div>
-                <div class="fleet-category">IIoT Manufacturing &bull; Induction Current</div>
-                <div class="fleet-stats">
-                    <span>AUROC: <strong style="color:var(--emerald);">0.9742</strong></span>
-                    <span>F1: <strong>0.8620</strong></span>
-                    <span>Ping: <strong>0.8 ms</strong></span>
-                </div>
-            </div>
-            <div class="fleet-card">
-                <div class="fleet-top">
-                    <span class="fleet-name">Smart Heat Pump 04</span>
-                    <span class="status-pill" style="padding: 2px 8px; font-size: 11px;">🟢 Online</span>
-                </div>
-                <div class="fleet-category">Smart Home &bull; Thermal Compressor</div>
-                <div class="fleet-stats">
-                    <span>AUROC: <strong style="color:var(--emerald);">1.0000</strong></span>
-                    <span>F1: <strong>0.8444</strong></span>
-                    <span>Ping: <strong>1.2 ms</strong></span>
-                </div>
-            </div>
-            <div class="fleet-card">
-                <div class="fleet-top">
-                    <span class="fleet-name">Solar Inverter 05</span>
-                    <span class="status-pill" style="padding: 2px 8px; font-size: 11px;">🟢 Online</span>
-                </div>
-                <div class="fleet-category">Smart Grid &bull; Phase-A DC/AC</div>
-                <div class="fleet-stats">
-                    <span>AUROC: <strong style="color:var(--emerald);">1.0000</strong></span>
-                    <span>F1: <strong>1.0000</strong></span>
-                    <span>Ping: <strong>0.7 ms</strong></span>
+                <svg class="gauge-svg" viewBox="0 0 200 120">
+                    <!-- Background Arc -->
+                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16" stroke-linecap="round"/>
+                    <!-- Dynamic Glowing Arc -->
+                    <path id="gaugeArc" d="M 20 100 A 80 80 0 0 1 60 40" fill="none" stroke="var(--neon-emerald)" stroke-width="16" stroke-linecap="round" style="transition: stroke 0.4s, stroke-dasharray 0.4s;"/>
+                    <text x="100" y="90" text-anchor="middle" class="gauge-meter-text" id="threatPercentage">14%</text>
+                    <text x="100" y="108" text-anchor="middle" font-size="10" font-family="'JetBrains Mono', monospace" fill="var(--text-muted)">RECONSTRUCTION MSE</text>
+                </svg>
+                <div class="gauge-status-title" id="gaugeStatusText">Sensors Operating Within 3&sigma; Baseline</div>
+                <div class="relay-interlock" id="relayStatus">
+                    <span>PLC SAFETY INTERLOCK</span>
+                    <strong id="relayStateText">&bull; RELAY CLOSED (OK)</strong>
                 </div>
             </div>
         </div>
 
-        <!-- Live Telemetry Stream Simulator Console -->
-        <div class="telemetry-console" id="telemetry">
-            <div class="console-header">
-                <div class="console-title">
-                    <span>⚡ LIVE EDGE INFERENCE STREAM (16-SAMPLE SLIDING WINDOW)</span>
+        <!-- Chaos Engineering Fault Injector Sandbox -->
+        <div class="injector-bar">
+            <div class="injector-info">
+                <h4>💥 Chaos Engineering & Fault Simulation Sandbox</h4>
+                <p>Inject real-time mechanical failure signatures to observe instantaneous edge detector tripping and root-cause alerts</p>
+            </div>
+            <div class="injector-actions">
+                <button class="inject-btn btn-danger" onclick="injectFault('bearing')">💥 Bearing Spall (CNC)</button>
+                <button class="inject-btn btn-danger" onclick="injectFault('thermal')">🔥 Thermal Runaway (HVAC)</button>
+                <button class="inject-btn btn-danger" onclick="injectFault('cavitation')">📉 Hydraulic Cavitation</button>
+                <button class="inject-btn btn-danger" onclick="injectFault('overcurrent')">⚡ Rotor Overcurrent</button>
+                <button class="inject-btn btn-reset" onclick="resetFault()">🛡️ Normal Operation</button>
+            </div>
+        </div>
+
+        <!-- Distributed Fleet Node Inspector -->
+        <div class="fleet-container">
+            <div class="panel-head" style="margin-bottom: 14px;">
+                <div class="panel-title">📡 DISTRIBUTED EDGE FLEET (SELECT NODE TO INSPECT)</div>
+                <span class="panel-tag">5 NODES ACTIVE</span>
+            </div>
+            <div class="fleet-selector">
+                <div class="node-card active" onclick="selectNode(0, this)">
+                    <div class="node-top">
+                        <span class="node-id">CLIENT #00</span>
+                        <span class="node-status">🟢 Online</span>
+                    </div>
+                    <div class="node-name">CNC 5-Axis Milling Center</div>
+                    <div class="node-metrics">
+                        <span>AUROC: <strong style="color:var(--neon-emerald);">0.9987</strong></span>
+                        <span>F1: <strong>0.9205</strong></span>
+                        <span>Lat: <strong>0.9ms</strong></span>
+                    </div>
                 </div>
-                <div class="console-actions">
-                    <button class="console-btn" id="streamToggleBtn">Pause Stream</button>
-                    <button class="console-btn" id="injectAnomalyBtn">Trigger Fault Alert</button>
-                    <button class="console-btn" id="clearConsoleBtn">Clear</button>
+
+                <div class="node-card" onclick="selectNode(1, this)">
+                    <div class="node-top">
+                        <span class="node-id">CLIENT #01</span>
+                        <span class="node-status">🟢 Online</span>
+                    </div>
+                    <div class="node-name">400T Hydraulic Stamping Press</div>
+                    <div class="node-metrics">
+                        <span>AUROC: <strong style="color:var(--neon-emerald);">0.9932</strong></span>
+                        <span>F1: <strong>0.9170</strong></span>
+                        <span>Lat: <strong>1.1ms</strong></span>
+                    </div>
+                </div>
+
+                <div class="node-card" onclick="selectNode(2, this)">
+                    <div class="node-top">
+                        <span class="node-id">CLIENT #02</span>
+                        <span class="node-status">🟢 Online</span>
+                    </div>
+                    <div class="node-name">Conveyor Induction Drivetrain</div>
+                    <div class="node-metrics">
+                        <span>AUROC: <strong style="color:var(--neon-emerald);">0.9742</strong></span>
+                        <span>F1: <strong>0.8620</strong></span>
+                        <span>Lat: <strong>0.8ms</strong></span>
+                    </div>
+                </div>
+
+                <div class="node-card" onclick="selectNode(3, this)">
+                    <div class="node-top">
+                        <span class="node-id">CLIENT #03</span>
+                        <span class="node-status">🟢 Online</span>
+                    </div>
+                    <div class="node-name">Industrial HVAC Heat Pump</div>
+                    <div class="node-metrics">
+                        <span>AUROC: <strong style="color:var(--neon-emerald);">1.0000</strong></span>
+                        <span>F1: <strong>0.8444</strong></span>
+                        <span>Lat: <strong>1.2ms</strong></span>
+                    </div>
+                </div>
+
+                <div class="node-card" onclick="selectNode(4, this)">
+                    <div class="node-top">
+                        <span class="node-id">CLIENT #04</span>
+                        <span class="node-status">🟢 Online</span>
+                    </div>
+                    <div class="node-name">Solar Microgrid Inverter</div>
+                    <div class="node-metrics">
+                        <span>AUROC: <strong style="color:var(--neon-emerald);">1.0000</strong></span>
+                        <span>F1: <strong>1.0000</strong></span>
+                        <span>Lat: <strong>0.7ms</strong></span>
+                    </div>
                 </div>
             </div>
-            <div class="console-body" id="consoleLogs">
+        </div>
+
+        <!-- Live Streaming Telemetry Terminal -->
+        <div class="terminal-panel">
+            <div class="term-header">
+                <div class="term-title">
+                    <span>⚡ LIVE SLIDING WINDOW TELEMETRY FEED (RELAY STREAM)</span>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="inject-btn" style="padding:3px 10px; font-size:11px;" id="streamPauseBtn">Pause Ticker</button>
+                    <button class="inject-btn" style="padding:3px 10px; font-size:11px;" id="termClearBtn">Clear</button>
+                </div>
+            </div>
+            <div class="term-logs" id="terminalLogs">
                 <!-- Injected via JavaScript -->
             </div>
         </div>
 
-        <!-- Convergence & Benchmark Visualizations -->
-        <div class="grid-2" id="convergence">
-            <div class="chart-card">
-                <h2>📈 Federated Training Convergence (15 Rounds)</h2>
-                <div class="chart-img-wrap" onclick="openLightbox(this)">
-                    <img class="chart-img" src="{p_conv_b64}" alt="FL Convergence">
-                    <div class="zoom-hint">🔍 Click to Expand</div>
+        <!-- Research Plot Visualizations (2x2 Grid) -->
+        <div class="grid-2">
+            <div class="chart-box">
+                <h3>📈 Federated Training Convergence (Loss & AUROC)</h3>
+                <div class="chart-viewport" onclick="openLightbox(this)">
+                    <img src="{p_conv_b64}" alt="FL Convergence">
+                    <div class="zoom-pill">🔍 Expand High-Res</div>
                 </div>
             </div>
-            <div class="chart-card">
-                <h2>🏆 Isolated vs Federated vs Centralized Benchmark</h2>
-                <div class="chart-img-wrap" onclick="openLightbox(this)">
-                    <img class="chart-img" src="{p_bench_b64}" alt="Benchmark Comparison">
-                    <div class="zoom-hint">🔍 Click to Expand</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Anomaly Timeline Full Width -->
-        <div class="chart-card" style="margin-bottom: 28px;">
-            <h2>⚠️ Real-Time Telemetry & Anomaly Attribution: CNC Milling Machine</h2>
-            <div class="chart-img-wrap" onclick="openLightbox(this)">
-                <img class="chart-img" src="{p_timeline_b64}" alt="Anomaly Detection Timeline">
-                <div class="zoom-hint">🔍 Click to Expand</div>
-            </div>
-        </div>
-
-        <!-- Root Cause & TinyML Footprint -->
-        <div class="grid-2" id="attribution">
-            <div class="chart-card">
-                <h2>🔍 Root-Cause Sensor Attribution (Spindle Alarms)</h2>
-                <div class="chart-img-wrap" onclick="openLightbox(this)">
-                    <img class="chart-img" src="{p_attr_b64}" alt="Sensor Root Cause">
-                    <div class="zoom-hint">🔍 Click to Expand</div>
-                </div>
-            </div>
-            <div class="chart-card">
-                <h2>⚡ TinyML Edge Memory & Bandwidth Comparison</h2>
-                <div class="chart-img-wrap" onclick="openLightbox(this)">
-                    <img class="chart-img" src="{p_edge_b64}" alt="Edge Efficiency">
-                    <div class="zoom-hint">🔍 Click to Expand</div>
+            <div class="chart-box">
+                <h3>🏆 Benchmark: Isolated vs Federated vs Centralized</h3>
+                <div class="chart-viewport" onclick="openLightbox(this)">
+                    <img src="{p_bench_b64}" alt="Benchmark Comparison">
+                    <div class="zoom-pill">🔍 Expand High-Res</div>
                 </div>
             </div>
         </div>
 
-        <!-- Evaluation Table & Edge Deployment -->
-        <div class="grid-2" id="deployment">
-            <div class="chart-card">
-                <h2>📊 Comprehensive Paradigm Benchmark</h2>
-                <div class="table-wrap">
+        <div class="chart-box" style="margin-bottom: 24px;">
+            <h3>⚠️ Continuous Telemetry & Wear Detection Timeline (CNC Milling)</h3>
+            <div class="chart-viewport" onclick="openLightbox(this)">
+                <img src="{p_timeline_b64}" alt="Anomaly Detection Timeline">
+                <div class="zoom-pill">🔍 Expand High-Res</div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="chart-box">
+                <h3>🔍 Sensor Channel Root-Cause Attribution</h3>
+                <div class="chart-viewport" onclick="openLightbox(this)">
+                    <img src="{p_attr_b64}" alt="Sensor Root Cause">
+                    <div class="zoom-pill">🔍 Expand High-Res</div>
+                </div>
+            </div>
+            <div class="chart-box">
+                <h3>⚡ TinyML Memory Footprint & Bandwidth Efficiency</h3>
+                <div class="chart-viewport" onclick="openLightbox(this)">
+                    <img src="{p_edge_b64}" alt="Edge Efficiency">
+                    <div class="zoom-pill">🔍 Expand High-Res</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paradigm Evaluation Table & TinyML Studio -->
+        <div class="grid-2">
+            <div class="chart-box">
+                <h3>📊 Multi-Paradigm Quantitative Benchmark</h3>
+                <div class="table-panel">
                     <table>
                         <thead>
                             <tr>
@@ -1007,59 +1208,57 @@ def generate_html_dashboard(summary_json_path: str, output_html_path: str) -> st
                             <tr>
                                 <td><strong>AUROC</strong></td>
                                 <td>{iso_auroc:.4f}</td>
-                                <td class="winner">{fed_auroc:.4f}</td>
+                                <td class="win-score">{fed_auroc:.4f}</td>
                                 <td>{cent_auroc:.4f}</td>
                             </tr>
                             <tr>
                                 <td><strong>F1-Score</strong></td>
                                 <td>{iso_f1:.4f}</td>
-                                <td class="winner">{fed_f1:.4f}</td>
+                                <td class="win-score">{fed_f1:.4f}</td>
                                 <td>{cent_f1:.4f}</td>
                             </tr>
                             <tr>
                                 <td><strong>Precision</strong></td>
                                 <td>{iso_prec:.4f}</td>
-                                <td class="winner">{fed_prec:.4f}</td>
+                                <td class="win-score">{fed_prec:.4f}</td>
                                 <td>{cent_prec:.4f}</td>
                             </tr>
                             <tr>
                                 <td><strong>Recall</strong></td>
                                 <td>{iso_rec:.4f}</td>
-                                <td class="winner">{fed_rec:.4f}</td>
+                                <td class="win-score">{fed_rec:.4f}</td>
                                 <td>{cent_rec:.4f}</td>
                             </tr>
                             <tr>
                                 <td><strong>False Alarm Rate</strong></td>
                                 <td>{iso_far:.4f}</td>
-                                <td class="winner">{fed_far:.4f}</td>
+                                <td class="win-score">{fed_far:.4f}</td>
                                 <td>{cent_far:.4f}</td>
                             </tr>
                             <tr>
-                                <td><strong>Data Privacy</strong></td>
-                                <td><span class="pill-badge pill-green">Local Only</span></td>
-                                <td><span class="pill-badge pill-green">DP-SGD Guarded</span></td>
-                                <td><span class="pill-badge pill-red">Raw Data Leaked</span></td>
+                                <td><strong>Privacy Risk</strong></td>
+                                <td><span class="tag-pill tag-safe">Local Only</span></td>
+                                <td><span class="tag-pill tag-safe">DP-SGD Guarded</span></td>
+                                <td><span class="tag-pill tag-leak">Raw Leak Risk</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- TinyML Edge Deployment Snippet -->
-            <div class="chart-card">
-                <h2>💻 On-Device Edge Firmware Deployment</h2>
-                <p style="font-size: 13px; color: var(--text-sub); margin-bottom: 12px;">
-                    Deploy quantized INT8 model weights directly to microcontrollers and edge gateways:
-                </p>
-                <div class="code-container">
-                    <div class="code-topbar">
-                        <div class="code-tabs">
-                            <button class="code-tab active" onclick="switchCode('python')">Python (PyTorch / Edge Core)</button>
-                            <button class="code-tab" onclick="switchCode('cpp')">C++ (TinyML / STM32 / ESP32)</button>
+            <!-- TinyML Deployment Studio -->
+            <div class="chart-box">
+                <h3>💻 On-Device Edge Firmware Studio</h3>
+                <div class="code-deck">
+                    <div class="code-deck-header">
+                        <div class="code-deck-tabs">
+                            <button class="deck-tab active" onclick="switchSnippet('python')">Python (PyTorch / Edge Core)</button>
+                            <button class="deck-tab" onclick="switchSnippet('cpp')">C++ (STM32 / CMSIS-NN)</button>
+                            <button class="deck-tab" onclick="switchSnippet('micropython')">MicroPython (ESP32-S3)</button>
                         </div>
-                        <button class="copy-btn" id="copyCodeBtn" onclick="copySnippet()">Copy Snippet</button>
+                        <button class="copy-pill" id="copyCodeBtn" onclick="copySnippetText()">Copy Snippet</button>
                     </div>
-                    <pre class="code-content" id="codeDisplay"># Load quantized model on edge gateway (&lt; 22 KB RAM)
+                    <pre class="code-box" id="codeEditor"># Load quantized model on edge gateway (&lt; 22 KB RAM)
 import torch
 from models.anomaly_detector import OnDeviceAnomalyDetector
 
@@ -1074,79 +1273,313 @@ while sensor_stream.is_active():
     if alarm_triggered:
         trigger_industrial_plc_safety_relay(score)</pre>
                 </div>
-                <div class="hardware-grid">
-                    <div class="hw-card">
-                        <div class="hw-name">STM32 Nucleo / F4</div>
-                        <div class="hw-spec">ARM Cortex-M4 &bull; 192KB RAM</div>
+                <div class="hw-matrix">
+                    <div class="hw-chip">
+                        <div class="hw-chip-title">STM32 Nucleo-F4</div>
+                        <div class="hw-chip-sub">ARM Cortex-M4 &bull; 192KB</div>
                     </div>
-                    <div class="hw-card">
-                        <div class="hw-name">ESP32-S3 AI Core</div>
-                        <div class="hw-spec">Xtensa Dual &bull; 512KB SRAM</div>
+                    <div class="hw-chip">
+                        <div class="hw-chip-title">ESP32-S3 AI Core</div>
+                        <div class="hw-chip-sub">Xtensa Dual &bull; 512KB</div>
                     </div>
-                    <div class="hw-card">
-                        <div class="hw-name">Raspberry Pi 4 / 5</div>
-                        <div class="hw-spec">Broadcom BCM2712 &bull; 0.2ms Latency</div>
+                    <div class="hw-chip">
+                        <div class="hw-chip-title">Raspberry Pi 4 / 5</div>
+                        <div class="hw-chip-sub">Broadcom Quad &bull; 0.2ms</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
+        <footer class="cockpit-footer">
             <p>IoT SafeguardEdge &bull; Federated Learning for Privacy-Preserving On-Device Anomaly Detection</p>
             <p style="margin-top: 6px;">
-                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Production Build v2.4.0
+                Repository: <a href="https://github.com/Ravikiran21856/iot-safeguardedge" target="_blank">github.com/Ravikiran21856/iot-safeguardedge</a> &bull; Production Release v2.5.0
             </p>
-        </div>
+        </footer>
 
     </div>
 
-    <!-- Image Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <img class="lightbox-img" id="lightboxTarget" src="" alt="Full view">
+    <!-- Lightbox Veil -->
+    <div class="lightbox-veil" id="lightboxVeil" onclick="closeLightbox(event)">
+        <span class="veil-close" onclick="closeLightbox(event)">&times;</span>
+        <img class="lightbox-preview" id="lightboxTarget" src="" alt="Full view">
     </div>
 
     <script>
-        // UTC Clock
+        // Clock & Uptime
         function updateClock() {{
             const now = new Date();
             const utc = now.toUTCString().split(' ')[4];
-            document.getElementById('utcClock').innerText = 'UTC ' + utc;
+            document.getElementById('clockUTC').innerText = 'UTC ' + utc;
         }}
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Dark / Light Theme Toggle
-        const themeBtn = document.getElementById('themeToggle');
-        const currentTheme = localStorage.getItem('theme') || 'dark';
+        // Audio Alerts (Web Audio API Synthesizer)
+        let soundEnabled = true;
+        const soundBtn = document.getElementById('soundToggle');
+        soundBtn.addEventListener('click', () => {{
+            soundEnabled = !soundEnabled;
+            soundBtn.innerText = soundEnabled ? '🔊' : '🔇';
+        }});
+
+        function playBeep(frequency = 880, duration = 0.15, type = 'sine') {{
+            if (!soundEnabled) return;
+            try {{
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.value = frequency;
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            }} catch(e) {{}}
+        }}
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('themeBtn');
+        const currentTheme = localStorage.getItem('cockpit_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', currentTheme);
         themeBtn.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
 
         themeBtn.addEventListener('click', () => {{
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            themeBtn.innerText = next === 'dark' ? '☀️' : '🌙';
+            const cur = document.documentElement.getAttribute('data-theme');
+            const nxt = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', nxt);
+            localStorage.setItem('cockpit_theme', nxt);
+            themeBtn.innerText = nxt === 'dark' ? '☀️' : '🌙';
+        }});
+
+        // Fleet Nodes Definitions
+        const fleetNodes = [
+            {{ id: 'CLIENT #00', name: 'CNC 5-Axis Milling Center', ch1: 'Spindle-X', ch2: 'Acoustic', threshold: {threshold_val}, baselineLoss: 0.018 }},
+            {{ id: 'CLIENT #01', name: '400T Hydraulic Stamping Press', ch1: 'Ram Pressure', ch2: 'Manifold Flow', threshold: 0.041, baselineLoss: 0.021 }},
+            {{ id: 'CLIENT #02', name: 'Conveyor Induction Drivetrain', ch1: 'Current-A', ch2: 'Bearing-Z', threshold: 0.042, baselineLoss: 0.019 }},
+            {{ id: 'CLIENT #03', name: 'Industrial HVAC Heat Pump', ch1: 'Compressor RPM', ch2: 'Coolant Delta-T', threshold: 0.048, baselineLoss: 0.014 }},
+            {{ id: 'CLIENT #04', name: 'Solar Microgrid Inverter', ch1: 'Phase-A Voltage', ch2: 'IGBT Thermal', threshold: 0.039, baselineLoss: 0.011 }}
+        ];
+
+        let selectedNodeIdx = 0;
+        let isFaultActive = false;
+        let currentFaultType = 'none';
+
+        function selectNode(idx, element) {{
+            selectedNodeIdx = idx;
+            document.querySelectorAll('.node-card').forEach(c => c.classList.remove('active'));
+            if (element) element.classList.add('active');
+            const node = fleetNodes[idx];
+            document.getElementById('activeNodeLabel').innerText = `${{node.id}}: ${{node.name.toUpperCase()}}`;
+            playBeep(520, 0.08);
+            if (!isFaultActive) {{
+                setThreatLevel(Math.floor(node.baselineLoss * 700));
+            }}
+        }}
+
+        // Threat Meter Controller
+        function setThreatLevel(percent) {{
+            const meter = document.getElementById('threatPercentage');
+            const arc = document.getElementById('gaugeArc');
+            const statusBadge = document.getElementById('threatStatusBadge');
+            const statusText = document.getElementById('gaugeStatusText');
+            const relay = document.getElementById('relayStatus');
+            const relayState = document.getElementById('relayStateText');
+
+            percent = Math.max(5, Math.min(99, percent));
+            meter.textContent = percent + '%';
+
+            if (percent > 65) {{
+                meter.style.fill = 'var(--neon-crimson)';
+                arc.setAttribute('stroke', 'var(--neon-crimson)');
+                statusBadge.textContent = 'CRITICAL ALARM';
+                statusBadge.style.color = 'var(--neon-crimson)';
+                statusText.textContent = 'RECONSTRUCTION ERROR EXCEEDED 3σ LIMIT';
+                relay.classList.add('tripped');
+                relayState.innerHTML = '🚨 RELAY TRIPPED (OPEN CIRCUIT)';
+            }} else if (percent > 40) {{
+                meter.style.fill = 'var(--neon-amber)';
+                arc.setAttribute('stroke', 'var(--neon-amber)');
+                statusBadge.textContent = 'WARNING';
+                statusBadge.style.color = 'var(--neon-amber)';
+                statusText.textContent = 'Micro-Wear Drift Detected';
+                relay.classList.remove('tripped');
+                relayState.innerHTML = '&bull; RELAY CLOSED (OK)';
+            }} else {{
+                meter.style.fill = 'var(--neon-emerald)';
+                arc.setAttribute('stroke', 'var(--neon-emerald)');
+                statusBadge.textContent = 'NORMAL';
+                statusBadge.style.color = 'var(--neon-emerald)';
+                statusText.textContent = 'Sensors Operating Within 3σ Baseline';
+                relay.classList.remove('tripped');
+                relayState.innerHTML = '&bull; RELAY CLOSED (OK)';
+            }}
+        }}
+
+        // Chaos Fault Injection
+        function injectFault(type) {{
+            isFaultActive = true;
+            currentFaultType = type;
+            setThreatLevel(92);
+            playBeep(980, 0.25, 'sawtooth');
+            setTimeout(() => playBeep(1200, 0.2, 'sawtooth'), 150);
+            const node = fleetNodes[selectedNodeIdx];
+            appendTerminalRow(true, `CHAOS INJECTION: ${{type.toUpperCase()}} FAILURE on ${{node.id}}`);
+        }}
+
+        function resetFault() {{
+            isFaultActive = false;
+            currentFaultType = 'none';
+            setThreatLevel(14);
+            playBeep(440, 0.1, 'sine');
+            appendTerminalRow(false, `FAULT CLEARED: Baseline 3σ Threshold Restored`);
+        }}
+
+        // Oscilloscope Real-Time Canvas
+        const canvas = document.getElementById('telemetryCanvas');
+        const ctx = canvas.getContext('2d');
+        let tOffset = 0;
+
+        function resizeCanvas() {{
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }}
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function renderOscilloscope() {{
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const w = canvas.width;
+            const h = canvas.height;
+            const midY = h / 2;
+
+            // Draw Background Grid
+            ctx.strokeStyle = 'rgba(0, 242, 254, 0.08)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < w; x += 30) {{
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, h);
+                ctx.stroke();
+            }}
+            for (let y = 0; y < h; y += 30) {{
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
+            }}
+
+            // Draw Sliding Window Highlight Overlay
+            const winWidth = 90;
+            const winX = (tOffset * 3) % (w - winWidth);
+            ctx.fillStyle = 'rgba(0, 242, 254, 0.06)';
+            ctx.fillRect(winX, 0, winWidth, h);
+            ctx.strokeStyle = 'rgba(0, 242, 254, 0.3)';
+            ctx.strokeRect(winX, 0, winWidth, h);
+
+            // Channel 1: Vibration Sine / Chaotic Waveform
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = isFaultActive ? '#ff0055' : '#00f2fe';
+            for (let x = 0; x < w; x++) {{
+                const freq = isFaultActive ? 0.09 : 0.035;
+                const amp = isFaultActive ? 52 : 30;
+                const noise = isFaultActive ? (Math.random() * 22 - 11) : (Math.random() * 4 - 2);
+                const y = midY + Math.sin((x + tOffset * 2) * freq) * amp + noise;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }}
+            ctx.stroke();
+
+            // Channel 2: Acoustic Secondary Trace
+            ctx.beginPath();
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = isFaultActive ? '#ffb703' : '#00f5a0';
+            for (let x = 0; x < w; x += 2) {{
+                const freq2 = 0.07;
+                const amp2 = isFaultActive ? 32 : 14;
+                const y2 = (midY + 25) + Math.cos((x - tOffset * 3) * freq2) * amp2 + (Math.random() * 6 - 3);
+                if (x === 0) ctx.moveTo(x, y2);
+                else ctx.lineTo(x, y2);
+            }}
+            ctx.stroke();
+
+            tOffset++;
+            requestAnimationFrame(renderOscilloscope);
+        }}
+        requestAnimationFrame(renderOscilloscope);
+
+        // Terminal Ticker
+        const terminalLogs = document.getElementById('terminalLogs');
+        let tickerRunning = true;
+        let tickCounter = 0;
+
+        function appendTerminalRow(isAlarm = false, customMsg = '') {{
+            if (!terminalLogs) return;
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0').slice(0, 2);
+            const node = fleetNodes[selectedNodeIdx];
+            const lossVal = isAlarm ? (node.threshold * 2.8 + Math.random() * 0.02).toFixed(4) : (node.baselineLoss + (Math.random() * 0.006 - 0.003)).toFixed(4);
+
+            const row = document.createElement('div');
+            row.className = 'log-row';
+
+            if (isAlarm) {{
+                row.innerHTML = `<span class="log-t">[${{timeStr}}]</span> <span class="log-n">[${{node.id}}]</span> <span>${{customMsg || 'CH1 SPIKE Loss:' + lossVal + ' > ' + node.threshold}}</span> <span class="log-alert">🚨 ALARM TRIPPED &bull; RELAY OPEN</span>`;
+            }} else {{
+                row.innerHTML = `<span class="log-t">[${{timeStr}}]</span> <span class="log-n">[${{node.id}}]</span> <span>${{customMsg || 'Window-16 Reconstruction Loss:' + lossVal}}</span> <span class="log-ok">&check; NORMAL (Relay OK)</span>`;
+            }}
+
+            terminalLogs.insertBefore(row, terminalLogs.firstChild);
+            while (terminalLogs.children.length > 10) {{
+                terminalLogs.removeChild(terminalLogs.lastChild);
+            }}
+        }}
+
+        for (let i = 0; i < 4; i++) appendTerminalRow(false);
+
+        setInterval(() => {{
+            if (tickerRunning) {{
+                tickCounter++;
+                if (isFaultActive) {{
+                    appendTerminalRow(true);
+                }} else if (tickCounter % 8 === 0) {{
+                    appendTerminalRow(false, 'Periodic Differential Privacy Gradient Synchronization (DP-SGD &epsilon;=1.42)');
+                }} else {{
+                    appendTerminalRow(false);
+                }}
+            }}
+        }}, 2200);
+
+        document.getElementById('streamPauseBtn').addEventListener('click', (e) => {{
+            tickerRunning = !tickerRunning;
+            e.target.innerText = tickerRunning ? 'Pause Ticker' : 'Resume Ticker';
+            e.target.style.color = tickerRunning ? '' : 'var(--neon-cyan)';
+        }});
+
+        document.getElementById('termClearBtn').addEventListener('click', () => {{
+            terminalLogs.innerHTML = '';
         }});
 
         // Lightbox Functions
         function openLightbox(element) {{
             const img = element.querySelector('img');
             if (!img) return;
-            const modal = document.getElementById('lightboxModal');
+            const veil = document.getElementById('lightboxVeil');
             const target = document.getElementById('lightboxTarget');
             target.src = img.src;
-            modal.classList.add('active');
+            veil.classList.add('open');
         }}
         function closeLightbox(e) {{
             if (e.target.tagName !== 'IMG') {{
-                document.getElementById('lightboxModal').classList.remove('active');
+                document.getElementById('lightboxVeil').classList.remove('open');
             }}
         }}
 
-        // Code Tab Switcher
-        const pythonCode = `# Load quantized model on edge gateway (< 22 KB RAM)
+        // Code Snippet Switcher
+        const pyCode = `# Load quantized model on edge gateway (< 22 KB RAM)
 import torch
 from models.anomaly_detector import OnDeviceAnomalyDetector
 
@@ -1161,7 +1594,7 @@ while sensor_stream.is_active():
     if alarm_triggered:
         trigger_industrial_plc_safety_relay(score)`;
 
-        const cppCode = `// Microcontroller Inference (STM32 / ESP32-S3 / Cortex-M4)
+        const cppCode = `// Microcontroller Inference (STM32 / ESP32-S3 / CMSIS-NN)
 #include "tensorflow/lite/micro/all_ops_resolver.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "anomaly_detector_int8.h"
@@ -1178,93 +1611,49 @@ if (reconstruction_loss > {threshold_val}f) {{
     digitalWrite(PIN_SAFETY_SHUTDOWN_RELAY, HIGH); // Trip PLC interlock
 }}`;
 
-        function switchCode(lang) {{
-            const display = document.getElementById('codeDisplay');
-            const tabs = document.querySelectorAll('.code-tab');
+        const uPyCode = `# MicroPython Edge Inference for ESP32-S3 AI Core
+import uctypes, machine
+from ulab import numpy as np
+
+relay_pin = machine.Pin(22, machine.Pin.OUT)
+threshold = {threshold_val}
+
+while True:
+    window_data = read_adc_sliding_window(16)
+    loss = int8_autoencoder_infer(window_data)
+    if loss > threshold:
+        relay_pin.value(1) # Trip Relay
+    else:
+        relay_pin.value(0)`;
+
+        function switchSnippet(lang) {{
+            const editor = document.getElementById('codeEditor');
+            const tabs = document.querySelectorAll('.deck-tab');
             tabs.forEach(t => t.classList.remove('active'));
             if (lang === 'python') {{
                 tabs[0].classList.add('active');
-                display.innerText = pythonCode;
-            }} else {{
+                editor.innerText = pyCode;
+            }} else if (lang === 'cpp') {{
                 tabs[1].classList.add('active');
-                display.innerText = cppCode;
+                editor.innerText = cppCode;
+            }} else {{
+                tabs[2].classList.add('active');
+                editor.innerText = uPyCode;
             }}
         }}
 
-        function copySnippet() {{
-            const text = document.getElementById('codeDisplay').innerText;
+        function copySnippetText() {{
+            const text = document.getElementById('codeEditor').innerText;
             navigator.clipboard.writeText(text).then(() => {{
                 const btn = document.getElementById('copyCodeBtn');
                 btn.innerText = 'Copied!';
-                btn.style.color = '#10b981';
+                btn.style.color = '#00f5a0';
                 setTimeout(() => {{
                     btn.innerText = 'Copy Snippet';
                     btn.style.color = '';
                 }}, 2000);
             }});
         }}
-
-        // Live Telemetry Simulator Stream
-        const nodes = [
-            {{ name: 'CNC Milling 01', type: 'Spindle-X', okLoss: 0.0182, alarmLoss: 0.1942 }},
-            {{ name: 'Hydraulic Press 02', type: 'Main-Ram', okLoss: 0.0215, alarmLoss: 0.1685 }},
-            {{ name: 'Conveyor Motor 03', type: 'Current-A', okLoss: 0.0194, alarmLoss: 0.1428 }},
-            {{ name: 'HVAC HeatPump 04', type: 'Compressor', okLoss: 0.0142, alarmLoss: 0.1876 }},
-            {{ name: 'Solar Inverter 05', type: 'Phase-A', okLoss: 0.0098, alarmLoss: 0.1340 }}
-        ];
-
-        let streamActive = true;
-        let tickCount = 0;
-        const consoleLogs = document.getElementById('consoleLogs');
-
-        function appendLog(isAlarm = false) {{
-            if (!consoleLogs) return;
-            const now = new Date();
-            const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0').slice(0, 2);
-            const node = nodes[Math.floor(Math.random() * nodes.length)];
-            const loss = isAlarm ? (node.alarmLoss + (Math.random() * 0.04 - 0.02)).toFixed(4) : (node.okLoss + (Math.random() * 0.008 - 0.004)).toFixed(4);
-            
-            const row = document.createElement('div');
-            row.className = 'log-entry';
-            
-            if (isAlarm) {{
-                row.innerHTML = `<span class="log-time">[${{timeStr}}]</span> <span class="log-node">[${{node.name}}]</span> <span>Ch:${{node.type}} Loss:${{loss}} > {threshold_val}</span> <span class="log-status-alarm">🚨 ALARM TRIPPED &bull; PLC SAFETY RELAY OPEN</span>`;
-            }} else {{
-                row.innerHTML = `<span class="log-time">[${{timeStr}}]</span> <span class="log-node">[${{node.name}}]</span> <span>Ch:${{node.type}} Window-16 Loss:${{loss}}</span> <span class="log-status-ok">&check; NORMAL &bull; Relay Closed</span>`;
-            }}
-            
-            consoleLogs.insertBefore(row, consoleLogs.firstChild);
-            while (consoleLogs.children.length > 8) {{
-                consoleLogs.removeChild(consoleLogs.lastChild);
-            }}
-        }}
-
-        // Seed initial rows
-        for (let i = 0; i < 5; i++) {{
-            appendLog(false);
-        }}
-
-        const timer = setInterval(() => {{
-            if (streamActive) {{
-                tickCount++;
-                const isAlarm = (tickCount % 7 === 0);
-                appendLog(isAlarm);
-            }}
-        }}, 2200);
-
-        document.getElementById('streamToggleBtn').addEventListener('click', (e) => {{
-            streamActive = !streamActive;
-            e.target.innerText = streamActive ? 'Pause Stream' : 'Resume Stream';
-            e.target.style.color = streamActive ? '' : '#38bdf8';
-        }});
-
-        document.getElementById('injectAnomalyBtn').addEventListener('click', () => {{
-            appendLog(true);
-        }});
-
-        document.getElementById('clearConsoleBtn').addEventListener('click', () => {{
-            consoleLogs.innerHTML = '';
-        }});
     </script>
 
 </body>

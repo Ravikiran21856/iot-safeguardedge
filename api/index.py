@@ -50,3 +50,4 @@ class handler(BaseHTTPRequestHandler):
 # Top-level exports for WSGI/ASGI/Serverless runtimes
 app = handler
 application = handler
+
