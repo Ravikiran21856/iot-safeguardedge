@@ -4,7 +4,7 @@ echo   DEPLOYING IOT ON-DEVICE FEDERATED ANOMALY DETECTION ENGINE (WINDOWS)
 echo =========================================================================
 
 echo [1/3] Verifying Python Environment and Dependencies...
-py -m pip install -r requirements.txt --quiet
+py -m pip install -r backend/requirements.txt --quiet
 
 echo [2/3] Exporting Embedded Microcontroller and TinyML Edge Models...
 py deploy/export_edge_models.py

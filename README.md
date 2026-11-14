@@ -84,7 +84,8 @@ flowchart TD
 │   └── visualizer.py                # Publication-quality plot generation (Matplotlib)
 ├── backend/
 │   ├── server.py                    # Multi-client streaming web server and real-time REST API
-│   └── dashboard.py                 # Standalone interactive executive HTML dashboard generator
+│   ├── dashboard.py                 # Standalone interactive executive HTML dashboard generator
+│   └── requirements.txt             # Python backend dependencies
 ├── tests/
 │   └── test_pipeline.py             # Automated unit and integration test suite
 ├── experiments/
@@ -103,7 +104,7 @@ flowchart TD
 cd "c:\Users\RAVI KIRAN\OneDrive\Desktop\IoT SECURITY"
 
 # Install dependencies
-py -m pip install -r requirements.txt
+py -m pip install -r backend/requirements.txt
 ```
 
 ### 2. Run Automated Test Suite

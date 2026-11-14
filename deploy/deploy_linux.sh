@@ -6,7 +6,7 @@ echo "  DEPLOYING IOT ON-DEVICE FEDERATED ANOMALY DETECTION ENGINE (LINUX)     "
 echo "========================================================================="
 
 echo "[1/3] Installing Dependencies..."
-python3 -m pip install -r requirements.txt --quiet
+python3 -m pip install -r backend/requirements.txt --quiet
 
 echo "[2/3] Exporting Embedded Microcontroller and TinyML Edge Models..."
 python3 deploy/export_edge_models.py
